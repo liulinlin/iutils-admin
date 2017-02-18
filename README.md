@@ -25,6 +25,11 @@
 - svn|git 代码版本管理工具
 
 #系统截图
+![登录界面截图](https://github.com/iutils/iutils-admin/blob/master/doc/img/登录界面截图.png"登录界面截图")
+![主界面截图](https://github.com/iutils/iutils-admin/blob/master/doc/img/主界面截图.png"主界面截图")
+![用户管理截图](https://github.com/iutils/iutils-admin/blob/master/doc/img/用户管理截图.png"用户管理截图")
+![资源管理截图](https://github.com/iutils/iutils-admin/blob/master/doc/img/资源管理截图.png"资源管理截图")
+![系统日志截图](https://github.com/iutils/iutils-admin/blob/master/doc/img/系统日志截图.png"系统日志截图")
 
 
 #项目文档
@@ -46,13 +51,13 @@ http://iutils.cn/f/3/49/view/document.html?categoryId=84
 <dependency>
      <groupId>cn.iutils</groupId>
      <artifactId>iutils-admin</artifactId>
-     <version>1.0-SNAPSHOT</version>
+     <version>2.0-SNAPSHOT</version>
      <classifier>lib</classifier>
 </dependency>
 <dependency>
     <groupId>cn.iutils</groupId>
     <artifactId>iutils-admin</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>2.0-SNAPSHOT</version>
     <type>war</type>
 </dependency>
 ```
