@@ -37,17 +37,17 @@
 
 
 #项目文档
-http://iutils.cn/f/3/49/view/document.html?categoryId=84
+访问地址：[http://iutils.cn/f/3/49/view/document.html?categoryId=84](http://iutils.cn/f/3/49/view/document.html?categoryId=84)
 
 #系统演示
-访问地址：[http://iutils.cn/a](http://iutils.cn/a)
-演示账号：demo/demo
-有任何问题可以加QQ群：460229964交流。
+访问地址：[http://demo.iutils.cn](http://demo.iutils.cn)
+- 演示账号：super/123456
+- 演示环境，请不要随意修改密码，有任何问题可以加QQ群：460229964交流。
 
 #本地启动
 访问地址：[http://127.0.0.1:8080/a](http://127.0.0.1:8080/a)
-初始账号：super/123456
-有任何问题可以加QQ群：460229964交流。
+- 初始账号：super/123456
+- 有任何问题可以加QQ群：460229964交流。
 
 #项目引用
 ```
