@@ -133,7 +133,7 @@ public class ResourceController extends BaseController {
         } else {
             addMessage(redirectAttributes, "不能删除");
         }
-        return "redirect:" + adminPath + "/resource/list?id="+resource.getParentId()+"&pageNo="+pageNo+"&pageSize="+pageSize;
+        return "redirect:" + adminPath + "/resource?id="+resource.getParentId()+"&pageNo="+pageNo+"&pageSize="+pageSize;
     }
 
 }

@@ -129,7 +129,7 @@ public class OrganizationController extends BaseController {
 		}else{
 			addMessage(redirectAttributes, "不能删除");
 		}
-		return "redirect:" + adminPath + "/organization/list?id="+organization.getParentId()+"&pageNo="+pageNo+"&pageSize="+pageSize;
+		return "redirect:" + adminPath + "/organization?id="+organization.getParentId()+"&pageNo="+pageNo+"&pageSize="+pageSize;
 	}
 
 }

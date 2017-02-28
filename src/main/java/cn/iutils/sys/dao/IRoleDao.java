@@ -20,6 +20,6 @@ public interface IRoleDao extends ICrudDao<Role> {
      * @param roleIds
      * @return
      */
-    public List<Role> getRoles(@Param("roleIds")String[] roleIds);
+    public List<Role> getRoles(@Param("roleIds") String[] roleIds);
 
 }

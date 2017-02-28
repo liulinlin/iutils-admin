@@ -30,6 +30,6 @@ public interface IResourceDao extends ICrudDao<Resource> {
 	 * @param resourceIds
 	 * @return
 	 */
-	public List<Resource> getResources(@Param("resourceIds")Set<String> resourceIds);
+	public List<Resource> getResources(@Param("resourceIds") Set<String> resourceIds);
 
 }

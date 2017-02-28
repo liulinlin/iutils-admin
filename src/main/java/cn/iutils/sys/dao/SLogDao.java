@@ -30,6 +30,6 @@ public interface SLogDao extends ICrudDao<SLog> {
 	 * @param ids
 	 * @return
 	 */
-	public int deleteAll(@Param("ids")String[] ids);
+	public int deleteAll(@Param("ids") String[] ids);
 
 }

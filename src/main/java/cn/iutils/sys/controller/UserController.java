@@ -248,14 +248,4 @@ public class UserController extends BaseController {
 		return "sys/user/config-userInfo";
 	}
 
-	/**
-	 * 用户配置
-	 * 
-	 * @return
-	 */
-	@RequestMapping(value = "/configure", method = RequestMethod.GET)
-	public String configure() {
-		return "sys/user/config";
-	}
-
 }

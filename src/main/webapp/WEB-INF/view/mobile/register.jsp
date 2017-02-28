@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title><c:set var="iutilsName" value='${fnc:getConfig("iutils.name")}' />${iutilsName} - 用户登录</title>
+    <title><c:set var="iutilsName" value='${fnc:getConfig("iutils.name")}' />${iutilsName} - 用户注册</title>
     <%@ include file="include/head.jsp"%>
 </head>
 <body>
@@ -25,9 +25,11 @@
     </div>
     <div class="tpl-login">
         <div class="tpl-login-content">
-            <div class="tpl-login-logo">
-            </div>
-            <form class="am-form tpl-form-line-form" action="${ctx}/login" method="post">
+            <div class="tpl-login-title">注册用户</div>
+                <span class="tpl-login-content-info">
+                  创建一个新的用户
+              </span>
+            <form class="am-form tpl-form-line-form" action="${ctx}/register" method="post">
                 <div class="am-form-group">
                     <div class="color-form-group color-form-line color-floating-label">
                         <input class="color-form-control tpl-form-input" type="text" name="username" required>
@@ -40,14 +42,20 @@
                         <label class="color-form-control-label">请输入密码</label>
                     </div>
                 </div>
+                <div class="am-form-group">
+                    <div class="color-form-group color-form-line color-floating-label">
+                        <input class="color-form-control tpl-form-input" type="password" name="rpassword" required>
+                        <label class="color-form-control-label">再次输入密码</label>
+                    </div>
+                </div>
                 <div class="am-form-group tpl-login-remember-me">
-                    <input id="remember-me" name="rememberMe" type="checkbox">
+                    <input id="remember-me" type="checkbox">
                     <label for="remember-me">
-                        记住密码
+                        我已阅读并同意 <a href="javascript:;">《用户注册协议》</a>
                     </label>
                 </div>
                 <div class="am-form-group">
-                    <button type="submit" class="am-btn am-btn-primary  am-btn-block tpl-btn-bg-color-success  tpl-login-btn">登 录</button>
+                    <button type="submit" class="am-btn am-btn-primary  am-btn-block tpl-btn-bg-color-success  tpl-login-btn">注 册</button>
                 </div>
             </form>
         </div>
@@ -61,12 +69,6 @@
             showMsg(msg);
         }
     });
-    var rest = '${rest}';
-    // 如果在框架或在对话框中，则弹出提示并跳转到首页
-    if (top.location !== self.location) {
-        alert("未登录或登录超时。请重新登录，谢谢！");
-        top.location="${ctx}";
-    }
 </script>
 </body>
 </html>

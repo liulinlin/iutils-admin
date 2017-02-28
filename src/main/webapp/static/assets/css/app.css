@@ -1919,3 +1919,6 @@ ul.tpl-dropdown-content .tpl-dropdown-menu-messages-item .menu-messages-content 
   font-size: 14px;
   color: #999;
 }
+.error{
+  color: red;
+}

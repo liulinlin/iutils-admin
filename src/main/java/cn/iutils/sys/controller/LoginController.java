@@ -63,10 +63,10 @@ public class LoginController extends BaseController {
 		} else if (exceptionClassName != null) {
 			error = "未知的错误";
 		}
-		model.addAttribute("message", error);
+		model.addAttribute("msg", error);
 		if (request.getParameter("forceLogout") != null) {
 			error = "您已经被管理员强制退出，请重新登录";
-			model.addAttribute("message", error);
+			model.addAttribute("msg", error);
 		}
 		return "login";
 	}
