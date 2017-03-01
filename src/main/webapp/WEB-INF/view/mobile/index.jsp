@@ -173,7 +173,7 @@
         <div class="tpl-sidebar-user-panel">
             <div class="tpl-user-panel-slide-toggleable">
                 <div class="tpl-user-panel-profile-picture">
-                    <img src="${ctxStatic}/assets/img/user04.png" alt="">
+                    <img src="<c:if test="${not empty loginUser.photo}">${pageContext.request.contextPath}/${loginUser.photo}</c:if>" alt="用户头像">
                 </div>
                     <span class="user-panel-logged-in-text">
               <i class="am-icon-circle-o am-text-success tpl-user-panel-status-icon"></i>
@@ -196,7 +196,7 @@
                         </c:forEach>
                         <c:choose>
                             <c:when test="${isSub==1}">
-                                <a href="javascript:;" class="sidebar-nav-sub-title">
+                                <a href="javascript:;" class="sidebar-nav-sub-title menu-link-clear">
                                         <img src="${ctxStatic}${m.icon}<c:if test="${empty m.icon}">/custom/icon/5/22.png</c:if>" style="width:16px;height:16px;margin-right:8px;" /> ${menu1.name}
                                     <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
                                 </a>
@@ -204,7 +204,7 @@
                                     <c:forEach items="${menus}" var="menu2">
                                         <c:if test="${menu1.id==menu2.parentId}">
                                             <li class="sidebar-nav-link">
-                                                <a href="${ctx}/${menu2.url}" target="main-content">
+                                                <a href="#${ctx}/${menu2.url}" class="menu-link menu-link-clear" level="2">
                                                     <span class="am-icon-angle-right sidebar-nav-link-logo"></span> ${menu2.name}
                                                 </a>
                                             </li>
@@ -213,7 +213,7 @@
                                 </ul>
                             </c:when>
                             <c:otherwise>
-                                <a href="${ctx}/${menu1.url}" target="main-content">
+                                <a href="#${ctx}/${menu1.url}" class="menu-link menu-link-clear" level="1">
                                     <img src="${ctxStatic}${m.icon}<c:if test="${empty m.icon}">/custom/icon/5/22.png</c:if>" style="width:16px;height:16px;margin-right:8px;" /> ${menu1.name}
                                 </a>
                             </c:otherwise>
@@ -234,5 +234,39 @@
 </div>
 </div>
 <%@ include file="include/bottom.jsp"%>
+<script>
+    $(document).ready(function(){
+        //初始化地址
+        var initPage = function(){
+            var link = location.hash;
+            if(link){
+                var $menu = $("a[href='"+link+"']");
+                var level = $menu.attr("level");
+                if(level=='1'){
+                    $menu.addClass("active");
+                }else if(level=='2'){
+                    $menu.addClass("sub-active");
+                    $menu.parent().parent().prev().addClass("active");
+                }
+                $("#main-content").attr("src",link.substr(1));
+            }
+        }
+        initPage();
+        //点击左侧菜单
+        $(".sidebar-nav").on('click','.menu-link',function(){
+            //清除菜单选中状态
+            $(".menu-link-clear").removeClass("active").removeClass("sub-active");
+            var $menu = $(this);
+            var level = $menu.attr("level");
+            if(level=='1'){
+                $menu.addClass("active");
+            }else if(level=='2'){
+                $menu.addClass("sub-active");
+                $menu.parent().parent().prev().addClass("active");
+            }
+            $("#main-content").attr("src",$menu.attr("href").substr(1));
+        });
+    });
+</script>
 </body>
 </html>
