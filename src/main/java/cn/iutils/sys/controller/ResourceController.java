@@ -1,24 +1,21 @@
 package cn.iutils.sys.controller;
 
 import cn.iutils.common.Page;
-import cn.iutils.common.utils.UserUtils;
+import cn.iutils.common.controller.BaseController;
+import cn.iutils.common.utils.JStringUtils;
+import cn.iutils.sys.entity.Resource;
+import cn.iutils.sys.entity.enums.ResourceEnum;
+import cn.iutils.sys.service.ResourceService;
 import cn.iutils.sys.service.UserService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import cn.iutils.common.controller.BaseController;
-import cn.iutils.common.utils.JStringUtils;
-import cn.iutils.sys.entity.Resource;
-import cn.iutils.sys.entity.enums.ResourceEnum;
-import cn.iutils.sys.service.ResourceService;
 
 import java.util.List;
 
@@ -32,7 +29,7 @@ import java.util.List;
 public class ResourceController extends BaseController {
 
 	@Autowired
-	ResourceService resourceService;
+    ResourceService resourceService;
 
     @Autowired
     UserService userService;
@@ -68,7 +65,7 @@ public class ResourceController extends BaseController {
         model.addAttribute("resourceList", resourceList);
         //初始化加载第一个
         if(JStringUtils.isBlank(resource.getId()) && resourceList.size()>0){
-            resource.setId(resourceList.get(0).getId());
+            resource.setId("1");//默认加载
         }
         page.setEntity(resource);
         model.addAttribute("page", page.setList(resourceService.findPage(page)));
@@ -97,7 +94,6 @@ public class ResourceController extends BaseController {
     @RequiresPermissions("sys:resource:edit")
     @RequestMapping(value = "/update", method = RequestMethod.GET)
     public String update(Resource resource, Model model) {
-        model.addAttribute("resourceList", resourceService.findList(resource));
         model.addAttribute("resource", resource);
         return "sys/resource/edit";
     }

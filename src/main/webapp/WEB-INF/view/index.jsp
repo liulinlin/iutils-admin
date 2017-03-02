@@ -179,7 +179,7 @@
               <i class="am-icon-circle-o am-text-success tpl-user-panel-status-icon"></i>
               ${empty loginUser.name?loginUser.username:loginUser.name}
           </span>
-                <a href="${ctx}/user/userInfo" target="main-content" class="tpl-user-panel-action-link"> <span class="am-icon-pencil"></span> 用户设置</a>
+                <a href="#${ctx}/user/userInfo" onclick="link('${ctx}/user/userInfo')" class="tpl-user-panel-action-link"> <span class="am-icon-pencil"></span> 用户设置</a>
             </div>
         </div>
 
@@ -267,6 +267,12 @@
             $("#main-content").attr("src",$menu.attr("href").substr(1));
         });
     });
+
+    //跳转
+    function link(url){
+        $(".menu-link-clear").removeClass("active").removeClass("sub-active");
+        $("#main-content").attr("src",url);
+    }
 </script>
 </body>
 </html>

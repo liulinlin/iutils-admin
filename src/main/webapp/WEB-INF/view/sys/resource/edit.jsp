@@ -4,17 +4,7 @@
 <head>
 	<title>资源编辑</title>
 	<%@ include file="../../include/head.jsp"%>
-	<link rel="stylesheet" href="${ctxStatic}/3rd-lib/jquery-ztree/css/zTreeStyle.css">
 	<style type="text/css">
-		ul.ztree {
-			margin-top: 10px;
-			border: 1px solid #ddd;
-			background: #fff;
-			width: 198px;
-			height: 200px;
-			overflow-y: auto;
-			overflow-x: auto;
-		}
 		.tpl-content-wrapper{margin-left:0}
 	</style>
 </head>
@@ -36,14 +26,7 @@
 								<div class="am-form-group">
 									<label class="am-u-sm-3 am-form-label"><span class="error">*</span>上级资源：</label>
 									<div class="am-u-sm-9">
-										<div class="am-input-group" style="width: 200px;">
-											<input type="text" id="parentName" class="am-form-field" minlength="1" value="${resource.resource.name}" required readonly/>
-											<input type="hidden" id="parentId" name="parentId" value="${resource.parentId}" />
-											<input type="hidden" id="parentIds" name="parentIds" value="${resource.parentIds}" />
-								    <span class="am-input-group-btn">
-									<button class="am-btn am-btn-default" id="menuBtn" type="button">选择</button>
-								    </span>
-										</div>
+										<input type="text" id="parentName" minlength="1" value="${resource.resource.name}" readonly/>
 									</div>
 								</div>
 								<div class="am-form-group">
@@ -116,13 +99,8 @@
 		</div>
 	</div>
 </div>
-<div id="menuContent" class="menuContent" style="display:none; position: absolute;z-index: 10000;">
-	<ul id="tree" class="ztree" style="margin-top:0;"></ul>
-</div>
 <%@ include file="../../include/bottom.jsp"%>
 <script type="text/javascript" src="${ctxStatic}/custom/js/ajaxfileupload.js"></script>
-<script src="${ctxStatic}/3rd-lib/jquery-ztree/js/jquery.ztree.core-3.5.min.js"></script>
-<script src="${ctxStatic}/custom/js/ztree.select.js"></script>
 <script type="text/javascript">
 	$(function () {
 		//消息提醒
@@ -132,18 +110,7 @@
 			closeModel(true);//关闭窗口
 		}
 		initSelectValue(true);//初始化下拉框的值
-		var zNodes =[
-			<c:forEach items="${resourceList}" var="o" varStatus="status">
-			{ id:${o.id}, pId:${o.parentId},pIds:'${o.parentIds}', name:'${o.name}', open:${o.rootNode}}<c:if test="${!status.last}">,</c:if>
-			</c:forEach>
-		];
-		$.fn.ztreeSelect($("#tree"),zNodes);
 	});
-	//ztree点击回调
-	function ztreeOnClickCall(treeNode){
-		$("#parentId").val(treeNode.id);
-		$("#parentIds").val(treeNode.pIds+treeNode.id+"/");
-	}
 	$(document).ready(function() {
 		//触发选择文件
 		$("#btnPicture").click(function(){
