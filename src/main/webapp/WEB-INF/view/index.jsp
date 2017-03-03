@@ -221,9 +221,6 @@
                     </li>
                 </c:if>
             </c:forEach>
-
-            <li class="sidebar-nav-heading">常用功能</li>
-
         </ul>
     </div>
 

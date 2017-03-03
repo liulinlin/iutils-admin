@@ -17,15 +17,8 @@
     <context:property-placeholder location="classpath:config.properties"/>
 
     <!-- 缓存管理器 -->
-    <bean id="springCacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
-        <property name="cacheManager" ref="ehcacheManager"/>
-    </bean>
-    <bean id="ehcacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
-        <property name="configLocation" value="classpath:ehcache/ehcache.xml"/>
-    </bean>
-
-    <bean id="cacheManager" class="cn.iutils.common.spring.SpringCacheManager">
-        <property name="cacheManager" ref="springCacheManager"/>
+    <bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+        <property name="cacheManagerConfigFile" value="classpath:ehcache/ehcache.xml"/>
     </bean>
 
     <!-- 凭证匹配器 -->
@@ -39,7 +32,11 @@
     <!-- Realm实现 -->
     <bean id="userRealm" class="cn.iutils.common.filter.realm.UserRealm">
         <property name="credentialsMatcher" ref="credentialsMatcher"/>
-        <property name="cachingEnabled" value="false"/>
+        <property name="cachingEnabled" value="true"/>
+        <property name="authenticationCachingEnabled" value="true"/>
+        <property name="authenticationCacheName" value="${iutils.authentication.cache}"/>
+        <property name="authorizationCachingEnabled" value="true"/>
+        <property name="authorizationCacheName" value="${iutils.authentication.cache}"/>
     </bean>
 
     <!-- 会话ID生成器 -->
@@ -68,7 +65,7 @@
 
     <!-- 会话DAO -->
     <bean id="sessionDAO" class="org.apache.shiro.session.mgt.eis.EnterpriseCacheSessionDAO">
-        <property name="activeSessionsCacheName" value="shiro-activeSessionCache"/>
+        <property name="activeSessionsCacheName" value="${iutils.activeSession.cache}"/>
         <property name="sessionIdGenerator" ref="sessionIdGenerator"/>
     </bean>
 

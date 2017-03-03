@@ -1,9 +1,8 @@
 package cn.iutils.common.utils;
 
+import cn.iutils.common.config.JConfig;
 import cn.iutils.common.spring.SpringUtils;
-import net.sf.ehcache.Cache;
-import net.sf.ehcache.CacheManager;
-import net.sf.ehcache.Element;
+import org.apache.shiro.cache.CacheManager;
 
 /**
  * Cache工具类
@@ -11,7 +10,39 @@ import net.sf.ehcache.Element;
  */
 public class CacheUtils {
 
-    private static CacheManager cacheManager = ((CacheManager) SpringUtils.getBean("ehcacheManager"));
+    private static CacheManager cacheManager = SpringUtils.getBean("cacheManager");
+
+    private static final String SYS_CACHE = JConfig.getConfig("iutils.default.cache");
+
+    /**
+     * 获取SYS_CACHE缓存
+     *
+     * @param key
+     * @return
+     */
+    public static Object get(String key) {
+        return get(SYS_CACHE, key);
+    }
+
+    /**
+     * 写入SYS_CACHE缓存
+     *
+     * @param key
+     * @return
+     */
+    public static void put(String key, Object value) {
+        put(SYS_CACHE, key, value);
+    }
+
+    /**
+     * 从SYS_CACHE缓存中移除
+     *
+     * @param key
+     * @return
+     */
+    public static void remove(String key) {
+        remove(SYS_CACHE, key);
+    }
 
     /**
      * 获取缓存
@@ -21,8 +52,7 @@ public class CacheUtils {
      * @return
      */
     public static Object get(String cacheName, String key) {
-        Element element = getCache(cacheName).get(key);
-        return element == null ? null : element.getObjectValue();
+        return getCache(cacheName).get(key);
     }
 
     /**
@@ -33,8 +63,7 @@ public class CacheUtils {
      * @param value
      */
     public static void put(String cacheName, String key, Object value) {
-        Element element = new Element(key, value);
-        getCache(cacheName).put(element);
+        getCache(cacheName).put(key,value);
     }
 
     /**
@@ -48,23 +77,12 @@ public class CacheUtils {
     }
 
     /**
-     * 获得一个Cache，没有则创建一个。
-     *
+     * 获得一个Cache
      * @param cacheName
      * @return
      */
-    private static Cache getCache(String cacheName) {
-        Cache cache = cacheManager.getCache(cacheName);
-        if (cache == null) {
-            cacheManager.addCache(cacheName);
-            cache = cacheManager.getCache(cacheName);
-            cache.getCacheConfiguration().setEternal(true);
-        }
-        return cache;
-    }
-
-    public static CacheManager getCacheManager() {
-        return cacheManager;
+    private static org.apache.shiro.cache.Cache getCache(String cacheName) {
+        return cacheManager.getCache(cacheName);
     }
 
 }

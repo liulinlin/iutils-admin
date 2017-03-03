@@ -1,5 +1,6 @@
 package cn.iutils.common.filter;
 
+import cn.iutils.common.config.JConfig;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.ExcessiveAttemptsException;
@@ -22,7 +23,7 @@ public class RetryLimitHashedCredentialsMatcher extends HashedCredentialsMatcher
      * @param cacheManager
      */
     public RetryLimitHashedCredentialsMatcher(CacheManager cacheManager) {
-        passwordRetryCache = cacheManager.getCache("passwordRetryCache");
+        passwordRetryCache = cacheManager.getCache(JConfig.getConfig("iutils.passwordRetry.cache"));
     }
 
     @Override
