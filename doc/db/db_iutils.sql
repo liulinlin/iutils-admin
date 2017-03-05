@@ -2,14 +2,14 @@
  Navicat MySQL Data Transfer
 
  Source Server         : localhost
- Source Server Version : 50547
+ Source Server Version : 50173
  Source Host           : localhost
  Source Database       : db_iutils
 
- Target Server Version : 50547
+ Target Server Version : 50173
  File Encoding         : utf-8
 
- Date: 03/03/2017 16:30:20 PM
+ Date: 03/05/2017 15:46:35 PM
 */
 
 SET NAMES utf8;
@@ -42,7 +42,7 @@ CREATE TABLE `sys_organization` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '编号',
   `name` varchar(100) DEFAULT NULL COMMENT '组织机构名称',
   `parent_id` bigint(20) DEFAULT NULL COMMENT '父编号',
-  `parent_ids` varchar(100) DEFAULT NULL COMMENT '父编号列表',
+  `parent_ids` varchar(5000) DEFAULT NULL COMMENT '父编号列表',
   `available` tinyint(1) DEFAULT '0' COMMENT '是否可用',
   `create_by` bigint(20) DEFAULT NULL COMMENT '创建者',
   `create_date` datetime DEFAULT NULL COMMENT '创建时间',
@@ -52,7 +52,7 @@ CREATE TABLE `sys_organization` (
   `status` char(1) DEFAULT '0' COMMENT '状态',
   PRIMARY KEY (`id`),
   KEY `idx_sys_organization_parent_id` (`parent_id`),
-  KEY `idx_sys_organization_parent_ids` (`parent_ids`)
+  KEY `idx_sys_organization_parent_ids` (`parent_ids`(255))
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='组织机构';
 
 -- ----------------------------
@@ -73,7 +73,7 @@ CREATE TABLE `sys_resource` (
   `icon` varchar(255) DEFAULT NULL COMMENT '图标',
   `url` varchar(200) DEFAULT NULL COMMENT '资源路径',
   `parent_id` bigint(20) DEFAULT NULL COMMENT '父编号',
-  `parent_ids` varchar(100) DEFAULT NULL COMMENT '父编号列表',
+  `parent_ids` varchar(5000) DEFAULT NULL COMMENT '父编号列表',
   `permission` varchar(100) DEFAULT NULL COMMENT '权限字符串',
   `available` tinyint(1) DEFAULT '0' COMMENT '是否可用',
   `sort` int(11) DEFAULT NULL COMMENT '排序',
@@ -85,7 +85,7 @@ CREATE TABLE `sys_resource` (
   `status` char(1) DEFAULT '0' COMMENT '状态',
   PRIMARY KEY (`id`),
   KEY `idx_sys_resource_parent_id` (`parent_id`),
-  KEY `idx_sys_resource_parent_ids` (`parent_ids`)
+  KEY `idx_sys_resource_parent_ids` (`parent_ids`(255))
 ) ENGINE=InnoDB AUTO_INCREMENT=105 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='资源';
 
 -- ----------------------------
@@ -104,7 +104,7 @@ CREATE TABLE `sys_role` (
   `role` varchar(100) DEFAULT NULL COMMENT '角色标识',
   `name` varchar(100) NOT NULL COMMENT '角色名称',
   `organization_id` bigint(20) NOT NULL COMMENT '归属机构',
-  `resource_ids` varchar(200) DEFAULT NULL COMMENT '资源编号集合',
+  `resource_ids` varchar(5000) DEFAULT NULL COMMENT '资源编号集合',
   `data_scope` varchar(50) NOT NULL COMMENT '数据范围',
   `available` tinyint(1) DEFAULT '0' COMMENT '是否可用',
   `create_by` bigint(20) DEFAULT NULL COMMENT '创建者',
