@@ -197,7 +197,7 @@
                         <c:choose>
                             <c:when test="${isSub==1}">
                                 <a href="javascript:;" class="sidebar-nav-sub-title menu-link-clear">
-                                        <img src="${ctxStatic}${m.icon}<c:if test="${empty m.icon}">/custom/icon/5/22.png</c:if>" style="width:16px;height:16px;margin-right:8px;" /> ${menu1.name}
+                                        <img src="${ctxStatic}${m.icon}<c:if test="${empty m.icon}">/custom/i/5/22.png</c:if>" style="width:16px;height:16px;margin-right:8px;" /> ${menu1.name}
                                     <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
                                 </a>
                                 <ul class="sidebar-nav sidebar-nav-sub">
@@ -214,7 +214,7 @@
                             </c:when>
                             <c:otherwise>
                                 <a href="#${ctx}/${menu1.url}" class="menu-link menu-link-clear" level="1">
-                                    <img src="${ctxStatic}${m.icon}<c:if test="${empty m.icon}">/custom/icon/5/22.png</c:if>" style="width:16px;height:16px;margin-right:8px;" /> ${menu1.name}
+                                    <img src="${ctxStatic}${m.icon}<c:if test="${empty m.icon}">/custom/i/5/22.png</c:if>" style="width:16px;height:16px;margin-right:8px;" /> ${menu1.name}
                                 </a>
                             </c:otherwise>
                         </c:choose>
