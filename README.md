@@ -37,7 +37,7 @@
 
 
 #项目文档
-访问地址：[http://iutils.cn/f/3/49/view/document.html?categoryId=84](http://iutils.cn/f/3/49/view/document.html?categoryId=84)
+访问地址：[http://iutils.cn/f/144/87/detail.html](http://iutils.cn/f/144/87/detail.html)
 
 #系统演示
 访问地址：[http://demo.iutils.cn](http://demo.iutils.cn)
