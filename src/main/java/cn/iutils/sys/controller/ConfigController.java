@@ -13,7 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import cn.iutils.common.Page;
 import cn.iutils.common.utils.JStringUtils;
-import cn.iutils.common.controller.BaseController;
+import cn.iutils.common.BaseController;
 import cn.iutils.sys.entity.Config;
 import cn.iutils.sys.service.ConfigService;
 

@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.Date;
 
 import cn.iutils.common.utils.RelativeDateFormat;
+import cn.iutils.common.utils.SerializableUtils;
 import cn.iutils.common.utils.UserUtils;
 import cn.iutils.sys.entity.User;
 import org.apache.shiro.session.Session;
@@ -65,6 +66,16 @@ public class Functions {
 	 * @return
 	 */
 	public static boolean isForceLogout(Session session) {
+		return session.getAttribute(JConfig.SESSION_FORCE_LOGOUT_KEY) != null;
+	}
+
+	/**
+	 * 判断是否强制退出
+	 * @param dbSession
+	 * @return
+	 */
+	public static boolean isDbForceLogout(cn.iutils.sys.entity.Session dbSession) {
+		Session session = SerializableUtils.deserialize(dbSession.getSessionStr());
 		return session.getAttribute(JConfig.SESSION_FORCE_LOGOUT_KEY) != null;
 	}
 

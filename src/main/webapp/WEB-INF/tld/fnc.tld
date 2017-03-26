@@ -37,6 +37,13 @@
     </function>
 
     <function>
+        <description>是否强制退出</description>
+        <name>isDbForceLogout</name>
+        <function-class>cn.iutils.common.taglib.Functions</function-class>
+        <function-signature>boolean isDbForceLogout(cn.iutils.sys.entity.Session)</function-signature>
+    </function>
+
+    <function>
         <description>获取当前登录用户</description>
         <name>getLoginUser</name>
         <function-class>cn.iutils.common.taglib.Functions</function-class>

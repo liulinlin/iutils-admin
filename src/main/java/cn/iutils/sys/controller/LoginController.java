@@ -2,7 +2,6 @@ package cn.iutils.sys.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
-import cn.iutils.common.ResultVo;
 import cn.iutils.common.utils.UserUtils;
 import cn.iutils.sys.entity.User;
 import cn.iutils.sys.service.PasswordHelper;
@@ -16,11 +15,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import cn.iutils.common.controller.BaseController;
+import cn.iutils.common.BaseController;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.security.Principal;
 
 /**
  * 登录控制器

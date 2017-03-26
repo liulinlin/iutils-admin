@@ -1,4 +1,4 @@
-package cn.iutils.common.controller;
+package cn.iutils.common;
 
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.core.JsonGenerator;
@@ -21,14 +21,13 @@ import java.util.TimeZone;
  * 封装不同的输出风格, 使用不同的builder函数创建实例.
  * @author cc
  */
-@Deprecated
 public class JsonMapper extends ObjectMapper {
 
 	private static final long serialVersionUID = 1L;
 
-	private static Logger logger = LoggerFactory.getLogger(JsonMapper.class);
+	private static Logger logger = LoggerFactory.getLogger(cn.iutils.common.controller.JsonMapper.class);
 
-	private static JsonMapper mapper;
+	private static cn.iutils.common.controller.JsonMapper mapper;
 
 	public JsonMapper() {
 		this(Include.NON_EMPTY);
@@ -68,9 +67,9 @@ public class JsonMapper extends ObjectMapper {
 	/**
 	 * 创建只输出非Null且非Empty(如List.isEmpty)的属性到Json字符串的Mapper,建议在外部接口中使用.
 	 */
-	public static JsonMapper getInstance() {
+	public static cn.iutils.common.controller.JsonMapper getInstance() {
 		if (mapper == null){
-			mapper = new JsonMapper().enableSimple();
+			mapper = new cn.iutils.common.controller.JsonMapper().enableSimple();
 		}
 		return mapper;
 	}
@@ -78,9 +77,9 @@ public class JsonMapper extends ObjectMapper {
 	/**
 	 * 创建只输出初始值被改变的属性到Json字符串的Mapper, 最节约的存储方式，建议在内部接口中使用。
 	 */
-	public static JsonMapper nonDefaultMapper() {
+	public static cn.iutils.common.controller.JsonMapper nonDefaultMapper() {
 		if (mapper == null){
-			mapper = new JsonMapper(Include.NON_DEFAULT);
+			mapper = new cn.iutils.common.controller.JsonMapper(Include.NON_DEFAULT);
 		}
 		return mapper;
 	}
@@ -212,7 +211,7 @@ public class JsonMapper extends ObjectMapper {
 	 * @return
 	 */
 	public static String toJsonString(Object object){
-		return JsonMapper.getInstance().toJson(object);
+		return cn.iutils.common.controller.JsonMapper.getInstance().toJson(object);
 	}
 	
 	/**
@@ -222,7 +221,7 @@ public class JsonMapper extends ObjectMapper {
 	 * @return
 	 */
 	public static Object fromJsonString(String jsonString, Class<?> clazz){
-		return JsonMapper.getInstance().fromJson(jsonString, clazz);
+		return cn.iutils.common.controller.JsonMapper.getInstance().fromJson(jsonString, clazz);
 	}
 	
 }

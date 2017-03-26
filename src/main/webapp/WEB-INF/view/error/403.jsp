@@ -2,7 +2,7 @@
 <%@ include file="/WEB-INF/view/include/taglib.jsp"%>
 <html>
 <head>
-	<title>403</title>
+	<title>系统提示 - 403</title>
 	<%@ include file="../include/head.jsp"%>
 	<style>
 		.tpl-content-wrapper{margin-left:0}

@@ -13,9 +13,7 @@ import com.google.common.collect.Lists;
 
 /**
  * 日志记录任务
- * 
- * @author cc
- * 
+ * @author iutils.cn
  */
 public class TaskLog extends BaseService {
 
@@ -51,8 +49,7 @@ public class TaskLog extends BaseService {
 
 	/**
 	 * 添加记录
-	 * 
-	 * @param o
+	 * @param log
 	 */
 	public void add(SLog log) {
 		queueLog.offer(log);

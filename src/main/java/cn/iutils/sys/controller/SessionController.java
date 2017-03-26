@@ -1,64 +1,72 @@
 package cn.iutils.sys.controller;
 
-import java.util.Collection;
-
-import org.apache.shiro.session.Session;
-import org.apache.shiro.session.mgt.eis.SessionDAO;
+import cn.iutils.common.config.JConfig;
+import cn.iutils.sys.dao.IDBSessionDAO;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import cn.iutils.common.config.JConfig;
-import cn.iutils.common.controller.BaseController;
+import cn.iutils.common.Page;
+import cn.iutils.common.utils.JStringUtils;
+import cn.iutils.common.BaseController;
+import cn.iutils.sys.entity.Session;
+import cn.iutils.sys.service.SessionService;
 
 /**
- * Session控制器
- * 
- * @author cc
- */
+* session管理 控制器
+* @author iutils.cn
+* @version 1.0
+*/
 @Controller
-@RequestMapping("${adminPath}/sessions")
+@RequestMapping("${adminPath}/sys/session")
 public class SessionController extends BaseController {
 
-	@Autowired
-	private SessionDAO sessionDAO;
+    @Autowired
+    private SessionService sessionService;
 
-	/**
-	 * 获取在线用户列表
-	 * @param model
-	 * @return
-	 */
-	@RequestMapping()
-	public String list(Model model) {
-		Collection<Session> sessions = sessionDAO.getActiveSessions();
-		model.addAttribute("sessions", sessions);
-		model.addAttribute("sessionCount", sessions.size());
-		return "sys/sessions/list";
-	}
+    @Autowired
+    private IDBSessionDAO sessionDAO;
 
-	/**
-	 * 强制退出
-	 * @param sessionId
-	 * @param redirectAttributes
-	 * @return
-	 */
-	@RequestMapping("/{sessionId}/forceLogout")
-	public String forceLogout(@PathVariable("sessionId") String sessionId,
-			RedirectAttributes redirectAttributes) {
-		try {
-			Session session = sessionDAO.readSession(sessionId);
-			if (session != null) {
-				session.setAttribute(JConfig.SESSION_FORCE_LOGOUT_KEY,
-						Boolean.TRUE);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		redirectAttributes.addFlashAttribute("msg", "强制退出成功！");
-		return "redirect:" + adminPath + "/sessions";
-	}
+    @ModelAttribute
+    public Session get(@RequestParam(required = false) String id) {
+        Session entity = null;
+        if (JStringUtils.isNotBlank(id)) {
+            entity = sessionService.get(id);
+        }
+        if (entity == null) {
+            entity = new Session();
+        }
+        return entity;
+    }
 
+    @RequiresPermissions("sys:session:view")
+    @RequestMapping()
+    public String list(Model model, Page<Session> page) {
+        model.addAttribute("page", page.setList(sessionService.findPage(page)));
+        return "sys/session/list";
+    }
+
+    /**
+     * 强制退出
+     * @param pageNo
+     * @param pageSize
+     * @param redirectAttributes
+     * @return
+     */
+    @RequiresPermissions("sys:session:forceLogout")
+    @RequestMapping(value = "forceLogout", method = RequestMethod.GET)
+    public String delete(Session dbSession,int pageNo,int pageSize, RedirectAttributes redirectAttributes) {
+        org.apache.shiro.session.Session session = sessionDAO.readSession(dbSession.getId());
+        if (session != null) {
+            session.setAttribute(JConfig.SESSION_FORCE_LOGOUT_KEY,Boolean.TRUE);
+        }
+        addMessage(redirectAttributes, "强制退出成功");
+        return "redirect:"+ adminPath +"/sys/session?pageNo="+pageNo+"&pageSize="+pageSize;
+    }
 }

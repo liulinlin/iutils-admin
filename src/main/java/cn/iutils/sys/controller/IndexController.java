@@ -9,8 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import cn.iutils.common.controller.BaseController;
-import cn.iutils.common.utils.UserUtils;
+import cn.iutils.common.BaseController;
 import cn.iutils.sys.entity.Resource;
 import cn.iutils.sys.service.ResourceService;
 import cn.iutils.sys.service.UserService;

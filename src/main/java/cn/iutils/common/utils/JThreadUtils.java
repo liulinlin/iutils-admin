@@ -11,21 +11,17 @@ import java.util.concurrent.Executors;
  * 
  * @author cc
  */
-public class JThreadUtils {
-
-	private static Logger logger = LoggerFactory.getLogger(JThreadUtils.class);
+public class JThreadUtils extends BaseUtils{
 
 	/**
 	 * 单线程执行器
 	 */
-	@SuppressWarnings("unused")
-	private static ExecutorService singleExecutor = Executors.newSingleThreadExecutor();
+	public static ExecutorService singleExecutor = Executors.newSingleThreadExecutor();
 
 	/**
 	 * 动态多线程执行器
 	 */
-	@SuppressWarnings("unused")
-	private static ExecutorService executor = Executors.newCachedThreadPool();
+	public static ExecutorService executor = Executors.newCachedThreadPool();
 
 	/**
 	 * sleep等待,单位为毫秒 忽略InterruptedException.

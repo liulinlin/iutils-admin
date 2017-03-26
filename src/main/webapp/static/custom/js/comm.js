@@ -104,3 +104,15 @@ function reloadPage(){
 	var index = parent.layer.getFrameIndex(window.name);
 	parent.layer.full(index)
 }
+//ajax get数据
+function get(url,call){
+	$.get(url,function(data){
+		call && call(data);
+	});
+}
+//ajax post数据
+function post(url,param,call){
+	$.post(url,param, function (data) {
+		call && call(data);
+	});
+}

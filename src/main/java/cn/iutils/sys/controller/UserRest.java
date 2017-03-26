@@ -1,7 +1,7 @@
 package cn.iutils.sys.controller;
 
 import cn.iutils.common.ResultVo;
-import cn.iutils.common.controller.BaseController;
+import cn.iutils.common.BaseController;
 import cn.iutils.sys.entity.User;
 import cn.iutils.sys.service.PasswordHelper;
 import cn.iutils.sys.service.UserService;

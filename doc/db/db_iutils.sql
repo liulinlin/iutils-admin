@@ -2,14 +2,14 @@
  Navicat MySQL Data Transfer
 
  Source Server         : localhost
- Source Server Version : 50173
+ Source Server Version : 50547
  Source Host           : localhost
  Source Database       : db_iutils
 
- Target Server Version : 50173
+ Target Server Version : 50547
  File Encoding         : utf-8
 
- Date: 03/05/2017 15:46:35 PM
+ Date: 03/24/2017 17:39:28 PM
 */
 
 SET NAMES utf8;
@@ -86,13 +86,13 @@ CREATE TABLE `sys_resource` (
   PRIMARY KEY (`id`),
   KEY `idx_sys_resource_parent_id` (`parent_id`),
   KEY `idx_sys_resource_parent_ids` (`parent_ids`(255))
-) ENGINE=InnoDB AUTO_INCREMENT=105 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='资源';
+) ENGINE=InnoDB AUTO_INCREMENT=107 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='资源';
 
 -- ----------------------------
 --  Records of `sys_resource`
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_resource` VALUES ('1', '资源', 'menu', '', '', '0', '0/', '', '1', '0', '1', null, null, null, null, '0'), ('2', '系统管理', 'menu', '', '', '1', '0/1/', 'sys:manage', '1', '10', '1', '2016-06-14 09:33:06', '1', '2016-11-18 01:21:14', null, '0'), ('11', '组织机构', 'menu', '', 'organization', '75', '0/1/75/', 'sys:organization', '1', '10', '1', null, '1', '2016-10-21 01:32:05', null, '0'), ('12', '查看', 'form', '', '', '11', '0/1/2/11/', 'sys:organization:view', '1', '1', '1', null, '1', '2017-01-10 14:43:53', null, '0'), ('13', '编辑', 'form', '', '', '11', '0/1/2/11/', 'sys:organization:edit', '1', '2', '1', null, '1', '2017-01-10 14:44:15', null, '0'), ('21', '用户管理', 'menu', '', 'user/list', '2', '0/1/2/', 'sys:user:view', '1', '10', '1', null, '1', '2017-02-18 18:11:51', null, '0'), ('22', '查看', 'form', '', '', '21', '0/1/2/21/', 'sys:user:view', '1', '4', '1', null, '1', '2017-01-10 10:38:16', null, '0'), ('23', '编辑', 'form', '', '', '21', '0/1/2/21/', 'sys:user:update', '1', '3', '1', null, '1', '2017-01-10 11:14:13', null, '0'), ('31', '资源管理', 'menu', '', 'resource', '75', '0/1/75/', 'sys:resource', '1', '20', '1', null, '1', '2016-10-21 01:32:27', null, '0'), ('32', '查看', 'form', '', '', '31', '0/1/2/31/', 'sys:resource:view', '1', '3', '1', null, '1', '2017-01-10 10:49:52', null, '0'), ('33', '编辑', 'form', '', '', '31', '0/1/2/31/', 'sys:resource:edit', '1', '1', '1', null, '1', '2017-01-10 10:49:08', null, '0'), ('41', '角色管理', 'menu', '', 'role', '75', '0/1/75/', 'sys:role:view', '1', '30', '1', null, '1', '2016-10-21 01:32:44', null, '0'), ('42', '查看', 'form', '', '', '41', '0/1/2/41/', 'sys:role:view', '1', '1', '1', null, '1', '2017-01-10 14:42:16', null, '0'), ('43', '编辑', 'form', '', '', '41', '0/1/2/41/', 'sys:role:edit', '1', '2', '1', null, '1', '2017-01-10 14:42:20', null, '0'), ('51', '会话管理', 'menu', '', 'sessions', '2', '0/1/2/', 'sys:sessions', '1', '60', '1', null, '1', '2016-10-21 01:30:52', null, '0'), ('73', '任务调度', 'menu', '', 'scheduleJob', '2', '0/1/2/', 'sys:scheduleJob:*', '1', '50', '1', '2016-07-15 22:50:56', '1', '2017-01-10 10:40:03', null, '0'), ('74', '系统日志', 'menu', '', 'slog', '2', '0/1/2/', 'sys:slog:view', '1', '70', '1', '2016-10-02 14:02:51', '1', '2016-10-21 01:31:14', null, '0'), ('75', '系统设置', 'menu', '', '', '1', '0/1/', 'sys:setting', '1', '20', '1', '2016-10-09 00:04:34', '1', '2016-11-18 01:18:34', null, '0'), ('76', '查看', 'form', '', '', '74', '0/1/2/74/', 'sys:slog:view', '1', '0', '1', '2016-10-21 00:27:13', null, null, null, '0'), ('77', '编辑', 'form', '', '', '74', '0/1/2/74/', 'sys:slog:edit', '1', '0', '1', '2016-10-21 00:27:31', null, null, null, '0'), ('97', '新增', 'form', '', '', '21', '0/1/2/21/', 'sys:user:create', '1', '1', '1', '2017-01-10 10:30:07', '1', '2017-01-10 10:37:20', null, '0'), ('98', '删除', 'form', '', '', '21', '0/1/2/21/', 'sys:user:delete', '1', '2', '1', '2017-01-10 10:37:07', '1', '2017-01-10 10:50:33', null, '0'), ('100', '删除', 'form', '', '', '11', '0/1/75/11/', 'sys:organization:delete', '1', '3', '1', '2017-01-10 11:00:30', '1', '2017-01-10 11:00:40', null, '0'), ('101', '公共配置', 'menu', '', 'sys/config', '2', '0/1/2/', 'sys:config:view', '1', '20', '1', '2017-01-14 21:31:11', null, null, null, '0'), ('102', '新增', 'form', '', '', '101', '0/1/2/101/', 'sys:config:create', '1', '1', '1', '2017-01-14 21:31:37', null, null, null, '0'), ('103', '删除', 'form', '', '', '101', '0/1/2/101/', 'sys:config:delete', '1', '2', '1', '2017-01-14 21:31:55', '1', '2017-01-14 21:32:20', null, '0'), ('104', '修改', 'form', '', '', '101', '0/1/2/101/', 'sys:config:update', '1', '3', '1', '2017-01-14 21:32:12', null, null, null, '0');
+INSERT INTO `sys_resource` VALUES ('1', '资源', 'menu', '', '', '0', '0/', '', '1', '0', '1', null, null, null, null, '0'), ('2', '系统管理', 'menu', '', '', '1', '0/1/', 'sys:manage', '1', '10', '1', '2016-06-14 09:33:06', '1', '2016-11-18 01:21:14', null, '0'), ('11', '组织机构', 'menu', '', 'organization', '75', '0/1/75/', 'sys:organization', '1', '10', '1', null, '1', '2016-10-21 01:32:05', null, '0'), ('12', '查看', 'form', '', '', '11', '0/1/2/11/', 'sys:organization:view', '1', '1', '1', null, '1', '2017-01-10 14:43:53', null, '0'), ('13', '编辑', 'form', '', '', '11', '0/1/2/11/', 'sys:organization:edit', '1', '2', '1', null, '1', '2017-01-10 14:44:15', null, '0'), ('21', '用户管理', 'menu', '', 'user/list', '2', '0/1/2/', 'sys:user:view', '1', '10', '1', null, '1', '2017-02-18 18:11:51', null, '0'), ('22', '查看', 'form', '', '', '21', '0/1/2/21/', 'sys:user:view', '1', '4', '1', null, '1', '2017-01-10 10:38:16', null, '0'), ('23', '编辑', 'form', '', '', '21', '0/1/2/21/', 'sys:user:update', '1', '3', '1', null, '1', '2017-01-10 11:14:13', null, '0'), ('31', '资源管理', 'menu', '', 'resource', '75', '0/1/75/', 'sys:resource', '1', '20', '1', null, '1', '2016-10-21 01:32:27', null, '0'), ('32', '查看', 'form', '', '', '31', '0/1/2/31/', 'sys:resource:view', '1', '3', '1', null, '1', '2017-01-10 10:49:52', null, '0'), ('33', '编辑', 'form', '', '', '31', '0/1/2/31/', 'sys:resource:edit', '1', '1', '1', null, '1', '2017-01-10 10:49:08', null, '0'), ('41', '角色管理', 'menu', '', 'role', '75', '0/1/75/', 'sys:role:view', '1', '30', '1', null, '1', '2016-10-21 01:32:44', null, '0'), ('42', '查看', 'form', '', '', '41', '0/1/2/41/', 'sys:role:view', '1', '1', '1', null, '1', '2017-01-10 14:42:16', null, '0'), ('43', '编辑', 'form', '', '', '41', '0/1/2/41/', 'sys:role:edit', '1', '2', '1', null, '1', '2017-01-10 14:42:20', null, '0'), ('51', '会话管理', 'menu', '', 'sys/session', '2', '0/1/2/', 'sys:sessions', '1', '60', '1', null, '1', '2017-03-24 15:31:14', null, '0'), ('73', '任务调度', 'menu', '', 'scheduleJob', '2', '0/1/2/', 'sys:scheduleJob:*', '1', '50', '1', '2016-07-15 22:50:56', '1', '2017-01-10 10:40:03', null, '0'), ('74', '系统日志', 'menu', '', 'slog', '2', '0/1/2/', 'sys:slog:view', '1', '70', '1', '2016-10-02 14:02:51', '1', '2016-10-21 01:31:14', null, '0'), ('75', '系统设置', 'menu', '', '', '1', '0/1/', 'sys:setting', '1', '20', '1', '2016-10-09 00:04:34', '1', '2016-11-18 01:18:34', null, '0'), ('76', '查看', 'form', '', '', '74', '0/1/2/74/', 'sys:slog:view', '1', '0', '1', '2016-10-21 00:27:13', null, null, null, '0'), ('77', '编辑', 'form', '', '', '74', '0/1/2/74/', 'sys:slog:edit', '1', '0', '1', '2016-10-21 00:27:31', null, null, null, '0'), ('97', '新增', 'form', '', '', '21', '0/1/2/21/', 'sys:user:create', '1', '1', '1', '2017-01-10 10:30:07', '1', '2017-01-10 10:37:20', null, '0'), ('98', '删除', 'form', '', '', '21', '0/1/2/21/', 'sys:user:delete', '1', '2', '1', '2017-01-10 10:37:07', '1', '2017-01-10 10:50:33', null, '0'), ('100', '删除', 'form', '', '', '11', '0/1/75/11/', 'sys:organization:delete', '1', '3', '1', '2017-01-10 11:00:30', '1', '2017-01-10 11:00:40', null, '0'), ('101', '公共配置', 'menu', '', 'sys/config', '2', '0/1/2/', 'sys:config:view', '1', '20', '1', '2017-01-14 21:31:11', null, null, null, '0'), ('102', '新增', 'form', '', '', '101', '0/1/2/101/', 'sys:config:create', '1', '1', '1', '2017-01-14 21:31:37', null, null, null, '0'), ('103', '删除', 'form', '', '', '101', '0/1/2/101/', 'sys:config:delete', '1', '2', '1', '2017-01-14 21:31:55', '1', '2017-01-14 21:32:20', null, '0'), ('104', '修改', 'form', '', '', '101', '0/1/2/101/', 'sys:config:update', '1', '3', '1', '2017-01-14 21:32:12', null, null, null, '0'), ('105', '查看', 'form', '', '', '51', '0/1/2/51/', 'sys:session:view', '1', '0', '1', '2017-03-24 15:29:17', null, null, null, '0'), ('106', '强制注销', 'form', '', '', '51', '0/1/2/51/', 'sys:session:forceLogout', '1', '0', '1', '2017-03-24 15:30:48', null, null, null, '0');
 COMMIT;
 
 -- ----------------------------
@@ -120,7 +120,7 @@ CREATE TABLE `sys_role` (
 --  Records of `sys_role`
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_role` VALUES ('1', 'super', '超级管理员', '1', '2,11,12,13,21,22,23,31,32,33,41,42,43,51,73,74,75,76,77,97,98,100,101,102,103,104,', 'self', '1', '1', '2016-10-08 12:32:47', '1', '2017-01-14 21:32:30', '至高权限', '0');
+INSERT INTO `sys_role` VALUES ('1', 'super', '超级管理员', '1', '2,11,12,13,21,22,23,31,32,33,41,42,43,51,73,74,75,76,77,97,98,100,101,102,103,104,105,106,', 'self', '1', '1', '2016-10-08 12:32:47', '1', '2017-03-24 15:31:48', '至高权限', '0');
 COMMIT;
 
 -- ----------------------------
@@ -149,6 +149,28 @@ CREATE TABLE `sys_schedule_job` (
 -- ----------------------------
 BEGIN;
 INSERT INTO `sys_schedule_job` VALUES ('1', '测试任务', '测试', '0/1 * * * * ?', 'cn.iutils.task.TaskTest', '1', 'run', '1', '2016-07-15 09:44:53', '1', '2016-09-25 13:23:19', '每一秒执行一次', '0'), ('2', '日志记录', '日志', '0/30 * * * * ?', 'cn.iutils.task.TaskLog', '1', 'run', '1', '2016-07-19 13:28:42', '1', '2016-10-08 11:15:24', '30秒清理记录日志', '1');
+COMMIT;
+
+-- ----------------------------
+--  Table structure for `sys_session`
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_session`;
+CREATE TABLE `sys_session` (
+  `id` varchar(100) NOT NULL,
+  `user_id` bigint(20) DEFAULT NULL COMMENT '用户编号',
+  `ip` varchar(50) DEFAULT NULL COMMENT 'IP地址',
+  `timeout` int(11) DEFAULT NULL COMMENT '过期时间',
+  `create_date` datetime DEFAULT NULL COMMENT '启动时间',
+  `update_date` datetime DEFAULT NULL COMMENT '最后访问时间',
+  `session_str` text COMMENT 'session对象',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='session管理';
+
+-- ----------------------------
+--  Records of `sys_session`
+-- ----------------------------
+BEGIN;
+INSERT INTO `sys_session` VALUES ('20f7b7e4-d3a5-4ec9-bec9-b3fcbd653245', null, '127.0.0.1', '60000', '2017-03-24 16:32:18', '2017-03-24 16:32:19', 'rO0ABXNyACpvcmcuYXBhY2hlLnNoaXJvLnNlc3Npb24ubWd0LlNpbXBsZVNlc3Npb26dHKG41YxibgMAAHhwdwIAW3QAJDIwZjdiN2U0LWQzYTUtNGVjOS1iZWM5LWIzZmNiZDY1MzI0NXNyAA5qYXZhLnV0aWwuRGF0ZWhqgQFLWXQZAwAAeHB3CAAAAVr/ceX/eHEAfgAEdxMAAAAAAADqYAAJMTI3LjAuMC4xeA=='), ('243dcc58-332b-443b-8699-5b3ca15898d8', null, '127.0.0.1', '60000', '2017-03-24 16:39:32', '2017-03-24 16:39:37', 'rO0ABXNyACpvcmcuYXBhY2hlLnNoaXJvLnNlc3Npb24ubWd0LlNpbXBsZVNlc3Npb26dHKG41YxibgMAAHhwdwIA23QAJDI0M2RjYzU4LTMzMmItNDQzYi04Njk5LTViM2NhMTU4OThkOHNyAA5qYXZhLnV0aWwuRGF0ZWhqgQFLWXQZAwAAeHB3CAAAAVr/eIK2eHNxAH4AA3cIAAABWv94mJR4dxMAAAAAAADqYAAJMTI3LjAuMC4xc3IAEWphdmEudXRpbC5IYXNoTWFwBQfawcMWYNEDAAJGAApsb2FkRmFjdG9ySQAJdGhyZXNob2xkeHA/QAAAAAAADHcIAAAAEAAAAAF0ABFzaGlyb1NhdmVkUmVxdWVzdHNyACZvcmcuYXBhY2hlLnNoaXJvLndlYi51dGlsLlNhdmVkUmVxdWVzdK/OPK15gsq6AgADTAAGbWV0aG9kdAASTGphdmEvbGFuZy9TdHJpbmc7TAALcXVlcnlTdHJpbmdxAH4ACkwACnJlcXVlc3RVUklxAH4ACnhwdAADR0VUcHQADy9pdXRpbHMtYWRtaW4vYXh4'), ('673789bb-a9a7-4746-bcd4-8ea4a6c3bc5a', null, '127.0.0.1', '60000', '2017-03-24 16:34:39', '2017-03-24 16:34:39', 'rO0ABXNyACpvcmcuYXBhY2hlLnNoaXJvLnNlc3Npb24ubWd0LlNpbXBsZVNlc3Npb26dHKG41YxibgMAAHhwdwIAW3QAJDY3Mzc4OWJiLWE5YTctNDc0Ni1iY2Q0LThlYTRhNmMzYmM1YXNyAA5qYXZhLnV0aWwuRGF0ZWhqgQFLWXQZAwAAeHB3CAAAAVr/dAo9eHEAfgAEdxMAAAAAAADqYAAJMTI3LjAuMC4xeA=='), ('91ac0547-54bd-4a62-8e2d-2e85ae1dbd4a', null, '127.0.0.1', '60000', '2017-03-24 16:29:46', '2017-03-24 16:29:46', 'rO0ABXNyACpvcmcuYXBhY2hlLnNoaXJvLnNlc3Npb24ubWd0LlNpbXBsZVNlc3Npb26dHKG41YxibgMAAHhwdwIAW3QAJDkxYWMwNTQ3LTU0YmQtNGE2Mi04ZTJkLTJlODVhZTFkYmQ0YXNyAA5qYXZhLnV0aWwuRGF0ZWhqgQFLWXQZAwAAeHB3CAAAAVr/b5NUeHEAfgAEdxMAAAAAAADqYAAJMTI3LjAuMC4xeA=='), ('bf5c2120-151d-4eac-a6ca-8404b325ea0b', null, '127.0.0.1', '60000', '2017-03-24 16:34:03', '2017-03-24 16:34:03', 'rO0ABXNyACpvcmcuYXBhY2hlLnNoaXJvLnNlc3Npb24ubWd0LlNpbXBsZVNlc3Npb26dHKG41YxibgMAAHhwdwIAW3QAJGJmNWMyMTIwLTE1MWQtNGVhYy1hNmNhLTg0MDRiMzI1ZWEwYnNyAA5qYXZhLnV0aWwuRGF0ZWhqgQFLWXQZAwAAeHB3CAAAAVr/c32SeHEAfgAEdxMAAAAAAADqYAAJMTI3LjAuMC4xeA==');
 COMMIT;
 
 -- ----------------------------
