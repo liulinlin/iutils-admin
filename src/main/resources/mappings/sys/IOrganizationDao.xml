@@ -71,4 +71,10 @@
 		update sys_organization set status='1' where id=#{id}
 	</delete>
 
+	<!-- 查询是否存在下级节点 -->
+	<select id="findNext" resultType="int">
+		SELECT count(1) FROM sys_organization a
+		WHERE a.parent_id=#{id}
+	</select>
+
 </mapper>

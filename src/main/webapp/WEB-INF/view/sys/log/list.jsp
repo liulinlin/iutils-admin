@@ -35,6 +35,7 @@
 								<form id="searchForm" action="${ctx}/slog" method="post">
 									<input id="pageNo" name="pageNo" type="hidden" value="${page.pageNo}"/>
 									<input id="pageSize" name="pageSize" type="hidden" value="${page.pageSize}"/>
+									<input id="orderBy" name="orderBy" type="hidden" value="${page.entity.orderBy}"/>
 									<div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
 										<div class="tagsinput">
 											<c:if test="${not empty page.entity.username}"><span class="tags"><input type="hidden" name="username" value="${page.entity.username}" />用户=${page.entity.username} <a href="javascript:;" onclick="$(this).parent().remove()">x</a></span></c:if>
@@ -57,14 +58,14 @@
 										<tr>
 											<c:if test="${hasDel}"><th><input name="checkboxall" type="checkbox" style="margin-top: -17px;" /></th></c:if>
 											<th>序号</th>
-											<th>用户</th>
+											<th class="orderBy" onclick="order('b.username')">用户 <c:if test="${page.entity.orderBy=='b.username asc'}"><i class="am-icon-sort-alpha-asc"></i></c:if><c:if test="${page.entity.orderBy=='b.username desc'}"><i class="am-icon-sort-alpha-desc"></i></c:if></th>
 											<%--<th>菜单</th>--%>
 											<th>操作IP</th>
 											<th>请求地址</th>
 											<th>操作方式</th>
 											<th>耗时</th>
 											<th>是否异常</th>
-											<th>记录时间</th>
+											<th class="orderBy" onclick="order('a.create_date')">记录时间 <c:if test="${page.entity.orderBy=='a.create_date asc'}"><i class="am-icon-sort-alpha-asc"></i></c:if><c:if test="${page.entity.orderBy=='a.create_date desc'}"><i class="am-icon-sort-alpha-desc"></i></c:if></th>
 											<th>操作</th>
 										</tr>
 										</thead>

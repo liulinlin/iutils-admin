@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
+import cn.iutils.common.utils.CacheUtils;
+import cn.iutils.common.utils.JStringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -114,9 +116,16 @@ public class UserService extends CrudService<IUserDao, User> {
 	 * @return
 	 */
 	public User getUserByUserName(String userName) {
+		if(JStringUtils.isBlank(userName)){
+			return null;
+		}
 		User user = null;
 		try {
-			user = dao.getUserByUserName(userName);
+			user = (User)CacheUtils.get(userName);
+			if(user==null){
+				user = dao.getUserByUserName(userName);
+				CacheUtils.put(userName,user);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

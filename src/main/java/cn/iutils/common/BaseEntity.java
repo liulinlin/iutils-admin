@@ -31,6 +31,7 @@ public abstract class BaseEntity<T> implements Serializable {
 	protected Date updateDate; // 更新日期
 	protected String status; // 状态
 	protected String dbType;// 数据类型
+	protected String orderBy;// 排序字段
 
 	/**
 	 * 是否是新记录（默认：false），调用setIsNew()设置新记录，使用自定义ID。
@@ -119,6 +120,13 @@ public abstract class BaseEntity<T> implements Serializable {
 		this.dbType = dbType;
 	}
 
+	public String getOrderBy() {
+		return orderBy;
+	}
+
+	public void setOrderBy(String orderBy) {
+		this.orderBy = orderBy;
+	}
 
 	/**
 	 * 插入之前执行方法，子类实现

@@ -52,7 +52,11 @@ public class LogController extends BaseController {
     @RequestMapping()
     public String list(SLog sLog, Model model, Page<SLog> page) {
         page.setEntity(sLog);
-        page.setOrderBy("a.create_date desc");
+        if(JStringUtils.isBlank(sLog.getOrderBy())){
+            page.setOrderBy("a.create_date desc");
+        }else{
+            page.setOrderBy(sLog.getOrderBy());
+        }
         model.addAttribute("page", page.setList(logService.findPage(page)));
         return "sys/log/list";
     }

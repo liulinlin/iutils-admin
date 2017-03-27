@@ -56,8 +56,8 @@
                                 <table id="contentTable" class="am-table am-table-compact am-table-striped tpl-table-black">
                                     <thead>
                                     <tr>
-                                            <th>会话编号</th>
-                                            <th>用户编号</th>
+                                            <th>会话</th>
+                                            <th>用户</th>
                                             <th>IP地址</th>
                                             <th>过期时间(毫秒)</th>
                                             <th>启动时间</th>
@@ -70,15 +70,15 @@
                                     <c:forEach items="${page.list}" var="session" varStatus="status">
                                         <tr>
                                                 <td>${session.id}</td>
-                                                <td>${session.user.username}</td>
-                                                <td>${session.ip}</td>
+                                                <td>${fnc:principal(session)}</td>
+                                                <td>${session.host}</td>
                                                 <td>${session.timeout}</td>
-                                                <td><fmt:formatDate value="${session.createDate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
-                                                <td><fmt:formatDate value="${session.updateDate}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
-                                                <td>${fnc:isDbForceLogout(session) ? '<span class="am-badge am-badge-danger am-radius">是</span>':'<span class="am-badge am-badge-success am-radius">否</span>'}</td>
+                                                <td><fmt:formatDate value="${session.startTimestamp}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+                                                <td><fmt:formatDate value="${session.lastAccessTime}" pattern="yyyy-MM-dd HH:mm:ss" /></td>
+                                                <td>${fnc:isForceLogout(session) ? '<span class="am-badge am-badge-danger am-radius">是</span>':'<span class="am-badge am-badge-success am-radius">否</span>'}</td>
                                             <shiro:hasPermission name="sys:session:forceLogout"><td>
-                                                <c:if test="${not fnc:isDbForceLogout(session)}">
-                                                    <a href="${ctx}/sys/session/forceLogout?id=${session.id}&pageNo=${page.pageNo}&pageSize=${page.pageSize}" onclick="return confirm('确认要强制退出吗？', this.href)" title="强制退出"><span class="am-text-danger am-icon-sign-out"></span></a>
+                                                <c:if test="${not fnc:isForceLogout(session)}">
+                                                    <a href="${ctx}/sys/session/${session.id}/forceLogout?pageNo=${page.pageNo}&pageSize=${page.pageSize}" onclick="return confirm('确认要强制退出吗？', this.href)" title="强制退出"><span class="am-text-danger am-icon-sign-out"></span></a>
                                                 </c:if>
                                             </td></shiro:hasPermission>
                                         </tr>

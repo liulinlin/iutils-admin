@@ -125,10 +125,16 @@ public class ResourceController extends BaseController {
     public String delete(Resource resource,int pageNo,int pageSize,
                          RedirectAttributes redirectAttributes) {
         if(!"1".equals(resource.getId())){
-            resourceService.delete(resource);
-            addMessage(redirectAttributes, "删除成功");
+            //删除前判断是否存在下级节点
+            int count = resourceService.findNext(resource);
+            if(count>0){
+                addMessage(redirectAttributes, "删除失败，存在子节点，请先删除子节点");
+            }else{
+                resourceService.delete(resource);
+                addMessage(redirectAttributes, "删除成功");
+            }
         } else {
-            addMessage(redirectAttributes, "不能删除");
+            addMessage(redirectAttributes, "超级管理员才能删除");
         }
         return "redirect:" + adminPath + "/resource?id="+resource.getParentId()+"&pageNo="+pageNo+"&pageSize="+pageSize;
     }

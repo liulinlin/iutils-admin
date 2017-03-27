@@ -74,10 +74,10 @@
     </bean>
 
     <!-- 会话验证调度器 -->
-    <!--<bean id="sessionValidationScheduler" class="org.apache.shiro.session.mgt.quartz.QuartzSessionValidationScheduler">-->
-        <!--<property name="sessionValidationInterval" value="1800000"/>&lt;!&ndash; 1800000定时清理过期会话 &ndash;&gt;-->
-        <!--<property name="sessionManager" ref="sessionManager"/>-->
-    <!--</bean>-->
+    <bean id="sessionValidationScheduler" class="org.apache.shiro.session.mgt.quartz.QuartzSessionValidationScheduler">
+        <property name="sessionValidationInterval" value="1800000"/><!-- 1800000定时清理过期会话 -->
+        <property name="sessionManager" ref="sessionManager"/>
+    </bean>
 
     <!-- 会话管理器 -->
     <bean id="sessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">

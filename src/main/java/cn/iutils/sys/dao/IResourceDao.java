@@ -32,4 +32,11 @@ public interface IResourceDao extends ICrudDao<Resource> {
 	 */
 	public List<Resource> getResources(@Param("resourceIds") Set<String> resourceIds);
 
+	/**
+	 * 查询是否存在子节点
+	 * @param resource
+	 * @return
+	 */
+	public int findNext(Resource resource);
+
 }

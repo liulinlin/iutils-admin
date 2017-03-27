@@ -1,5 +1,6 @@
 package cn.iutils.common.utils;
 
+import cn.iutils.sys.service.UserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 
@@ -18,9 +19,9 @@ import java.security.Principal;
 public class UserUtils {
 
 	/**
-	 * 用户持久层
+	 * 用户服务对象
 	 */
-	private static IUserDao userDao = SpringUtils.getBean(IUserDao.class);
+	private static UserService userService = SpringUtils.getBean(UserService.class);
 
 	/**
 	 * 获取当前访问用户名
@@ -41,7 +42,7 @@ public class UserUtils {
 	public static User getLoginUser() {
 		Subject subject = SecurityUtils.getSubject();
 		String userName = (String) subject.getPrincipal();
-		return userDao.getUserByUserName(userName);
+		return userService.getUserByUserName(userName);
 	}
 
 }

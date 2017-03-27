@@ -6,12 +6,10 @@ import java.util.List;
 import java.util.Set;
 
 import org.apache.shiro.authz.permission.WildcardPermission;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
-import cn.iutils.common.ICrudDao;
 import cn.iutils.common.service.CrudService;
 import cn.iutils.sys.dao.IResourceDao;
 import cn.iutils.sys.entity.Resource;
@@ -100,6 +98,15 @@ public class ResourceService extends CrudService<IResourceDao, Resource> {
 			}
 		}
 		return false;
+	}
+
+	/**
+	 * 查询是否存在子节点
+	 * @param resource
+	 * @return
+	 */
+	public int findNext(Resource resource){
+		return dao.findNext(resource);
 	}
 
 }

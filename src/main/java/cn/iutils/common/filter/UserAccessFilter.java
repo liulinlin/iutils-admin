@@ -3,12 +3,10 @@ package cn.iutils.common.filter;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
-import cn.iutils.common.utils.JStringUtils;
-import cn.iutils.common.utils.UserAgentUtils;
 import org.apache.shiro.web.filter.AccessControlFilter;
 
 import cn.iutils.common.ResultVo;
-import cn.iutils.common.controller.JsonMapper;
+import cn.iutils.common.JsonMapper;
 
 /**
  * 用户访问验证

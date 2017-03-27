@@ -18,5 +18,24 @@
 		$("#searchForm").submit();
      	return false;
      }
+
+	//排序方法
+	function order(by){
+		var orderBy = $("#orderBy").val();
+		if(orderBy.indexOf(by)>-1){
+			//改变排序规则
+			if(orderBy.indexOf("desc")>-1){
+				$("#orderBy").val(by+" asc");
+			}else{
+				$("#orderBy").val(by+" desc");
+			}
+		}else{
+			//第一次进入
+			$("#orderBy").val(by+" desc");
+		}
+		$("#pageNo").val(0);
+		$("#searchForm").submit();
+		return false;
+	}
 </script>
 </c:if>

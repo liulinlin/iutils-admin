@@ -1,6 +1,7 @@
 package cn.iutils.sys.controller;
 
 import cn.iutils.common.ResultVo;
+import cn.iutils.common.utils.CacheUtils;
 import cn.iutils.common.utils.UserUtils;
 import cn.iutils.sys.entity.Organization;
 import cn.iutils.sys.entity.Role;
@@ -136,6 +137,7 @@ public class UserController extends BaseController {
 		User loginUser = UserUtils.getLoginUser();
 		if(loginUser.isAdmin() || user.getId().equals(loginUser.getId()) || loginUser.getIsDept()){
 			userService.save(user);
+			CacheUtils.remove(user.getUsername());
 			addMessage(redirectAttributes, "保存成功");
 		}else{
 			addMessage(redirectAttributes, "不能修改");
@@ -158,6 +160,7 @@ public class UserController extends BaseController {
 			addMessage(redirectAttributes, "不能删除");
 		}else{
 			userService.delete(user);
+			CacheUtils.remove(user.getUsername());
 			addMessage(redirectAttributes, "删除成功");
 		}
 		return "redirect:" + adminPath + "/user/list?organizationId="+user.getOrganizationId()+"&pageNo="+pageNo+"&pageSize="+pageSize;
@@ -243,6 +246,7 @@ public class UserController extends BaseController {
 	@RequestMapping(value = "/saveUserInfo", method = RequestMethod.POST)
 	public String saveUserInfo(User user, Model model) {
 		userService.save(user);
+		CacheUtils.remove(user.getUsername());
 		model.addAttribute("user", user);
 		addMessage(model, "保存资料成功");
 		return "sys/user/config-userInfo";

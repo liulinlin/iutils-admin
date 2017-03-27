@@ -9,7 +9,7 @@
  Target Server Version : 50173
  File Encoding         : utf-8
 
- Date: 03/26/2017 16:03:34 PM
+ Date: 03/27/2017 21:31:54 PM
 */
 
 SET NAMES utf8;
@@ -53,7 +53,7 @@ CREATE TABLE `sys_organization` (
   PRIMARY KEY (`id`),
   KEY `idx_sys_organization_parent_id` (`parent_id`),
   KEY `idx_sys_organization_parent_ids` (`parent_ids`(255))
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='组织机构';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='组织机构';
 
 -- ----------------------------
 --  Records of `sys_organization`
@@ -152,26 +152,16 @@ INSERT INTO `sys_schedule_job` VALUES ('1', '测试任务', '测试', '0/1 * * *
 COMMIT;
 
 -- ----------------------------
---  Table structure for `sys_session`
+--  Table structure for `sys_sessions`
 -- ----------------------------
-DROP TABLE IF EXISTS `sys_session`;
-CREATE TABLE `sys_session` (
+DROP TABLE IF EXISTS `sys_sessions`;
+CREATE TABLE `sys_sessions` (
   `id` varchar(100) NOT NULL,
-  `user_id` bigint(20) DEFAULT NULL COMMENT '用户编号',
-  `ip` varchar(50) DEFAULT NULL COMMENT 'IP地址',
-  `timeout` int(11) DEFAULT NULL COMMENT '过期时间',
-  `create_date` datetime DEFAULT NULL COMMENT '启动时间',
-  `update_date` datetime DEFAULT NULL COMMENT '最后访问时间',
-  `session_str` text COMMENT 'session对象',
-  PRIMARY KEY (`id`)
+  `session` varchar(5000) DEFAULT NULL COMMENT 'session对象',
+  `create_date` datetime DEFAULT NULL COMMENT '创建时间',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `sessions_index_id` (`id`) USING HASH
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='session管理';
-
--- ----------------------------
---  Records of `sys_session`
--- ----------------------------
-BEGIN;
-INSERT INTO `sys_session` VALUES ('0550f2e5-0695-42db-91e0-5808935ba910', '1', '0:0:0:0:0:0:0:1', '1800000', '2017-03-26 15:43:55', '2017-03-26 15:55:23', 'rO0ABXNyACpvcmcuYXBhY2hlLnNoaXJvLnNlc3Npb24ubWd0LlNpbXBsZVNlc3Npb26dHKG41YxibgMAAHhwdwIA23QAJDA1NTBmMmU1LTA2OTUtNDJkYi05MWUwLTU4MDg5MzViYTkxMHNyAA5qYXZhLnV0aWwuRGF0ZWhqgQFLWXQZAwAAeHB3CAAAAVsJklF5eHNxAH4AA3cIAAABWwmcz3V4dxkAAAAAABt3QAAPMDowOjA6MDowOjA6MDoxc3IAEWphdmEudXRpbC5IYXNoTWFwBQfawcMWYNEDAAJGAApsb2FkRmFjdG9ySQAJdGhyZXNob2xkeHA/QAAAAAAADHcIAAAAEAAAAAN0AFBvcmcuYXBhY2hlLnNoaXJvLnN1YmplY3Quc3VwcG9ydC5EZWZhdWx0U3ViamVjdENvbnRleHRfQVVUSEVOVElDQVRFRF9TRVNTSU9OX0tFWXNyABFqYXZhLmxhbmcuQm9vbGVhbs0gcoDVnPruAgABWgAFdmFsdWV4cAF0ACpqYXZheC5zZXJ2bGV0LmpzcC5qc3RsLmZtdC5yZXF1ZXN0LmNoYXJzZXR0AAVVVEYtOHQATW9yZy5hcGFjaGUuc2hpcm8uc3ViamVjdC5zdXBwb3J0LkRlZmF1bHRTdWJqZWN0Q29udGV4dF9QUklOQ0lQQUxTX1NFU1NJT05fS0VZc3IAMm9yZy5hcGFjaGUuc2hpcm8uc3ViamVjdC5TaW1wbGVQcmluY2lwYWxDb2xsZWN0aW9uqH9YJcajCEoDAAFMAA9yZWFsbVByaW5jaXBhbHN0AA9MamF2YS91dGlsL01hcDt4cHNyABdqYXZhLnV0aWwuTGlua2VkSGFzaE1hcDTATlwQbMD7AgABWgALYWNjZXNzT3JkZXJ4cQB+AAY/QAAAAAAADHcIAAAAEAAAAAF0ACljbi5pdXRpbHMuY29tbW9uLmZpbHRlci5yZWFsbS5Vc2VyUmVhbG1fMHNyABdqYXZhLnV0aWwuTGlua2VkSGFzaFNldNhs11qV3SoeAgAAeHIAEWphdmEudXRpbC5IYXNoU2V0ukSFlZa4tzQDAAB4cHcMAAAAED9AAAAAAAABdAAFc3VwZXJ4eAB3AQFxAH4AEnh4eA=='), ('e56b31cf-ec02-4b22-9efc-0ce3002cf183', null, '127.0.0.1', '1800000', '2017-03-26 15:43:55', '2017-03-26 15:43:55', 'rO0ABXNyACpvcmcuYXBhY2hlLnNoaXJvLnNlc3Npb24ubWd0LlNpbXBsZVNlc3Npb26dHKG41YxibgMAAHhwdwIAW3QAJGU1NmIzMWNmLWVjMDItNGIyMi05ZWZjLTBjZTMwMDJjZjE4M3NyAA5qYXZhLnV0aWwuRGF0ZWhqgQFLWXQZAwAAeHB3CAAAAVsJkk+LeHEAfgAEdxMAAAAAABt3QAAJMTI3LjAuMC4xeA==');
-COMMIT;
 
 -- ----------------------------
 --  Table structure for `sys_slog`
@@ -228,7 +218,7 @@ CREATE TABLE `sys_user` (
 --  Records of `sys_user`
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_user` VALUES ('1', null, '1', 'super', 'ff7e419b2147a346fcf97e8a0d439143', '7b5f5d3a1d3ba80fed0ad6256eb0fc3c', '1,', '超级管理', '', '', '', '', null, null, '0', '0', '1', '2016-10-15 17:13:38', '1', '2017-02-18 18:12:10', '', '0');
+INSERT INTO `sys_user` VALUES ('1', null, '1', 'super', 'ff7e419b2147a346fcf97e8a0d439143', '7b5f5d3a1d3ba80fed0ad6256eb0fc3c', '1,', '超级管理', '', '', '', '', null, null, '0', '0', '1', '2016-10-15 17:13:38', '1', '2017-03-27 15:35:40', '', '0');
 COMMIT;
 
 -- ----------------------------

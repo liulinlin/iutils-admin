@@ -6,10 +6,10 @@ import cn.iutils.common.spring.SpringUtils;
 import cn.iutils.common.utils.JStringUtils;
 import cn.iutils.common.utils.SerializableUtils;
 import cn.iutils.common.utils.UserUtils;
+import cn.iutils.sys.entity.Sessions;
 import cn.iutils.sys.entity.User;
 import cn.iutils.sys.service.SessionService;
 import org.apache.shiro.session.Session;
-import org.apache.shiro.session.mgt.ValidatingSession;
 import org.apache.shiro.session.mgt.eis.CachingSessionDAO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,9 +40,6 @@ public class IDBSessionDAO extends CachingSessionDAO {
         if (session == null || session.getId() == null) {
             return;
         }
-        if(session instanceof ValidatingSession && !((ValidatingSession)session).isValid()) {
-            return; //如果会话过期/停止 没必要再更新了
-        }
         HttpServletRequest request = Servlets.getRequest();
         if (request != null) {
             String uri = request.getServletPath();
@@ -57,19 +54,11 @@ public class IDBSessionDAO extends CachingSessionDAO {
             }
         }
         //保存到数据库
-        cn.iutils.sys.entity.Session dbSession = new cn.iutils.sys.entity.Session();
-        User loginUser = UserUtils.getLoginUser();
-        if(loginUser!=null){
-            dbSession.setUserId(loginUser.getId());
-        }
+        Sessions dbSession = new Sessions();
         //序列化Session
-        dbSession.setSessionStr(SerializableUtils.serialize(session));
+        dbSession.setSession(SerializableUtils.serialize(session));
         dbSession.setId(session.getId().toString());
-        dbSession.setIp(JStringUtils.getRemoteAddr(request));
-        dbSession.setTimeout(session.getTimeout());
-        dbSession.setCreateDate(session.getStartTimestamp());
-        dbSession.setUpdateDate(session.getLastAccessTime());
-        sessionService.save(dbSession);
+        sessionService.update(dbSession);
     }
 
     /**
@@ -81,6 +70,7 @@ public class IDBSessionDAO extends CachingSessionDAO {
         if (session == null || session.getId() == null) {
             return;
         }
+        //过期删除
         sessionService.delete(session.getId().toString());
     }
 
@@ -104,20 +94,12 @@ public class IDBSessionDAO extends CachingSessionDAO {
         //设置SessionID
         assignSessionId(session, sessionId);
         //保存到数据库
-        cn.iutils.sys.entity.Session dbSession = new cn.iutils.sys.entity.Session();
-        User loginUser = UserUtils.getLoginUser();
-        if(loginUser!=null){
-            dbSession.setUserId(loginUser.getId());
-        }
+        Sessions dbSession = new Sessions();
         //序列化Session
-        dbSession.setSessionStr(SerializableUtils.serialize(session));
+        dbSession.setSession(SerializableUtils.serialize(session));
         dbSession.setId(session.getId().toString());
-        dbSession.setIp(JStringUtils.getRemoteAddr(request));
-        dbSession.setTimeout(session.getTimeout());
         dbSession.setCreateDate(session.getStartTimestamp());
-        dbSession.setUpdateDate(session.getLastAccessTime());
-        dbSession.setNewId(true);//新增
-        sessionService.save(dbSession);
+        sessionService.add(dbSession);
         return session.getId();
     }
 
@@ -129,9 +111,9 @@ public class IDBSessionDAO extends CachingSessionDAO {
     @Override
     protected Session doReadSession(Serializable sessionId) {
         Session session = null;
-        cn.iutils.sys.entity.Session dbSession = sessionService.get(sessionId.toString());
+        Sessions dbSession = sessionService.get(sessionId.toString());
         if(dbSession!=null){
-            session = SerializableUtils.deserialize(dbSession.getSessionStr());
+            session = SerializableUtils.deserialize(dbSession.getSession());
         }
         return session;
     }

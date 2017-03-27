@@ -173,7 +173,7 @@
         <div class="tpl-sidebar-user-panel">
             <div class="tpl-user-panel-slide-toggleable">
                 <div class="tpl-user-panel-profile-picture">
-                    <img src="<c:if test="${not empty loginUser.photo}">${pageContext.request.contextPath}/${loginUser.photo}</c:if>" alt="用户头像">
+                    <img src="${pageContext.request.contextPath}/${loginUser.photo}<c:if test="${empty loginUser.photo}">static/assets/img/user06.png</c:if>" alt="用户头像">
                 </div>
                     <span class="user-panel-logged-in-text">
               <i class="am-icon-circle-o am-text-success tpl-user-panel-status-icon"></i>
@@ -197,7 +197,7 @@
                         <c:choose>
                             <c:when test="${isSub==1}">
                                 <a href="javascript:;" class="sidebar-nav-sub-title menu-link-clear">
-                                        <img src="${ctxStatic}${m.icon}<c:if test="${empty m.icon}">/custom/i/5/22.png</c:if>" style="width:16px;height:16px;margin-right:8px;" /> ${menu1.name}
+                                        <img src="${ctxStatic}${m.icon}<c:if test="${empty m.icon}">/assets/i/menu.png</c:if>" style="width:16px;height:16px;margin-right:8px;" /> ${menu1.name}
                                     <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico"></span>
                                 </a>
                                 <ul class="sidebar-nav sidebar-nav-sub">
@@ -214,13 +214,14 @@
                             </c:when>
                             <c:otherwise>
                                 <a href="#${ctx}/${menu1.url}" class="menu-link menu-link-clear" level="1">
-                                    <img src="${ctxStatic}${m.icon}<c:if test="${empty m.icon}">/custom//5/22.png</c:if>" style="width:16px;height:16px;margin-right:8px;" /> ${menu1.name}
+                                    <img src="${ctxStatic}${m.icon}<c:if test="${empty m.icon}">/assets/i/menu.png</c:if>" style="width:16px;height:16px;margin-right:8px;" /> ${menu1.name}
                                 </a>
                             </c:otherwise>
                         </c:choose>
                     </li>
                 </c:if>
             </c:forEach>
+
         </ul>
     </div>
 

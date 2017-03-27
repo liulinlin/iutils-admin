@@ -2,8 +2,10 @@ package cn.iutils.task;
 
 import cn.iutils.common.service.BaseService;
 import cn.iutils.common.spring.SpringUtils;
-import cn.iutils.sys.entity.Session;
+import cn.iutils.common.utils.SerializableUtils;
+import cn.iutils.sys.entity.Sessions;
 import cn.iutils.sys.service.SessionService;
+import org.apache.shiro.session.Session;
 
 import java.util.List;
 
@@ -23,7 +25,7 @@ public abstract class TaskSession extends BaseService {
      */
     public void run() {
         //处理会话
-        doSession(new Session());
+        doSession(new Sessions());
     }
 
     /**
@@ -31,15 +33,16 @@ public abstract class TaskSession extends BaseService {
      * @param dbSession
      * @return
      */
-    private void doSession(Session dbSession){
-        Session lastDbSession = new Session();
-        List<Session> sessionList = sessionService.findList(dbSession);
+    private void doSession(Sessions dbSession){
+        Sessions lastDbSession = new Sessions();
+        List<Sessions> sessionList = sessionService.findList(dbSession);
         for (int i=0;i<sessionList.size();i++){
-            Session session = sessionList.get(i);
+            Sessions session = sessionList.get(i);
+            Session session1 = SerializableUtils.deserialize(session.getSession());
             //获取当前时间
             long nowTime = System.currentTimeMillis();
-            long lastTime = session.getUpdateDate().getTime();
-            if(nowTime-lastTime>session.getTimeout()){
+            long lastTime = session1.getLastAccessTime().getTime();
+            if(nowTime-lastTime>session1.getTimeout()){
                 //已过期，删除记录
                 sessionService.delete(session.getId().toString());
                 doOtherSession(session);
@@ -58,6 +61,6 @@ public abstract class TaskSession extends BaseService {
      *
      * @param session
      */
-    public abstract void doOtherSession(Session session);
+    public abstract void doOtherSession(Sessions session);
 
 }

@@ -1,7 +1,5 @@
 package cn.iutils.common;
 
-import cn.iutils.common.controller.*;
-import cn.iutils.common.controller.JsonMapper;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -57,7 +55,7 @@ public abstract class BaseController {
 	 * @return
 	 */
 	protected String renderString(HttpServletResponse response, Object object) {
-		return renderString(response, cn.iutils.common.JsonMapper.toJsonString(object),
+		return renderString(response, JsonMapper.toJsonString(object),
 				"application/json");
 	}
 
