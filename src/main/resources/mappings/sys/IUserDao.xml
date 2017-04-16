@@ -119,5 +119,14 @@
 	<delete id="delete">
 		update sys_user set status='1' where id=#{id}
 	</delete>
+
+	<!-- 获取用户列表 -->
+	<select id="getUsers" resultType="map">
+	  	select a.id as "id",a.username as "username",a.name as "name" from sys_user a where a.id in(
+		<foreach collection="users" item="item" separator=",">
+			#{item}
+		</foreach>
+		)
+	</select>
 	
 </mapper>

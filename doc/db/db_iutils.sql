@@ -2,14 +2,14 @@
  Navicat MySQL Data Transfer
 
  Source Server         : localhost
- Source Server Version : 50173
+ Source Server Version : 50547
  Source Host           : localhost
  Source Database       : db_iutils
 
- Target Server Version : 50173
+ Target Server Version : 50547
  File Encoding         : utf-8
 
- Date: 03/27/2017 21:31:54 PM
+ Date: 04/12/2017 16:13:39 PM
 */
 
 SET NAMES utf8;
@@ -35,6 +35,50 @@ CREATE TABLE `sys_config` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='公共配置表';
 
 -- ----------------------------
+--  Table structure for `sys_msg_receive`
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_msg_receive`;
+CREATE TABLE `sys_msg_receive` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '编号',
+  `msg_id` bigint(20) NOT NULL COMMENT '消息编号',
+  `update_by` bigint(20) NOT NULL COMMENT '接收人',
+  `update_date` datetime NOT NULL COMMENT '接收时间',
+  `status` char(1) DEFAULT NULL COMMENT '状态 0未读 1已读',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='消息接收表';
+
+-- ----------------------------
+--  Records of `sys_msg_receive`
+-- ----------------------------
+BEGIN;
+INSERT INTO `sys_msg_receive` VALUES ('11', '10', '1', '2017-04-12 14:00:23', '0'), ('12', '11', '1', '2017-04-12 16:00:09', '0'), ('13', '12', '1', '2017-04-12 16:02:33', '0'), ('14', '13', '1', '2017-04-12 16:10:27', '0');
+COMMIT;
+
+-- ----------------------------
+--  Table structure for `sys_msg_send`
+-- ----------------------------
+DROP TABLE IF EXISTS `sys_msg_send`;
+CREATE TABLE `sys_msg_send` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '编号',
+  `type` varchar(50) NOT NULL COMMENT '消息类型  系统通知  站内信 用户通知',
+  `title` varchar(255) NOT NULL COMMENT '标题',
+  `content` text NOT NULL COMMENT '内容',
+  `level` int(1) DEFAULT NULL COMMENT '级别',
+  `users` varchar(255) NOT NULL COMMENT '接收人',
+  `create_by` bigint(20) DEFAULT NULL COMMENT '发送人',
+  `create_date` datetime DEFAULT NULL COMMENT '发送时间',
+  `status` char(1) DEFAULT NULL COMMENT '状态 0草稿 1已发送',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='消息发送表';
+
+-- ----------------------------
+--  Records of `sys_msg_send`
+-- ----------------------------
+BEGIN;
+INSERT INTO `sys_msg_send` VALUES ('10', 'mail', '测试邮件', '                                                                                        \r\n                                        <p>测试邮件</p><p><br></p>\r\n                                        ', '0', '1,', '1', '2017-04-12 14:00:14', '1'), ('11', 'mail', '你好，我是管理员，现在测试站内信', '                                            \r\n                                        <p>你好，我是管理员，现在测试站内信</p><p><br></p>', '0', '1,', '1', '2017-04-12 16:00:09', '1'), ('12', 'notice', '请管理员来开会', '                                            \r\n                                        <p>请管理员来开会</p><p><br></p>', '0', '1,', '1', '2017-04-12 16:02:33', '1'), ('13', 'mail', '消息', '                                            \r\n                                        <p>是多少</p>', '0', '1,', '1', '2017-04-12 16:10:27', '1');
+COMMIT;
+
+-- ----------------------------
 --  Table structure for `sys_organization`
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_organization`;
@@ -53,13 +97,13 @@ CREATE TABLE `sys_organization` (
   PRIMARY KEY (`id`),
   KEY `idx_sys_organization_parent_id` (`parent_id`),
   KEY `idx_sys_organization_parent_ids` (`parent_ids`(255))
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='组织机构';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='组织机构';
 
 -- ----------------------------
 --  Records of `sys_organization`
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_organization` VALUES ('1', '组织机构', '0', '0/', '1', null, null, '1', '2016-09-25 20:56:43', null, '0'), ('2', '某某公司', '1', '0/1/', '1', '1', '2017-02-18 18:12:43', null, null, null, '0');
+INSERT INTO `sys_organization` VALUES ('1', '组织机构', '0', '0/', '1', null, null, '1', '2016-09-25 20:56:43', null, '0'), ('2', '某某公司', '1', '0/1/', '1', '1', '2017-02-18 18:12:43', null, null, null, '0'), ('4', '某某部门', '2', '0/1/2/', '1', '1', '2017-04-10 16:16:51', '1', '2017-04-10 16:17:00', null, '0');
 COMMIT;
 
 -- ----------------------------
@@ -86,13 +130,13 @@ CREATE TABLE `sys_resource` (
   PRIMARY KEY (`id`),
   KEY `idx_sys_resource_parent_id` (`parent_id`),
   KEY `idx_sys_resource_parent_ids` (`parent_ids`(255))
-) ENGINE=InnoDB AUTO_INCREMENT=107 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='资源';
+) ENGINE=InnoDB AUTO_INCREMENT=108 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='资源';
 
 -- ----------------------------
 --  Records of `sys_resource`
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_resource` VALUES ('1', '资源', 'menu', '', '', '0', '0/', '', '1', '0', '1', null, null, null, null, '0'), ('2', '系统管理', 'menu', '', '', '1', '0/1/', 'sys:manage', '1', '10', '1', '2016-06-14 09:33:06', '1', '2016-11-18 01:21:14', null, '0'), ('11', '组织机构', 'menu', '', 'organization', '75', '0/1/75/', 'sys:organization', '1', '10', '1', null, '1', '2016-10-21 01:32:05', null, '0'), ('12', '查看', 'form', '', '', '11', '0/1/2/11/', 'sys:organization:view', '1', '1', '1', null, '1', '2017-01-10 14:43:53', null, '0'), ('13', '编辑', 'form', '', '', '11', '0/1/2/11/', 'sys:organization:edit', '1', '2', '1', null, '1', '2017-01-10 14:44:15', null, '0'), ('21', '用户管理', 'menu', '', 'user/list', '2', '0/1/2/', 'sys:user:view', '1', '10', '1', null, '1', '2017-02-18 18:11:51', null, '0'), ('22', '查看', 'form', '', '', '21', '0/1/2/21/', 'sys:user:view', '1', '4', '1', null, '1', '2017-01-10 10:38:16', null, '0'), ('23', '编辑', 'form', '', '', '21', '0/1/2/21/', 'sys:user:update', '1', '3', '1', null, '1', '2017-01-10 11:14:13', null, '0'), ('31', '资源管理', 'menu', '', 'resource', '75', '0/1/75/', 'sys:resource', '1', '20', '1', null, '1', '2016-10-21 01:32:27', null, '0'), ('32', '查看', 'form', '', '', '31', '0/1/2/31/', 'sys:resource:view', '1', '3', '1', null, '1', '2017-01-10 10:49:52', null, '0'), ('33', '编辑', 'form', '', '', '31', '0/1/2/31/', 'sys:resource:edit', '1', '1', '1', null, '1', '2017-01-10 10:49:08', null, '0'), ('41', '角色管理', 'menu', '', 'role', '75', '0/1/75/', 'sys:role:view', '1', '30', '1', null, '1', '2016-10-21 01:32:44', null, '0'), ('42', '查看', 'form', '', '', '41', '0/1/2/41/', 'sys:role:view', '1', '1', '1', null, '1', '2017-01-10 14:42:16', null, '0'), ('43', '编辑', 'form', '', '', '41', '0/1/2/41/', 'sys:role:edit', '1', '2', '1', null, '1', '2017-01-10 14:42:20', null, '0'), ('51', '会话管理', 'menu', '', 'sys/session', '2', '0/1/2/', 'sys:sessions', '1', '60', '1', null, '1', '2017-03-24 15:31:14', null, '0'), ('73', '任务调度', 'menu', '', 'scheduleJob', '2', '0/1/2/', 'sys:scheduleJob:*', '1', '50', '1', '2016-07-15 22:50:56', '1', '2017-01-10 10:40:03', null, '0'), ('74', '系统日志', 'menu', '', 'slog', '2', '0/1/2/', 'sys:slog:view', '1', '70', '1', '2016-10-02 14:02:51', '1', '2016-10-21 01:31:14', null, '0'), ('75', '系统设置', 'menu', '', '', '1', '0/1/', 'sys:setting', '1', '20', '1', '2016-10-09 00:04:34', '1', '2016-11-18 01:18:34', null, '0'), ('76', '查看', 'form', '', '', '74', '0/1/2/74/', 'sys:slog:view', '1', '0', '1', '2016-10-21 00:27:13', null, null, null, '0'), ('77', '编辑', 'form', '', '', '74', '0/1/2/74/', 'sys:slog:edit', '1', '0', '1', '2016-10-21 00:27:31', null, null, null, '0'), ('97', '新增', 'form', '', '', '21', '0/1/2/21/', 'sys:user:create', '1', '1', '1', '2017-01-10 10:30:07', '1', '2017-01-10 10:37:20', null, '0'), ('98', '删除', 'form', '', '', '21', '0/1/2/21/', 'sys:user:delete', '1', '2', '1', '2017-01-10 10:37:07', '1', '2017-01-10 10:50:33', null, '0'), ('100', '删除', 'form', '', '', '11', '0/1/75/11/', 'sys:organization:delete', '1', '3', '1', '2017-01-10 11:00:30', '1', '2017-01-10 11:00:40', null, '0'), ('101', '公共配置', 'menu', '', 'sys/config', '2', '0/1/2/', 'sys:config:view', '1', '20', '1', '2017-01-14 21:31:11', null, null, null, '0'), ('102', '新增', 'form', '', '', '101', '0/1/2/101/', 'sys:config:create', '1', '1', '1', '2017-01-14 21:31:37', null, null, null, '0'), ('103', '删除', 'form', '', '', '101', '0/1/2/101/', 'sys:config:delete', '1', '2', '1', '2017-01-14 21:31:55', '1', '2017-01-14 21:32:20', null, '0'), ('104', '修改', 'form', '', '', '101', '0/1/2/101/', 'sys:config:update', '1', '3', '1', '2017-01-14 21:32:12', null, null, null, '0'), ('105', '查看', 'form', '', '', '51', '0/1/2/51/', 'sys:session:view', '1', '0', '1', '2017-03-24 15:29:17', null, null, null, '0'), ('106', '强制注销', 'form', '', '', '51', '0/1/2/51/', 'sys:session:forceLogout', '1', '0', '1', '2017-03-24 15:30:48', null, null, null, '0');
+INSERT INTO `sys_resource` VALUES ('1', '资源', 'menu', '', '', '0', '0/', '', '1', '0', '1', null, null, null, null, '0'), ('2', '系统管理', 'menu', '', '', '1', '0/1/', 'sys:manage', '1', '10', '1', '2016-06-14 09:33:06', '1', '2016-11-18 01:21:14', null, '0'), ('11', '组织机构', 'menu', '', 'organization', '75', '0/1/75/', 'sys:organization', '1', '10', '1', null, '1', '2016-10-21 01:32:05', null, '0'), ('12', '查看', 'form', '', '', '11', '0/1/2/11/', 'sys:organization:view', '1', '1', '1', null, '1', '2017-01-10 14:43:53', null, '0'), ('13', '编辑', 'form', '', '', '11', '0/1/2/11/', 'sys:organization:edit', '1', '2', '1', null, '1', '2017-01-10 14:44:15', null, '0'), ('21', '用户管理', 'menu', '', 'user/list', '2', '0/1/2/', 'sys:user:view', '1', '10', '1', null, '1', '2017-02-18 18:11:51', null, '0'), ('22', '查看', 'form', '', '', '21', '0/1/2/21/', 'sys:user:view', '1', '4', '1', null, '1', '2017-01-10 10:38:16', null, '0'), ('23', '编辑', 'form', '', '', '21', '0/1/2/21/', 'sys:user:update', '1', '3', '1', null, '1', '2017-01-10 11:14:13', null, '0'), ('31', '资源管理', 'menu', '', 'resource', '75', '0/1/75/', 'sys:resource', '1', '20', '1', null, '1', '2016-10-21 01:32:27', null, '0'), ('32', '查看', 'form', '', '', '31', '0/1/2/31/', 'sys:resource:view', '1', '3', '1', null, '1', '2017-01-10 10:49:52', null, '0'), ('33', '编辑', 'form', '', '', '31', '0/1/2/31/', 'sys:resource:edit', '1', '1', '1', null, '1', '2017-01-10 10:49:08', null, '0'), ('41', '角色管理', 'menu', '', 'role', '75', '0/1/75/', 'sys:role:view', '1', '30', '1', null, '1', '2016-10-21 01:32:44', null, '0'), ('42', '查看', 'form', '', '', '41', '0/1/2/41/', 'sys:role:view', '1', '1', '1', null, '1', '2017-01-10 14:42:16', null, '0'), ('43', '编辑', 'form', '', '', '41', '0/1/2/41/', 'sys:role:edit', '1', '2', '1', null, '1', '2017-01-10 14:42:20', null, '0'), ('51', '会话管理', 'menu', '', 'sys/session', '2', '0/1/2/', 'sys:sessions', '1', '60', '1', null, '1', '2017-03-24 15:31:14', null, '0'), ('73', '任务调度', 'menu', '', 'scheduleJob', '2', '0/1/2/', 'sys:scheduleJob:*', '1', '50', '1', '2016-07-15 22:50:56', '1', '2017-01-10 10:40:03', null, '0'), ('74', '系统日志', 'menu', '', 'slog', '2', '0/1/2/', 'sys:slog:view', '1', '70', '1', '2016-10-02 14:02:51', '1', '2016-10-21 01:31:14', null, '0'), ('75', '系统设置', 'menu', '', '', '1', '0/1/', 'sys:setting', '1', '20', '1', '2016-10-09 00:04:34', '1', '2016-11-18 01:18:34', null, '0'), ('76', '查看', 'form', '', '', '74', '0/1/2/74/', 'sys:slog:view', '1', '0', '1', '2016-10-21 00:27:13', null, null, null, '0'), ('77', '编辑', 'form', '', '', '74', '0/1/2/74/', 'sys:slog:edit', '1', '0', '1', '2016-10-21 00:27:31', null, null, null, '0'), ('97', '新增', 'form', '', '', '21', '0/1/2/21/', 'sys:user:create', '1', '1', '1', '2017-01-10 10:30:07', '1', '2017-01-10 10:37:20', null, '0'), ('98', '删除', 'form', '', '', '21', '0/1/2/21/', 'sys:user:delete', '1', '2', '1', '2017-01-10 10:37:07', '1', '2017-01-10 10:50:33', null, '0'), ('100', '删除', 'form', '', '', '11', '0/1/75/11/', 'sys:organization:delete', '1', '3', '1', '2017-01-10 11:00:30', '1', '2017-01-10 11:00:40', null, '0'), ('101', '公共配置', 'menu', '', 'sys/config', '2', '0/1/2/', 'sys:config:view', '1', '20', '1', '2017-01-14 21:31:11', null, null, null, '0'), ('102', '新增', 'form', '', '', '101', '0/1/2/101/', 'sys:config:create', '1', '1', '1', '2017-01-14 21:31:37', null, null, null, '0'), ('103', '删除', 'form', '', '', '101', '0/1/2/101/', 'sys:config:delete', '1', '2', '1', '2017-01-14 21:31:55', '1', '2017-01-14 21:32:20', null, '0'), ('104', '修改', 'form', '', '', '101', '0/1/2/101/', 'sys:config:update', '1', '3', '1', '2017-01-14 21:32:12', null, null, null, '0'), ('105', '查看', 'form', '', '', '51', '0/1/2/51/', 'sys:session:view', '1', '0', '1', '2017-03-24 15:29:17', null, null, null, '0'), ('106', '强制注销', 'form', '', '', '51', '0/1/2/51/', 'sys:session:forceLogout', '1', '0', '1', '2017-03-24 15:30:48', null, null, null, '0'), ('107', '新建邮件和通知', 'form', '', '', '1', '0/1/', 'sys:msgSend:create', '1', '90', '1', '2017-04-11 14:28:28', '1', '2017-04-11 14:30:07', null, '0');
 COMMIT;
 
 -- ----------------------------
@@ -114,13 +158,13 @@ CREATE TABLE `sys_role` (
   `remarks` varchar(225) DEFAULT NULL COMMENT '备注',
   `status` char(1) DEFAULT '0' COMMENT '状态',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='权限';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='权限';
 
 -- ----------------------------
 --  Records of `sys_role`
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_role` VALUES ('1', 'super', '超级管理员', '1', '2,11,12,13,21,22,23,31,32,33,41,42,43,51,73,74,75,76,77,97,98,100,101,102,103,104,105,106,', 'self', '1', '1', '2016-10-08 12:32:47', '1', '2017-03-24 15:31:48', '至高权限', '0');
+INSERT INTO `sys_role` VALUES ('1', 'super', '超级管理员', '1', '2,11,12,13,21,22,23,31,32,33,41,42,43,51,73,74,75,76,77,97,98,100,101,102,103,104,105,106,107,', 'self', '1', '1', '2016-10-08 12:32:47', '1', '2017-04-11 14:29:31', '至高权限', '0'), ('2', 'user', '普通用户', '1', '2,51,105,', 'self', '1', '1', '2017-04-10 16:18:11', '1', '2017-04-10 16:18:34', '', '0');
 COMMIT;
 
 -- ----------------------------
@@ -212,13 +256,13 @@ CREATE TABLE `sys_user` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_sys_user_username` (`username`),
   KEY `idx_sys_user_organization_id` (`organization_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='用户表';
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='用户表';
 
 -- ----------------------------
 --  Records of `sys_user`
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_user` VALUES ('1', null, '1', 'super', 'ff7e419b2147a346fcf97e8a0d439143', '7b5f5d3a1d3ba80fed0ad6256eb0fc3c', '1,', '超级管理', '', '', '', '', null, null, '0', '0', '1', '2016-10-15 17:13:38', '1', '2017-03-27 15:35:40', '', '0');
+INSERT INTO `sys_user` VALUES ('1', null, '1', 'super', 'ff7e419b2147a346fcf97e8a0d439143', '7b5f5d3a1d3ba80fed0ad6256eb0fc3c', '1,', '超级管理', '', '', '', '', null, null, '0', '0', '1', '2016-10-15 17:13:38', '1', '2017-03-27 15:35:40', '', '0'), ('2', null, '4', 'zhangsan', '2ecf3b2ced5598a5673935f4b83b780e', 'fddfccea5772ccc27a8654f053492d84', '2,', '张三', '', '', '', null, null, null, '0', '0', '1', '2017-04-10 16:19:14', '1', '2017-04-10 16:19:26', null, '0'), ('3', null, '4', 'lisi', '057d307e351123728de60aab447a5ce9', 'e010f5c93f1277fbcb34947149fc7a33', '2,', '李四', '', '', '', null, null, null, '0', '0', '1', '2017-04-10 16:19:41', '1', '2017-04-10 16:19:41', null, '0');
 COMMIT;
 
 -- ----------------------------

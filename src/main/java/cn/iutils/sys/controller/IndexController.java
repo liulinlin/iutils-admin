@@ -3,6 +3,7 @@ package cn.iutils.sys.controller;
 import java.util.List;
 import java.util.Set;
 
+import cn.iutils.common.utils.SystemUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,7 +39,8 @@ public class IndexController extends BaseController {
 	}
 
 	@RequestMapping(value = "/welcome", method = RequestMethod.GET)
-	public String welcome() {
+	public String welcome(Model model) {
+		model.addAttribute("systemInfo", SystemUtils.getSystemInfo());
 		return "welcome";
 	}
 

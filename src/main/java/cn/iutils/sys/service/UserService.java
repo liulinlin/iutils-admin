@@ -1,9 +1,6 @@
 package cn.iutils.sys.service;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import cn.iutils.common.utils.CacheUtils;
 import cn.iutils.common.utils.JStringUtils;
@@ -130,6 +127,15 @@ public class UserService extends CrudService<IUserDao, User> {
 			e.printStackTrace();
 		}
 		return user;
+	}
+
+	/**
+	 * 获取用户列表
+	 * @param users
+	 * @return
+	 */
+	public List<Map> getUsers(String[] users){
+		return dao.getUsers(users);
 	}
 
 }

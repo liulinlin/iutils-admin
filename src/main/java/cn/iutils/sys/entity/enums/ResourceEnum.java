@@ -2,9 +2,7 @@ package cn.iutils.sys.entity.enums;
 
 /**
  * 资源类型
- * 
  * @author cc
- * 
  */
 public enum ResourceEnum {
 

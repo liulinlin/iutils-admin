@@ -2,9 +2,7 @@ package cn.iutils.sys.entity.enums;
 
 /**
  * 平台类型
- * 
  * @author cc
- * 
  */
 public enum PlatformEnum {
 

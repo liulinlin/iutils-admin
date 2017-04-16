@@ -44,6 +44,7 @@
         <property name="minEvictableIdleTimeMillis" value="${druid.minEvictableIdleTimeMillis}" />
 
         <property name="validationQuery" value="${druid.validationQuery}" />
+        <property name="validationQueryTimeout" value="${druid.validationQueryTimeout}" />
         <property name="testWhileIdle" value="${druid.testWhileIdle}" />
         <property name="testOnBorrow" value="${druid.testOnBorrow}" />
         <property name="testOnReturn" value="${druid.testOnReturn}" />

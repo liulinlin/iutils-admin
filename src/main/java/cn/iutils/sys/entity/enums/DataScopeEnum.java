@@ -2,9 +2,7 @@ package cn.iutils.sys.entity.enums;
 
 /**
  * 数据范围
- * 
  * @author cc
- * 
  */
 public enum DataScopeEnum {
 

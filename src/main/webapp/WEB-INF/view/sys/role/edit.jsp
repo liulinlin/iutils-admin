@@ -15,6 +15,7 @@
 			overflow-y: auto;
 			overflow-x: auto;
 		}
+        .theme-black ul.ztree{background:transparent;border:1px solid rgba(255, 255, 255, 0.2);}
         .tpl-content-wrapper{margin-left:0}
 	</style>
 </head>

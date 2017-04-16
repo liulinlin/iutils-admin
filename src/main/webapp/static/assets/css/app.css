@@ -1848,7 +1848,7 @@ ul.tpl-dropdown-content .tpl-dropdown-menu-messages-item .menu-messages-content 
 .theme-black .widget-color-green .widget-function a:hover {
   color: #fff;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 980px) {
   .tpl-index-settings-button {
     display: none;
   }
@@ -1929,4 +1929,8 @@ ul.tpl-dropdown-content .tpl-dropdown-menu-messages-item .menu-messages-content 
 }
 .orderBy{
   cursor: pointer;
+}
+.am-btn-toolbar {
+  margin-left: -5px;
+  margin-bottom: 1em;
 }

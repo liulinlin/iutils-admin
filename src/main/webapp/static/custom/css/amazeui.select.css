@@ -49,7 +49,7 @@ div.tagsinput input {
 .am-select-ul{
     position: absolute;
     height: auto;
-    min-width: 220px;
+    min-width: 190px;
     z-index: 9999;
     border: 1px solid #ddd;
     background-color: #fff;
@@ -67,4 +67,35 @@ div.tagsinput input {
 }
 .am-select-ul li:hover{
     background-color: #ddd;
+}
+
+/* 下拉补全 */
+.am-select-ui{
+    position: absolute;
+    height: auto;
+    max-height: 300px;
+    overflow:auto;
+    min-width: 120px;
+    z-index: 9999;
+    border-bottom: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    background-color: #fff;
+    list-style:none;
+    margin: 0;
+    padding: 0;
+    display: none;
+}
+.am-select-ui li{
+    cursor: pointer;
+}
+.am-select-ui li:hover{
+    background-color: #ddd;
+}
+.am-select-ui li a{
+    padding: 0 15px;
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: #666;
 }

@@ -5,6 +5,7 @@
 <head>
     <title><c:set var="iutilsName" value='${fnc:getConfig("iutils.name")}' />${iutilsName} - 后台管理</title>
     <%@ include file="include/head.jsp"%>
+    <link rel="stylesheet" href="${ctxStatic}/custom/css/amazeui.select.css">
 </head>
 <body>
 <!--[if lte IE 9]>
@@ -30,7 +31,8 @@
             <div class="am-fl tpl-header-search">
                 <form class="tpl-header-search-form" action="javascript:;">
                     <button class="tpl-header-search-btn am-icon-search"></button>
-                    <input class="tpl-header-search-box" type="text" placeholder="搜索内容...">
+                    <input class="tpl-header-search-box am-select-ui-input" type="text" placeholder="功能检索...">
+                    <ul class="am-select-ui" style="width: 240px;margin-top: 5px;margin-left: 15px;"></ul>
                 </form>
             </div>
             <!-- 其它功能-->
@@ -38,55 +40,18 @@
                 <ul>
                     <!-- 欢迎语 -->
                     <li class="am-text-sm tpl-header-navbar-welcome">
-                        <a href="${ctx}/user/userInfo" target="main-content">欢迎你, <span>${empty loginUser.name?loginUser.username:loginUser.name}</span> </a>
+                        <a href="#${ctx}/user/userInfo" onclick="link('${ctx}/user/userInfo')">欢迎你, <span>${empty loginUser.name?loginUser.username:loginUser.name}</span> </a>
                     </li>
                     <!-- 新邮件 -->
-                    <li class="am-dropdown tpl-dropdown" data-am-dropdown>
+                    <li class="am-dropdown tpl-dropdown" data-am-dropdown id="mail">
                         <a href="javascript:;" class="am-dropdown-toggle tpl-dropdown-toggle" data-am-dropdown-toggle>
                             <i class="am-icon-envelope"></i>
-                            <span class="am-badge am-badge-success am-round item-feed-badge">4</span>
+                            <span class="am-badge am-badge-success am-round item-feed-badge" id="mailBadge" style="display: none;">0</span>
                         </a>
                         <!-- 弹出列表 -->
-                        <ul class="am-dropdown-content tpl-dropdown-content">
+                        <ul class="am-dropdown-content tpl-dropdown-content" id="mailHtml">
                             <li class="tpl-dropdown-menu-messages">
-                                <a href="javascript:;" class="tpl-dropdown-menu-messages-item am-cf">
-                                    <div class="menu-messages-ico">
-                                        <img src="${ctxStatic}/assets/img/user04.png" alt="">
-                                    </div>
-                                    <div class="menu-messages-time">
-                                        3小时前
-                                    </div>
-                                    <div class="menu-messages-content">
-                                        <div class="menu-messages-content-title">
-                                            <i class="am-icon-circle-o am-text-success"></i>
-                                            <span>夕风色</span>
-                                        </div>
-                                        <div class="am-text-truncate"> Amaze UI 的诞生，依托于 GitHub 及其他技术社区上一些优秀的资源；Amaze UI 的成长，则离不开用户的支持。 </div>
-                                        <div class="menu-messages-content-time">2016-09-21 下午 16:40</div>
-                                    </div>
-                                </a>
-                            </li>
-
-                            <li class="tpl-dropdown-menu-messages">
-                                <a href="javascript:;" class="tpl-dropdown-menu-messages-item am-cf">
-                                    <div class="menu-messages-ico">
-                                        <img src="${ctxStatic}/assets/img/user02.png" alt="">
-                                    </div>
-                                    <div class="menu-messages-time">
-                                        5天前
-                                    </div>
-                                    <div class="menu-messages-content">
-                                        <div class="menu-messages-content-title">
-                                            <i class="am-icon-circle-o am-text-warning"></i>
-                                            <span>${empty loginUser.name?loginUser.username:loginUser.name}</span>
-                                        </div>
-                                        <div class="am-text-truncate"> 为了能最准确的传达所描述的问题， 建议你在反馈时附上演示，方便我们理解。 </div>
-                                        <div class="menu-messages-content-time">2016-09-16 上午 09:23</div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="tpl-dropdown-menu-messages">
-                                <a href="javascript:;" class="tpl-dropdown-menu-messages-item am-cf">
+                                <a href="#${ctx}/sys/msgReceive?msgSend.type=mail&status=-1" onclick="link('${ctx}/sys/msgReceive?msgSend.type=mail&status=-1');$('#mail').dropdown('close');" class="tpl-dropdown-menu-messages-item am-cf">
                                     <i class="am-icon-circle-o"></i> 进入列表…
                                 </a>
                             </li>
@@ -94,48 +59,15 @@
                     </li>
 
                     <!-- 新提示 -->
-                    <li class="am-dropdown" data-am-dropdown>
+                    <li class="am-dropdown" data-am-dropdown id="notice">
                         <a href="javascript:;" class="am-dropdown-toggle" data-am-dropdown-toggle>
                             <i class="am-icon-bell"></i>
-                            <span class="am-badge am-badge-warning am-round item-feed-badge">5</span>
+                            <span class="am-badge am-badge-warning am-round item-feed-badge" id="noticeBadge" style="display: none;">0</span>
                         </a>
                         <!-- 弹出列表 -->
-                        <ul class="am-dropdown-content tpl-dropdown-content">
+                        <ul class="am-dropdown-content tpl-dropdown-content" id="noticeHtml">
                             <li class="tpl-dropdown-menu-notifications">
-                                <a href="javascript:;" class="tpl-dropdown-menu-notifications-item am-cf">
-                                    <div class="tpl-dropdown-menu-notifications-title">
-                                        <i class="am-icon-line-chart"></i>
-                                        <span> 有6笔新的销售订单</span>
-                                    </div>
-                                    <div class="tpl-dropdown-menu-notifications-time">
-                                        12分钟前
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="tpl-dropdown-menu-notifications">
-                                <a href="javascript:;" class="tpl-dropdown-menu-notifications-item am-cf">
-                                    <div class="tpl-dropdown-menu-notifications-title">
-                                        <i class="am-icon-star"></i>
-                                        <span> 有3个来自人事部的消息</span>
-                                    </div>
-                                    <div class="tpl-dropdown-menu-notifications-time">
-                                        30分钟前
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="tpl-dropdown-menu-notifications">
-                                <a href="javascript:;" class="tpl-dropdown-menu-notifications-item am-cf">
-                                    <div class="tpl-dropdown-menu-notifications-title">
-                                        <i class="am-icon-folder-o"></i>
-                                        <span> 上午开会记录存档</span>
-                                    </div>
-                                    <div class="tpl-dropdown-menu-notifications-time">
-                                        1天前
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="tpl-dropdown-menu-notifications">
-                                <a href="javascript:;" class="tpl-dropdown-menu-notifications-item am-cf">
+                                <a href="#${ctx}/sys/msgReceive?msgSend.type=notice&status=-1" onclick="link('${ctx}/sys/msgReceive?msgSend.type=notice&status=-1');$('#notice').dropdown('close');" class="tpl-dropdown-menu-notifications-item am-cf">
                                     <i class="am-icon-bell"></i> 进入列表…
                                 </a>
                             </li>
@@ -232,6 +164,52 @@
 </div>
 </div>
 <%@ include file="include/bottom.jsp"%>
+<script src="${ctxStatic}/3rd-lib/tpl/tpl.js"></script>
+<!-- 定义模板 -->
+<script type="text/template" id="mailTpl" desc="邮件列表">
+    <# for(var i=0; i<list.length; i++) {var item=list[i];#>
+    <li class="tpl-dropdown-menu-messages">
+        <a href="javascript:;" onclick="document.getElementById('main-content').contentWindow.openModel(false,'${ctx}/sys/msgReceive/update?id=<#=item.id #>');$('#mail').dropdown('close');" c class="tpl-dropdown-menu-messages-item am-cf">
+            <div class="menu-messages-ico">
+                <img src="${pageContext.request.contextPath}/<#=item.createUser.photo #><# if(item.createUser.photo==null || item.createUser.photo==''){#>static/assets/img/user06.png<#}#>">
+            </div>
+            <div class="menu-messages-content">
+                <div class="menu-messages-content-title">
+                    <i class="am-icon-circle-o am-text-success"></i>
+                    <span><#=item.createUser.name #></span>
+                </div>
+                <div class="am-text-truncate"><#=item.msgSend.title #></div>
+                <div class="menu-messages-content-time"><#=new Date(item.updateDate).format('yyyy-MM-dd h:m:s') #></div>
+            </div>
+        </a>
+    </li>
+    <#}#>
+    <li class="tpl-dropdown-menu-messages">
+        <a href="#${ctx}/sys/msgReceive?msgSend.type=mail&status=-1" onclick="link('${ctx}/sys/msgReceive?msgSend.type=mail&status=-1');$('#mail').dropdown('close');" class="tpl-dropdown-menu-messages-item am-cf">
+            <i class="am-icon-circle-o"></i> 进入列表…
+        </a>
+    </li>
+</script>
+<script type="text/template" id="noticeTpl" desc="通知列表">
+    <# for(var i=0; i<list.length; i++) {var item=list[i];#>
+    <li class="tpl-dropdown-menu-notifications">
+        <a href="javascript:;" onclick="document.getElementById('main-content').contentWindow.openModel(false,'${ctx}/sys/msgReceive/update?id=<#=item.id #>');$('#notice').dropdown('close');" class="tpl-dropdown-menu-notifications-item am-cf">
+            <div class="tpl-dropdown-menu-notifications-title">
+                <i class="am-icon-circle-o am-text-warning"></i>
+                <span><#=item.msgSend.title #></span>
+            </div>
+            <div class="tpl-dropdown-menu-notifications-time">
+                <#=new Date(item.updateDate).format('h:m') #>
+            </div>
+        </a>
+    </li>
+    <#}#>
+    <li class="tpl-dropdown-menu-notifications">
+        <a href="#${ctx}/sys/msgReceive?msgSend.type=notice&status=-1" onclick="link('${ctx}/sys/msgReceive?msgSend.type=notice&status=-1');$('#notice').dropdown('close');" class="tpl-dropdown-menu-notifications-item am-cf">
+            <i class="am-icon-bell"></i> 进入列表…
+        </a>
+    </li>
+</script>
 <script>
     $(document).ready(function(){
         //初始化地址
@@ -263,6 +241,87 @@
                 $menu.parent().parent().prev().addClass("active");
             }
             $("#main-content").attr("src",$menu.attr("href").substr(1));
+        });
+
+        //所有的功能菜单
+        var menus = [
+            <c:forEach items="${menus}" var="menu" varStatus="status">
+                <c:if test="${not empty menu.url}">{name:"${menu.name}",url:"${ctx}/${menu.url}"}<c:if test="${!status.last}">,</c:if></c:if>
+            </c:forEach>
+        ];
+
+        //功能搜索事件绑定
+        $(document).delegate(".am-select-ui-input","blur focus keyup",function(event){
+            var eType=event.type;
+            switch(eType){
+                case 'focusin'://获取焦点
+                    var currentProposals = [];
+                    var proposalList = $(this).parent().find(".am-select-ui");
+                    var word = $(this).val();
+                    proposalList.empty();
+                    var items = menus;
+                    for(var test in items){
+                        if(items[test].name.match(word)){
+                            currentProposals.push(items[test].name);
+                            var element = $('<li></li>')
+                                    .html('<a href="#'+items[test].url+'" onclick="link(\''+items[test].url+'\')">'+items[test].name+'</a>');
+                            proposalList.append(element);
+                        }
+                    }
+                    $(this).parent().find(".am-select-ui").show();
+                    break;
+                case 'focusout'://失去焦点
+                    var $this = $(this);
+                    setTimeout(function(){$this.parent().find(".am-select-ui").hide(100);},100);
+                    break;
+                case 'keyup'://键盘按下
+                    var currentProposals = [];
+                    var v = event.which;
+                    if (v == 38 || v == 40 || v == 13){return;}
+                    var word = $(this).val();
+                    var items = menus;
+                    var proposalList = $(this).parent().find(".am-select-ui");
+                    proposalList.empty();
+                    for(var test in items){
+                        if(items[test].name.match(word)){
+                            currentProposals.push(items[test].name);
+                            var element = $('<li></li>')
+                                    .html('<a href="#'+items[test].url+'" onclick="link(\''+items[test].url+'\')">'+items[test].name+'</a>');
+                            proposalList.append(element);
+                        }
+                    }
+                    break;
+            }
+        });
+
+        //邮件通知数据
+        get("${ctx}/sys/msg/getMailPage?msgSend.type=mail&status=0&pageSize=2",function(data){
+            if(data.ret==1){
+                if(data.data.list){
+                    $("#mailHtml").html(tpl('#mailTpl', data.data));
+                }
+                var $mailBadge = $("#mailBadge");
+                if(data.data.total>0){
+                    $mailBadge.html(data.data.total);
+                    $mailBadge.show();
+                }else{
+                    $mailBadge.hide();
+                }
+            }
+        });
+        get("${ctx}/sys/msg/getNoticePage?msgSend.type=notice&status=0&pageSize=3",function(data){
+            if(data.ret==1){
+                if(data.data.list){
+                    $("#noticeHtml").html(tpl('#noticeTpl', data.data));
+                }
+                var $noticeBadge = $("#noticeBadge");
+                if(data.data.total>0){
+                    $noticeBadge.html(data.data.total);
+                    $noticeBadge.show();
+                }else{
+                    $noticeBadge.hide();
+                }
+            }
         });
     });
 

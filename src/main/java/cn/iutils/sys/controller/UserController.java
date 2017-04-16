@@ -22,6 +22,7 @@ import cn.iutils.sys.service.RoleService;
 import cn.iutils.sys.service.UserService;
 
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("${adminPath}/user")
@@ -250,6 +251,49 @@ public class UserController extends BaseController {
 		model.addAttribute("user", user);
 		addMessage(model, "保存资料成功");
 		return "sys/user/config-userInfo";
+	}
+
+	/**
+	 * 用户选择弹出界面
+	 * @param users 选择用户列表
+	 * @param user
+	 * @param model
+	 * @param page
+	 * @return
+	 */
+	@RequestMapping(value = "/selectUser")
+	public String selectUser(String[] users,User user,Model model, Page<User> page){
+		Organization organization = new Organization();
+		organization.setUser(UserUtils.getLoginUser());
+		List<Organization> organizationList = organizationService.findList(organization);
+		model.addAttribute("organizationList", organizationList);
+		//初始化加载第一个
+		if(JStringUtils.isBlank(user.getOrganizationId()) && organizationList.size()>0){
+			user.setOrganizationId(organizationList.get(0).getId());
+		}
+		page.setEntity(user);
+		model.addAttribute("page", page.setList(userService.findPage(page)));
+		model.addAttribute("users", users);
+		return "sys/user/selectUser";
+	}
+
+	/**
+	 * 获取用户列表
+	 * @param users
+	 * @return
+	 */
+	@RequestMapping(value = "/getUsers", method = RequestMethod.GET)
+	public @ResponseBody
+	ResultVo getUsers(String[] users){
+		ResultVo resultVo = null;
+		try{
+			List<Map> list = userService.getUsers(users);
+			resultVo = new ResultVo(ResultVo.SUCCESS,"1","获取用户列表调用成功",list);
+		}catch (Exception e){
+			logger.error("获取用户列表调用失败",e.getMessage());
+			resultVo = new ResultVo(ResultVo.FAILURE,"-1","获取用户列表调用失败",null);
+		}
+		return resultVo;
 	}
 
 }

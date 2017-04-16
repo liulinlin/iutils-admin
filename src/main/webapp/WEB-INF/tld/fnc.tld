@@ -64,4 +64,11 @@
         <function-signature>java.lang.String relativeDate(java.util.Date)</function-signature>
     </function>
 
+    <function>
+        <description>替换掉HTML标签</description>
+        <name>replaceHtml</name>
+        <function-class>cn.iutils.common.utils.JStringUtils</function-class>
+        <function-signature>java.lang.String replaceHtml(java.lang.String)</function-signature>
+    </function>
+
 </taglib>

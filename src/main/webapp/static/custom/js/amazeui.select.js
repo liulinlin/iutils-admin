@@ -88,4 +88,49 @@ $(document).ready(function(){
         }
     });
 
+    //绑定文本框的多个事件
+    $(document).delegate(".am-select-ui-input","blur focus keyup",function(event){
+        var eType=event.type;
+        switch(eType){
+            case 'focusin'://获取焦点
+                var proposalList = $(this).parent().find(".am-select-ui");
+                proposalList.empty();
+                var items = $(this).attr("am-data").split(",");
+                for(var test in items){
+                    var element = $('<li></li>')
+                        .html(items[test])
+                        .click(function(){
+                            $(this).parent().parent().find("input").val($(this).text());
+                        });
+                    proposalList.append(element);
+                }
+                $(this).parent().find(".am-select-ui").show();
+                break;
+            case 'focusout'://失去焦点
+                $(this).parent().find(".am-select-ui").hide(300);
+                break;
+            case 'keyup'://键盘按下
+                var currentProposals = [];
+                var v = event.which;
+                if (v == 38 || v == 40 || v == 13){return;}
+                var word = $(this).val();
+                var items = $(this).attr("am-data").split(",");
+                var proposalList = $(this).parent().find(".am-select-ui");
+                proposalList.empty();
+                for(var test in items){
+                    if(items[test].match(word)){
+                        currentProposals.push(items[test]);
+                        var element = $('<li></li>')
+                            .html(items[test])
+                            .click(function(){
+                                $(this).parent().parent().find("input").val($(this).text());
+                            });
+                        proposalList.append(element);
+                    }
+                }
+                break;
+        }
+    });
+
+
 });
