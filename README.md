@@ -52,15 +52,39 @@
 - 有任何问题可以加QQ群：460229964交流。
 
 # 系统截图欣赏
-![登录界面截图](https://github.com/iutils/iutils-admin/blob/master/doc/img/登录界面截图.png)
 
-![主界面截图](https://github.com/iutils/iutils-admin/blob/master/doc/img/主界面截图.png)
+- 系统登录
+![系统登录](https://git.oschina.net/uploads/images/2017/0418/154730_b04261fd_436098.png "系统登录")
 
-![用户管理截图](https://github.com/iutils/iutils-admin/blob/master/doc/img/用户管理截图.png)
+- 系统状态监控
+![系统监控](https://git.oschina.net/uploads/images/2017/0418/154809_5a7c6a5c_436098.png "系统监控")
 
-![资源管理截图](https://github.com/iutils/iutils-admin/blob/master/doc/img/资源管理截图.png)
+- 个人信息设置
+![个人信息](https://git.oschina.net/uploads/images/2017/0418/154826_31dccfca_436098.png)
 
-![系统日志截图](https://github.com/iutils/iutils-admin/blob/master/doc/img/系统日志截图.png)
+- 用户管理
+![用户管理](https://git.oschina.net/uploads/images/2017/0418/154856_a8e3631b_436098.png)
+
+- 机构管理
+![机构管理](https://git.oschina.net/uploads/images/2017/0418/154914_a3aeeedd_436098.png)
+
+- 资源菜单管理
+![资源管理](https://git.oschina.net/uploads/images/2017/0418/154934_f41555c9_436098.png)
+
+- 角色权限管理
+![角色权限管理](https://git.oschina.net/uploads/images/2017/0418/154958_5cf0ea8b_436098.png)
+
+- 任务调度
+![任务调度](https://git.oschina.net/uploads/images/2017/0418/155020_d92da474_436098.png)
+
+- 系统日志
+![系统日志](https://git.oschina.net/uploads/images/2017/0418/155047_cc9f9afb_436098.png)
+
+- 功能检索
+![功能检索](https://git.oschina.net/uploads/images/2017/0418/155110_0346eadd_436098.png)
+
+- 站内信
+![站内信](https://git.oschina.net/uploads/images/2017/0418/155134_7514be3d_436098.png)
 
 # 项目引用
 ```
