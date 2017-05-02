@@ -87,6 +87,17 @@
         <url-pattern>/druid/*</url-pattern>
     </servlet-mapping>
 
+    <!-- Xss过滤 -->
+    <filter>
+        <filter-name>XssSqlFilter</filter-name>
+        <filter-class>cn.iutils.common.filter.XssFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>XssSqlFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+    </filter-mapping>
+
     <session-config>
         <session-timeout>60</session-timeout>
     </session-config>
