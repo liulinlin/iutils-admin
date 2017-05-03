@@ -14,9 +14,12 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 图片水印处理 Created by cc on 16/5/24.
+ * 图片水印处理工具
+ *
+ * @author iutils.cn
+ * @version 1.0
  */
-public class ImageMarkUtils {
+public class ImageMarkUtils extends BaseUtils {
 
 	// 水印透明度
 	private static float alpha = 1f;
@@ -130,13 +133,13 @@ public class ImageMarkUtils {
 			os = new FileOutputStream(targerPath);
 			ImageIO.write(buffImg, "JPG", os);
 		} catch (Exception e) {
-			throw new RuntimeException(e);
+			logger.error(e.getMessage());
 		} finally {
 			try {
 				if (os != null)
 					os.close();
 			} catch (Exception e) {
-				throw new RuntimeException(e);
+				logger.error(e.getMessage());
 			}
 		}
 	}
@@ -210,14 +213,14 @@ public class ImageMarkUtils {
 			ImageIO.write(buffImg, "JPG", os);
 
 		} catch (Exception e) {
-			throw new RuntimeException(e);
+			logger.error(e.getMessage());
 		} finally {
 			try {
 				if(os!=null){
 					os.close();
 				}
 			} catch (Exception e) {
-				throw new RuntimeException(e);
+				logger.error(e.getMessage());
 			}
 		}
 	}
