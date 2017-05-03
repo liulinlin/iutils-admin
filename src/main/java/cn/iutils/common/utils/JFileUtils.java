@@ -18,11 +18,11 @@ import java.util.Enumeration;
  */
 public class JFileUtils extends FileUtils {
 
-	public static long ONE_KB = 1024;
-	public static long ONE_MB = ONE_KB * 1024;
-	public static long ONE_GB = ONE_MB * 1024;
-	public static long ONE_TB = ONE_GB * (long)1024;
-	public static long ONE_PB = ONE_TB * (long)1024;
+	public final static long ONE_KB = 1024;
+	public final static long ONE_MB = ONE_KB * 1024;
+	public final static long ONE_GB = ONE_MB * 1024;
+	public final static long ONE_TB = ONE_GB * (long)1024;
+	public final static long ONE_PB = ONE_TB * (long)1024;
 
 	private static Logger log = LoggerFactory.getLogger(JFileUtils.class);
 
