@@ -19,7 +19,7 @@ public class TaskLog extends BaseService {
 
 	private volatile static TaskLog singleton;
 
-	public TaskLog() {
+	private TaskLog() {
 	}
 
 	/**
