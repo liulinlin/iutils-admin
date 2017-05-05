@@ -19,7 +19,8 @@ public class TaskLog extends BaseService {
 
 	private volatile static TaskLog singleton;
 
-	private TaskLog() {
+	public TaskLog() {
+		//给TaskUtils工具访问的构造方法
 	}
 
 	/**
