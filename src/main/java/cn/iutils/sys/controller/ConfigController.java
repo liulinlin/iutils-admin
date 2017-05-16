@@ -1,21 +1,17 @@
 package cn.iutils.sys.controller;
 
+import cn.iutils.common.BaseController;
+import cn.iutils.common.Page;
+import cn.iutils.common.utils.CacheUtils;
+import cn.iutils.common.utils.JStringUtils;
+import cn.iutils.sys.entity.Config;
+import cn.iutils.sys.service.ConfigService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import cn.iutils.common.Page;
-import cn.iutils.common.utils.JStringUtils;
-import cn.iutils.common.BaseController;
-import cn.iutils.sys.entity.Config;
-import cn.iutils.sys.service.ConfigService;
 
 /**
 * 公共配置表 控制器
@@ -75,6 +71,7 @@ public class ConfigController extends BaseController {
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     public String update(Config config, RedirectAttributes redirectAttributes) {
         configService.save(config);
+        CacheUtils.remove(config.getSysName() + config.getModuleName() + config.getConfigName());
         addMessage(redirectAttributes,"修改成功");
         return "redirect:"+ adminPath +"/sys/config/update?id="+config.getId();
     }
@@ -82,7 +79,9 @@ public class ConfigController extends BaseController {
     @RequiresPermissions("sys:config:delete")
     @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
     public String delete(@PathVariable("id") String id,int pageNo,int pageSize, RedirectAttributes redirectAttributes) {
-        configService.delete(id);
+        Config config = configService.get(id);
+        configService.delete(config);
+        CacheUtils.remove(config.getSysName() + config.getModuleName() + config.getConfigName());
         addMessage(redirectAttributes,"删除成功");
         return "redirect:"+ adminPath +"/sys/config?pageNo="+pageNo+"&pageSize="+pageSize;
     }

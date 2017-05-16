@@ -12,4 +12,11 @@ import cn.iutils.sys.entity.Config;
 @MyBatisDao
 public interface ConfigDao extends ICrudDao<Config> {
 
+    /**
+     * 获取配置信息
+     * @param config
+     * @return
+     */
+    public Config getConfigInfo(Config config);
+
 }

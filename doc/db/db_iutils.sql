@@ -9,7 +9,7 @@
  Target Server Version : 50547
  File Encoding         : utf-8
 
- Date: 04/12/2017 16:13:39 PM
+ Date: 05/16/2017 15:12:22 PM
 */
 
 SET NAMES utf8;
@@ -32,7 +32,14 @@ CREATE TABLE `sys_config` (
   `remarks` varchar(255) DEFAULT NULL COMMENT '备注',
   `status` char(1) DEFAULT NULL COMMENT '状态',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='公共配置表';
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 ROW_FORMAT=COMPACT COMMENT='公共配置表';
+
+-- ----------------------------
+--  Records of `sys_config`
+-- ----------------------------
+BEGIN;
+INSERT INTO `sys_config` VALUES ('1', 'sys', 'common', 'project.name', '程序员工具', '1', '2017-05-16 14:33:01', '1', '2017-05-16 15:10:25', '项目名称（注：系统配置，不可删）', '0'), ('2', 'sys', 'common', 'project.copyright', 'CopyRight©2016 iutils.cn All Rights Reserved.', '1', '2017-05-16 14:46:29', '1', '2017-05-16 15:10:36', '版本信息（注：系统配置，不可删）', '0');
+COMMIT;
 
 -- ----------------------------
 --  Table structure for `sys_msg_receive`
@@ -75,7 +82,7 @@ CREATE TABLE `sys_msg_send` (
 --  Records of `sys_msg_send`
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_msg_send` VALUES ('10', 'mail', '测试邮件', '                                                                                        \r\n                                        <p>测试邮件</p><p><br></p>\r\n                                        ', '0', '1,', '1', '2017-04-12 14:00:14', '1'), ('11', 'mail', '你好，我是管理员，现在测试站内信', '                                            \r\n                                        <p>你好，我是管理员，现在测试站内信</p><p><br></p>', '0', '1,', '1', '2017-04-12 16:00:09', '1'), ('12', 'notice', '请管理员来开会', '                                            \r\n                                        <p>请管理员来开会</p><p><br></p>', '0', '1,', '1', '2017-04-12 16:02:33', '1'), ('13', 'mail', '消息', '                                            \r\n                                        <p>是多少</p>', '0', '1,', '1', '2017-04-12 16:10:27', '1');
+INSERT INTO `sys_msg_send` VALUES ('10', 'mail', '测试邮件', '                                                                                        \r\n                                        <p>测试邮件</p><p><br></p>\r\n                                        ', '0', '1,', '1', '2017-04-12 14:00:14', '0'), ('11', 'mail', '你好，我是管理员，现在测试站内信', '                                            \r\n                                        <p>你好，我是管理员，现在测试站内信</p><p><br></p>', '0', '1,', '1', '2017-04-12 16:00:09', '0'), ('12', 'notice', '请管理员来开会', '                                            \r\n                                        <p>请管理员来开会</p><p><br></p>', '0', '1,', '1', '2017-04-12 16:02:33', '0'), ('13', 'mail', '消息', '                                            \r\n                                        <p>是多少</p>', '0', '1,', '1', '2017-04-12 16:10:27', '0');
 COMMIT;
 
 -- ----------------------------
@@ -262,7 +269,7 @@ CREATE TABLE `sys_user` (
 --  Records of `sys_user`
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_user` VALUES ('1', null, '1', 'super', 'ff7e419b2147a346fcf97e8a0d439143', '7b5f5d3a1d3ba80fed0ad6256eb0fc3c', '1,', '超级管理', '', '', '', '', null, null, '0', '0', '1', '2016-10-15 17:13:38', '1', '2017-03-27 15:35:40', '', '0'), ('2', null, '4', 'zhangsan', '2ecf3b2ced5598a5673935f4b83b780e', 'fddfccea5772ccc27a8654f053492d84', '2,', '张三', '', '', '', null, null, null, '0', '0', '1', '2017-04-10 16:19:14', '1', '2017-04-10 16:19:26', null, '0'), ('3', null, '4', 'lisi', '057d307e351123728de60aab447a5ce9', 'e010f5c93f1277fbcb34947149fc7a33', '2,', '李四', '', '', '', null, null, null, '0', '0', '1', '2017-04-10 16:19:41', '1', '2017-04-10 16:19:41', null, '0');
+INSERT INTO `sys_user` VALUES ('1', null, '1', 'super', 'ff7e419b2147a346fcf97e8a0d439143', '7b5f5d3a1d3ba80fed0ad6256eb0fc3c', '1,', '超级管理', '', '', '', '', null, null, '0', '0', '1', '2016-10-15 17:13:38', '1', '2017-04-13 09:15:49', '', '0'), ('2', null, '4', 'zhangsan', '2ecf3b2ced5598a5673935f4b83b780e', 'fddfccea5772ccc27a8654f053492d84', '2,', '张三', '', '', '', null, null, null, '0', '0', '1', '2017-04-10 16:19:14', '1', '2017-04-10 16:19:26', null, '0'), ('3', null, '4', 'lisi', '057d307e351123728de60aab447a5ce9', 'e010f5c93f1277fbcb34947149fc7a33', '2,', '李四', '', '', '', null, null, null, '0', '0', '1', '2017-04-10 16:19:41', '1', '2017-04-10 16:19:41', null, '0');
 COMMIT;
 
 -- ----------------------------
