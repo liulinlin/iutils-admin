@@ -31,13 +31,29 @@
                 <div class="am-form-group">
                     <div class="color-form-group color-form-line color-floating-label">
                         <input class="color-form-control tpl-form-input" type="text" name="username" required>
-                        <label class="color-form-control-label">请输入账号</label>
+                        <label class="color-form-control-label">用户名/邮箱/手机号码</label>
                     </div>
                 </div>
                 <div class="am-form-group">
                     <div class="color-form-group color-form-line color-floating-label">
                         <input class="color-form-control tpl-form-input" type="password" name="password" required>
-                        <label class="color-form-control-label">请输入密码</label>
+                        <label class="color-form-control-label">密码</label>
+                    </div>
+                </div>
+                <div class="am-form-group">
+                    <div class="am-g">
+                        <div class="am-u-sm-6" style="padding-left: 1.5rem;padding-right: 1.5rem;">
+                            <div class="color-form-group color-form-line color-floating-label">
+                                <input class="color-form-control tpl-form-input" type="text" name="jcaptchaCode" required>
+                                <label class="color-form-control-label">验证码</label>
+                            </div>
+                        </div>
+                        <div class="am-u-sm-6">
+                            <div class="jcaptcha-box" style="margin-top: 20px;">
+                                <img class="jcaptcha-btn jcaptcha-img" src="${pageContext.request.contextPath}/jcaptcha.jpg" title="点击更换验证码">
+                                <a class="jcaptcha-btn" href="javascript:;">换一张</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="am-form-group tpl-login-remember-me">
@@ -60,6 +76,9 @@
         if(msg!=''){
             showMsg(msg);
         }
+        $(".jcaptcha-btn").click(function() {
+            $(".jcaptcha-img").attr("src", '${pageContext.request.contextPath}/jcaptcha.jpg?'+new Date().getTime());
+        });
     });
     var rest = '${rest}';
     // 如果在框架或在对话框中，则弹出提示并跳转到首页

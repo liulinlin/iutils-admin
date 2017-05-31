@@ -7,7 +7,7 @@
     <packaging>war</packaging>
     <name>iutils-admin Maven Webapp</name>
     <url>http://maven.apache.org</url>
-    <version>2.2-SNAPSHOT</version>
+    <version>2.3-SNAPSHOT</version>
 
     <!-- 版本定义 -->
     <properties>
@@ -134,6 +134,11 @@
             <groupId>dom4j</groupId>
             <artifactId>dom4j</artifactId>
             <version>1.6.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.octo.captcha</groupId>
+            <artifactId>jcaptcha</artifactId>
+            <version>1.0</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>

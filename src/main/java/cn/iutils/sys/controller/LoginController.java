@@ -1,7 +1,6 @@
 package cn.iutils.sys.controller;
 
-import javax.servlet.http.HttpServletRequest;
-
+import cn.iutils.common.BaseController;
 import cn.iutils.common.utils.UserUtils;
 import cn.iutils.sys.entity.User;
 import cn.iutils.sys.service.PasswordHelper;
@@ -14,9 +13,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import cn.iutils.common.BaseController;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * 登录控制器
@@ -56,6 +55,8 @@ public class LoginController extends BaseController {
 		} else if (LockedAccountException.class.getName().equals(
 				exceptionClassName)) {
 			error = "帐号被锁定";
+		}else if("jCaptcha.error".equals(exceptionClassName)) {
+			error = "验证码错误";
 		} else if (exceptionClassName != null) {
 			error = "未知的错误";
 		}

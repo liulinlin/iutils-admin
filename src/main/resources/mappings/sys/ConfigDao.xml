@@ -117,4 +117,12 @@
     <delete id="delete">
         delete from sys_config where id=#{id}
     </delete>
+
+    <!-- 获取公共配置 -->
+    <select id="getConfigInfo" resultType="cn.iutils.sys.entity.Config">
+        SELECT
+        <include refid="ConfigColumns"/>
+        FROM sys_config a
+        where a.sys_name=#{sysName} and a.module_name=#{moduleName} and a.config_name=#{configName}
+    </select>
 </mapper>
