@@ -50,7 +50,7 @@
                         </div>
                         <div class="am-u-sm-6">
                             <div class="jcaptcha-box" style="margin-top: 20px;">
-                                <img class="jcaptcha-btn jcaptcha-img" src="${pageContext.request.contextPath}/jcaptcha.jpg" title="点击更换验证码">
+                                <img class="jcaptcha-btn jcaptcha-img" src="${pageContext.request.contextPath}/jcaptcha.code" title="点击更换验证码">
                                 <a class="jcaptcha-btn" href="javascript:;">换一张</a>
                             </div>
                         </div>
@@ -77,7 +77,7 @@
             showMsg(msg);
         }
         $(".jcaptcha-btn").click(function() {
-            $(".jcaptcha-img").attr("src", '${pageContext.request.contextPath}/jcaptcha.jpg?'+new Date().getTime());
+            $(".jcaptcha-img").attr("src", '${pageContext.request.contextPath}/jcaptcha.code?'+new Date().getTime());
         });
     });
     var rest = '${rest}';

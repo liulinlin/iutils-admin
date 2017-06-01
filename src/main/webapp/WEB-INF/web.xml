@@ -66,7 +66,7 @@
     </filter>
     <filter-mapping>
         <filter-name>JCaptchaFilter</filter-name>
-        <url-pattern>/jcaptcha.jpg</url-pattern>
+        <url-pattern>/jcaptcha.code</url-pattern>
     </filter-mapping>
 
     <servlet>
