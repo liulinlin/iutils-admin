@@ -150,6 +150,7 @@
             <value>
                 /static/** = anon
                 /jcaptcha* = anon
+                ${adminPath}/ajaxLogin = anon,slog
                 ${adminPath}/register = anon,slog
                 ${restPath}/api/** = anon,userAccess,slog
                 ${frontPath}/** = anon,forceLogout,slog

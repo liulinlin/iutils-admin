@@ -1,6 +1,7 @@
 package cn.iutils.sys.controller;
 
 import cn.iutils.common.BaseController;
+import cn.iutils.common.ResultVo;
 import cn.iutils.common.utils.UserUtils;
 import cn.iutils.sys.entity.User;
 import cn.iutils.sys.service.PasswordHelper;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * 登录控制器
@@ -32,9 +34,38 @@ public class LoginController extends BaseController {
 	@Autowired
 	private PasswordHelper passwordHelper;
 
-	@RequestMapping("/login")
-	public String login(HttpServletRequest request, Model model) {
+	/**
+	 * 获取异步登录界面
+	 * @param response
+	 * @return
+	 */
+	@RequestMapping("/ajaxLogin")
+	public String ajaxLogin(HttpServletResponse response){
+		ResultVo resultVo = null;
+		//获取用户登录信息 验证已登录，返回登录信息
+		String userName = UserUtils.getLoginUserName();
+		if(userName!=null){
+			resultVo = new ResultVo(ResultVo.SUCCESS,"1","登录成功",null);
+			return renderString(response,resultVo);
+		}else{
+			return "ajaxLogin";
+		}
+	}
 
+	/**
+	 * 登录处理
+	 * @param request
+	 * @param response
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping("/login")
+	public String login(HttpServletRequest request,HttpServletResponse response, Model model) {
+		//ajax登录失败处理
+		if ("XMLHttpRequest".equalsIgnoreCase(request.getHeader("X-Requested-With"))) {
+			ResultVo resultVo = new ResultVo(ResultVo.FAILURE, "0", "登录失败", null);
+			return renderString(response,resultVo);
+		}
         //获取用户登录信息 验证已登录，跳转到管理页
         String userName = UserUtils.getLoginUserName();
         if(userName!=null){
