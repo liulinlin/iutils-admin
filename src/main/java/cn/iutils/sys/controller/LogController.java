@@ -1,5 +1,10 @@
 package cn.iutils.sys.controller;
 
+import cn.iutils.common.BaseController;
+import cn.iutils.common.Page;
+import cn.iutils.common.utils.JStringUtils;
+import cn.iutils.sys.entity.SLog;
+import cn.iutils.sys.service.SLogService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,12 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
-import cn.iutils.common.Page;
-import cn.iutils.common.BaseController;
-import cn.iutils.common.utils.JStringUtils;
-import cn.iutils.sys.entity.SLog;
-import cn.iutils.sys.service.SLogService;
 
 /**
  * 日志记录 控制器
@@ -57,7 +56,11 @@ public class LogController extends BaseController {
         }else{
             page.setOrderBy(sLog.getOrderBy());
         }
+//        //切换数据源
+//        DataSourceContextHolder.setDbType(DataSourceType.dataSource_2);
         model.addAttribute("page", page.setList(logService.findPage(page)));
+//        //清除数据源 使用默认数据源
+//        DataSourceContextHolder.clearDbType();
         return "sys/log/list";
     }
 
