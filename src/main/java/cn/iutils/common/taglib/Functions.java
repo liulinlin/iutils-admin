@@ -1,12 +1,10 @@
 package cn.iutils.common.taglib;
 
-import java.util.Collection;
-import java.util.Date;
-
+import cn.iutils.common.config.JConfig;
+import cn.iutils.common.spring.SpringUtils;
 import cn.iutils.common.utils.RelativeDateFormat;
-import cn.iutils.common.utils.SerializableUtils;
 import cn.iutils.common.utils.UserUtils;
-import cn.iutils.sys.entity.Sessions;
+import cn.iutils.sys.entity.Config;
 import cn.iutils.sys.entity.User;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.session.mgt.eis.SessionDAO;
@@ -14,8 +12,8 @@ import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.support.DefaultSubjectContext;
 import org.springframework.util.CollectionUtils;
 
-import cn.iutils.common.config.JConfig;
-import cn.iutils.common.spring.SpringUtils;
+import java.util.Collection;
+import java.util.Date;
 
 /**
  * 系统标签函数
@@ -85,6 +83,18 @@ public class Functions {
 	 */
 	public static String getConfig(String key){
 		return JConfig.getConfig(key);
+	}
+
+
+	/**
+	 * 获取数据配置
+	 * @param sysName
+	 * @param moduleName
+	 * @param configName
+	 * @return
+	 */
+	public static Config getDBConfig(String sysName,String moduleName,String configName){
+		return JConfig.getConfig(sysName, moduleName, configName);
 	}
 
 	/**

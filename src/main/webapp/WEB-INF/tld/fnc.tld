@@ -44,14 +44,21 @@
     </function>
 
     <function>
-        <description>获取配置文件信息</description>
+        <description>获取系统文件配置</description>
         <name>getConfig</name>
         <function-class>cn.iutils.common.taglib.Functions</function-class>
         <function-signature>java.lang.String getConfig(java.lang.String)</function-signature>
     </function>
 
     <function>
-        <description>获取配置文件信息</description>
+        <description>获取系统数据配置</description>
+        <name>getDBConfig</name>
+        <function-class>cn.iutils.common.taglib.Functions</function-class>
+        <function-signature>cn.iutils.sys.entity.Config getDBConfig(java.lang.String,java.lang.String,java.lang.String)</function-signature>
+    </function>
+
+    <function>
+        <description>地址格式转换</description>
         <name>urlDecode</name>
         <function-class>cn.iutils.common.taglib.Functions</function-class>
         <function-signature>java.lang.String urlDecode(java.lang.String)</function-signature>

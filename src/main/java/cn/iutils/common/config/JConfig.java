@@ -59,6 +59,18 @@ public class JConfig {
 		return value;
 	}
 
+	/**
+	 * 获取配置文件
+	 * @param sysName
+	 * @param moduleName
+	 * @param configName
+	 * @return
+	 */
+	public static Config getConfig(String sysName,String moduleName,String configName){
+		Config config = configService.getConfigInfo(sysName,moduleName,configName);
+		return config;
+	}
+
 	public static final String CURRENT_USER = "user";
 	public static final String SESSION_FORCE_LOGOUT_KEY = "session.force.logout";
 	public static final String MESSAGE = "message";
