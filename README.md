@@ -1,4 +1,4 @@
-# iutils-admin V2.2
+# iutils-admin V2.3
 程序员工具之基础平台建设
 本项目的思路来源于[《跟我学Shiro》系列教程](http://jinnianshilongnian.iteye.com/blog/2018398)，并借鉴了[JeeSite](https://git.oschina.net/thinkgem/jeesite)项目中好的思路，在此感谢为开源事业做出贡献的组织和个人
 
@@ -92,13 +92,13 @@
 <dependency>
      <groupId>cn.iutils</groupId>
      <artifactId>iutils-admin</artifactId>
-     <version>2.2-SNAPSHOT</version>
+     <version>2.3-SNAPSHOT</version>
      <classifier>lib</classifier>
 </dependency>
 <dependency>
     <groupId>cn.iutils</groupId>
     <artifactId>iutils-admin</artifactId>
-    <version>2.2-SNAPSHOT</version>
+    <version>2.3-SNAPSHOT</version>
     <type>war</type>
 </dependency>
 ```
