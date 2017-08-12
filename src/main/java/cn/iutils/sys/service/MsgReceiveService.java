@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import cn.iutils.common.service.CrudService;
-import cn.iutils.sys.dao.MsgReceiveDao;
+import cn.iutils.sys.dao.IMsgReceiveDao;
 import cn.iutils.sys.entity.MsgReceive;
 
 import java.util.List;
@@ -16,7 +16,7 @@ import java.util.List;
 */
 @Service
 @Transactional(readOnly = true)
-public class MsgReceiveService extends CrudService<MsgReceiveDao, MsgReceive> {
+public class MsgReceiveService extends CrudService<IMsgReceiveDao, MsgReceive> {
 
     /**
      * 批量添加记录

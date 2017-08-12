@@ -22,7 +22,7 @@ import org.springframework.transaction.annotation.Transactional;
 import cn.iutils.common.service.CrudService;
 import cn.iutils.common.task.QuartzJobFactory;
 import cn.iutils.common.task.QuartzJobFactoryDisallowConcurrentExecution;
-import cn.iutils.sys.dao.ScheduleJobDao;
+import cn.iutils.sys.dao.IScheduleJobDao;
 import cn.iutils.sys.entity.ScheduleJob;
 
 /**
@@ -34,7 +34,7 @@ import cn.iutils.sys.entity.ScheduleJob;
 @SuppressWarnings("restriction")
 @Service
 @Transactional(readOnly = true)
-public class ScheduleJobService extends CrudService<ScheduleJobDao, ScheduleJob> {
+public class ScheduleJobService extends CrudService<IScheduleJobDao, ScheduleJob> {
 
 	@Autowired
 	private SchedulerFactoryBean schedulerFactoryBean;

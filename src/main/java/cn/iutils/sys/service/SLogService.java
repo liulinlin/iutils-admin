@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import cn.iutils.common.service.CrudService;
-import cn.iutils.sys.dao.SLogDao;
+import cn.iutils.sys.dao.ISLogDao;
 import cn.iutils.sys.entity.SLog;
 
 /**
@@ -17,7 +17,7 @@ import cn.iutils.sys.entity.SLog;
  */
 @Service
 @Transactional(readOnly = true)
-public class SLogService extends CrudService<SLogDao, SLog> {
+public class SLogService extends CrudService<ISLogDao, SLog> {
 
 	/**
 	 * 批量添加记录

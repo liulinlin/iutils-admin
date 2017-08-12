@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import cn.iutils.common.service.CrudService;
-import cn.iutils.sys.dao.SessionsDao;
+import cn.iutils.sys.dao.ISessionsDao;
 import cn.iutils.sys.entity.Sessions;
 
 /**
@@ -14,7 +14,7 @@ import cn.iutils.sys.entity.Sessions;
 */
 @Service
 @Transactional(readOnly = true)
-public class SessionService extends CrudService<SessionsDao, Sessions> {
+public class SessionService extends CrudService<ISessionsDao, Sessions> {
 
     /**
      * 新增会话

@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import cn.iutils.common.service.CrudService;
-import cn.iutils.sys.dao.MsgSendDao;
+import cn.iutils.sys.dao.IMsgSendDao;
 import cn.iutils.sys.entity.MsgSend;
 
 /**
@@ -14,6 +14,6 @@ import cn.iutils.sys.entity.MsgSend;
 */
 @Service
 @Transactional(readOnly = true)
-public class MsgSendService extends CrudService<MsgSendDao, MsgSend> {
+public class MsgSendService extends CrudService<IMsgSendDao, MsgSend> {
 
 }
