@@ -13,7 +13,7 @@ import java.util.List;
 * @version 1.0
 */
 @MyBatisDao
-public interface MsgReceiveDao extends ICrudDao<MsgReceive> {
+public interface IMsgReceiveDao extends ICrudDao<MsgReceive> {
 
     /**
      * 批量添加记录

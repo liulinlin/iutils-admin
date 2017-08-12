@@ -13,7 +13,7 @@ import cn.iutils.sys.entity.UserQiniu;
  * @version 1.0
  */
 @MyBatisDao
-public interface UserQiniuDao extends ICrudDao<UserQiniu> {
+public interface IUserQiniuDao extends ICrudDao<UserQiniu> {
 
 	/**
 	 * 根据用户获取七牛配置

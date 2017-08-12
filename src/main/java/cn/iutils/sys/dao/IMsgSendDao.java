@@ -10,6 +10,6 @@ import cn.iutils.sys.entity.MsgSend;
 * @version 1.0
 */
 @MyBatisDao
-public interface MsgSendDao extends ICrudDao<MsgSend> {
+public interface IMsgSendDao extends ICrudDao<MsgSend> {
 
 }

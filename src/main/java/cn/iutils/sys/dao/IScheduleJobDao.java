@@ -11,7 +11,7 @@ import cn.iutils.sys.entity.ScheduleJob;
  * @version 1.0
  */
 @MyBatisDao
-public interface ScheduleJobDao extends ICrudDao<ScheduleJob> {
+public interface IScheduleJobDao extends ICrudDao<ScheduleJob> {
 
 	/**
 	 * 更改任务状态

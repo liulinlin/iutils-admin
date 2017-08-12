@@ -10,6 +10,6 @@ import cn.iutils.sys.entity.Sessions;
 * @version 1.0
 */
 @MyBatisDao
-public interface SessionsDao extends ICrudDao<Sessions> {
+public interface ISessionsDao extends ICrudDao<Sessions> {
 
 }

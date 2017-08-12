@@ -17,6 +17,6 @@ public interface ConfigDao extends ICrudDao<Config> {
      * @param config
      * @return
      */
-    public Config getConfigInfo(Config config);
+    Config getConfigInfo(Config config);
 
 }

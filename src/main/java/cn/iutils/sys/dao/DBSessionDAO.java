@@ -5,9 +5,7 @@ import cn.iutils.common.config.JConfig;
 import cn.iutils.common.spring.SpringUtils;
 import cn.iutils.common.utils.JStringUtils;
 import cn.iutils.common.utils.SerializableUtils;
-import cn.iutils.common.utils.UserUtils;
 import cn.iutils.sys.entity.Sessions;
-import cn.iutils.sys.entity.User;
 import cn.iutils.sys.service.SessionService;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.session.mgt.eis.CachingSessionDAO;
@@ -22,9 +20,9 @@ import java.io.Serializable;
  * 先从缓存中获取，找不到再从数据库获取
  * @author iutils.cn
  */
-public class IDBSessionDAO extends CachingSessionDAO {
+public class DBSessionDAO extends CachingSessionDAO {
 
-    private static Logger logger = LoggerFactory.getLogger(IDBSessionDAO.class);
+    private static Logger logger = LoggerFactory.getLogger(DBSessionDAO.class);
 
     /**
      * session服务

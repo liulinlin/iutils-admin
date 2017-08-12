@@ -15,7 +15,7 @@ import cn.iutils.sys.entity.SLog;
  * @version 1.0
  */
 @MyBatisDao
-public interface SLogDao extends ICrudDao<SLog> {
+public interface ISLogDao extends ICrudDao<SLog> {
 
 	/**
 	 * 批量添加记录
