@@ -68,7 +68,7 @@
         <!--<property name="activeSessionsCacheName" value="${iutils.activeSession.cache}"/>-->
         <!--<property name="sessionIdGenerator" ref="sessionIdGenerator"/>-->
     <!--</bean>-->
-    <bean id="sessionDAO" class="cn.iutils.sys.dao.IDBSessionDAO">
+    <bean id="sessionDAO" class="cn.iutils.sys.dao.DBSessionDAO">
         <property name="activeSessionsCacheName" value="${iutils.activeSession.cache}"/>
         <property name="sessionIdGenerator" ref="sessionIdGenerator"/>
     </bean>
