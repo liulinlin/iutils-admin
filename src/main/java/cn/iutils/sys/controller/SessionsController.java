@@ -2,7 +2,7 @@ package cn.iutils.sys.controller;
 
 import cn.iutils.common.config.JConfig;
 import cn.iutils.common.utils.SerializableUtils;
-import cn.iutils.sys.dao.IDBSessionDAO;
+import cn.iutils.sys.dao.DBSessionDAO;
 import com.google.common.collect.Lists;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.session.Session;
@@ -33,7 +33,7 @@ public class SessionsController extends BaseController {
     private SessionService sessionService;
 
     @Autowired
-    private IDBSessionDAO sessionDAO;
+    private DBSessionDAO sessionDAO;
 
     @ModelAttribute
     public Sessions get(@RequestParam(required = false) String id) {
