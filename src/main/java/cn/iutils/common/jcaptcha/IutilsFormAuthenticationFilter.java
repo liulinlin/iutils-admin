@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * 验证码失效是不进行身份验证
+ *
  * @author iutils.cn
  * @version 1.0
  */
@@ -20,7 +21,7 @@ public class IutilsFormAuthenticationFilter extends FormAuthenticationFilter {
 
     @Override
     protected boolean onAccessDenied(ServletRequest request, ServletResponse response, Object mappedValue) throws Exception {
-        if(request.getAttribute(getFailureKeyAttribute()) != null) {
+        if (request.getAttribute(getFailureKeyAttribute()) != null) {
             return true;
         }
         return super.onAccessDenied(request, response, mappedValue);
@@ -31,8 +32,7 @@ public class IutilsFormAuthenticationFilter extends FormAuthenticationFilter {
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
         HttpServletResponse httpServletResponse = (HttpServletResponse) response;
         // 不是ajax请求
-        if (!"XMLHttpRequest".equalsIgnoreCase(httpServletRequest
-                .getHeader("X-Requested-With"))) {
+        if (!"XMLHttpRequest".equalsIgnoreCase(httpServletRequest.getHeader("X-Requested-With"))) {
             issueSuccessRedirect(request, response);
         } else {
             ResultVo resultVo = new ResultVo(ResultVo.SUCCESS, "1", "登录成功", null);

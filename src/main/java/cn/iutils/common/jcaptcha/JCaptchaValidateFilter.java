@@ -7,6 +7,7 @@ import org.apache.shiro.web.util.WebUtils;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import java.awt.image.BufferedImage;
 
 /**
  * 验证码过滤器
@@ -16,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class JCaptchaValidateFilter extends AccessControlFilter {
 
-    private boolean jcaptchaEbabled = true;//是否开启验证码支持
+    private boolean jcaptchaEbabled;//是否开启验证码支持 在配置文件中进行配置
 
     private String jcaptchaParam = "jcaptchaCode";//前台提交的验证码参数名
 
@@ -46,6 +47,17 @@ public class JCaptchaValidateFilter extends AccessControlFilter {
         }
         //3、此时是表单提交，验证验证码是否正确
         return JCaptchaUtils.validateResponse(httpServletRequest, httpServletRequest.getParameter(jcaptchaParam));
+    }
+
+    /**
+     * 获取验证码
+     *
+     * @param id sessionID
+     * @return
+     */
+    public static BufferedImage getImageChallengeForID(String id) {
+
+        return null;
     }
 
     @Override
