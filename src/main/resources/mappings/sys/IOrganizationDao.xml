@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.iutils.sys.dao.IOrganizationDao">
+<mapper namespace="com.david.sys.dao.IOrganizationDao">
 
 	<sql id="organizationColumns">
     	a.id,
@@ -22,7 +22,7 @@
 		LEFT JOIN sys_organization b ON b.id = a.parent_id
 	</sql>
 
-    <select id="get" resultType="cn.iutils.sys.entity.Organization">
+    <select id="get" resultType="com.david.sys.entity.Organization">
 		SELECT 
 			<include refid="organizationColumns"/>
 		FROM sys_organization a
@@ -30,7 +30,7 @@
 		WHERE a.id = #{id}
 	</select>
 
-	<select id="findList" resultType="cn.iutils.sys.entity.Organization">
+	<select id="findList" resultType="com.david.sys.entity.Organization">
 		SELECT
 			<include refid="organizationColumns"/>
 		FROM sys_organization a
@@ -46,7 +46,7 @@
 		</if>
 	</select>
 
-	<select id="findPage" resultType="cn.iutils.sys.entity.Organization">
+	<select id="findPage" resultType="com.david.sys.entity.Organization">
 		SELECT <include refid="organizationColumns"/> FROM sys_organization a <include refid="organizationJoins"/>
 		where a.status='0'
 		<if test="page.entity != null">

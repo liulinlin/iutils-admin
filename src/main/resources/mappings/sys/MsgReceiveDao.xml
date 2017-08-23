@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.iutils.sys.dao.IMsgReceiveDao">
+<mapper namespace="com.david.sys.dao.IMsgReceiveDao">
 
     <sql id="MsgReceiveColumns">
         a.id as "id",
@@ -23,7 +23,7 @@
         LEFT JOIN sys_user b ON b.id = a.update_by LEFT JOIN sys_msg_send c ON c.id = a.msg_id LEFT JOIN sys_user d ON d.id = c.create_by
     </sql>
 
-    <select id="get" resultType="cn.iutils.sys.entity.MsgReceive">
+    <select id="get" resultType="com.david.sys.entity.MsgReceive">
         SELECT
         <include refid="MsgReceiveColumns"/>
         FROM sys_msg_receive a
@@ -59,7 +59,7 @@
         </where>
     </select>
 
-    <select id="findPage" resultType="cn.iutils.sys.entity.MsgReceive">
+    <select id="findPage" resultType="com.david.sys.entity.MsgReceive">
         SELECT <include refid="MsgReceiveColumns"/> FROM sys_msg_receive a <include refid="MsgReceiveJoins"/>
         <where>
             <if test="page.entity.status!=null and page.entity.status!='' and page.entity.status!='-1'">

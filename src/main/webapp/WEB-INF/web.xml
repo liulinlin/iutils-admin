@@ -61,7 +61,7 @@
     <!-- 验证码过滤器需要放到Shiro之后 因为Shiro将包装HttpSession 如果不 可能造成两次的sesison id 不一样 -->
     <filter>
         <filter-name>JCaptchaFilter</filter-name>
-        <filter-class>cn.iutils.common.jcaptcha.JCaptchaFilter</filter-class>
+        <filter-class>com.david.common.jcaptcha.JCaptchaFilter</filter-class>
         <async-supported>true</async-supported>
     </filter>
     <filter-mapping>
@@ -101,7 +101,7 @@
     <!-- Xss过滤 -->
     <filter>
         <filter-name>XssSqlFilter</filter-name>
-        <filter-class>cn.iutils.common.filter.XssFilter</filter-class>
+        <filter-class>com.david.common.filter.XssFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>XssSqlFilter</filter-name>

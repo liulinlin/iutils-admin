@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.iutils.sys.dao.IUserQiniuDao">
+<mapper namespace="com.david.sys.dao.IUserQiniuDao">
 
     <sql id="UserQiniuColumns">
             a.id as "id",
@@ -14,14 +14,14 @@
             a.remarks as "remarks"
     </sql>
 
-    <select id="get" resultType="cn.iutils.sys.entity.UserQiniu">
+    <select id="get" resultType="com.david.sys.entity.UserQiniu">
         SELECT
         <include refid="UserQiniuColumns"/>
         FROM sys_user_qiniu a
         WHERE a.id = #{id}
     </select>
 
-	<select id="getByUser" resultType="cn.iutils.sys.entity.UserQiniu">
+	<select id="getByUser" resultType="com.david.sys.entity.UserQiniu">
 		SELECT
         <include refid="UserQiniuColumns"/>
         FROM sys_user_qiniu a

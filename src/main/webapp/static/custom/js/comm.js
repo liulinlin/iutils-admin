@@ -61,10 +61,10 @@ function showMsg(msg){
 //打开全屏框 是否显示顶部和底部
 function openModel(title,url,hideTop,hideBar){
 	if(hideTop){
-		$(parent.document).find(".iutils-header").hide();
+		$(parent.document).find(".david-header").hide();
 	}
 	if(hideBar){
-		$(parent.document).find(".iutils-navbar").hide();
+		$(parent.document).find(".david-navbar").hide();
 	}
 	var index = layer.open({
 		type: 2,
@@ -74,10 +74,10 @@ function openModel(title,url,hideTop,hideBar){
 		content: url,
 		cancel: function(index){
 			if(hideTop){
-				$(parent.document).find(".iutils-header").show();
+				$(parent.document).find(".david-header").show();
 			}
 			if(hideBar){
-				$(parent.document).find(".iutils-navbar").show();
+				$(parent.document).find(".david-navbar").show();
 			}
 			layer.close(index);
 		}
@@ -87,10 +87,10 @@ function openModel(title,url,hideTop,hideBar){
 //关闭弹出框
 function closeModel(isRefresh,showTop,showBar){
 	if(showTop){
-		$(parent.parent.document).find(".iutils-header").show();
+		$(parent.parent.document).find(".david-header").show();
 	}
 	if(showBar){
-		$(parent.parent.document).find(".iutils-navbar").show();
+		$(parent.parent.document).find(".david-navbar").show();
 	}
 	var index = parent.layer.getFrameIndex(window.name);
 	if(isRefresh){

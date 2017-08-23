@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.iutils.sys.dao.IMsgSendDao">
+<mapper namespace="com.david.sys.dao.IMsgSendDao">
 
     <sql id="MsgSendColumns">
         a.id as "id",
@@ -18,14 +18,14 @@
 
     </sql>
 
-    <select id="get" resultType="cn.iutils.sys.entity.MsgSend">
+    <select id="get" resultType="com.david.sys.entity.MsgSend">
         SELECT
         <include refid="MsgSendColumns"/>
         FROM sys_msg_send a
         WHERE a.id = #{id}
     </select>
 
-    <select id="findList" resultType="cn.iutils.sys.entity.MsgSend">
+    <select id="findList" resultType="com.david.sys.entity.MsgSend">
         SELECT
         <include refid="MsgSendColumns"/>
         FROM sys_msg_send a
@@ -59,7 +59,7 @@
         </where>
     </select>
 
-    <select id="findPage" resultType="cn.iutils.sys.entity.MsgSend">
+    <select id="findPage" resultType="com.david.sys.entity.MsgSend">
         SELECT <include refid="MsgSendColumns"/> FROM sys_msg_send a
         <where>
             <if test="page.entity.type!=null and page.entity.type!=''">

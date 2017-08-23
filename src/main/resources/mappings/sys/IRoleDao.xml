@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.iutils.sys.dao.IRoleDao">
+<mapper namespace="com.david.sys.dao.IRoleDao">
 
 	<sql id="roleColumns">
     	a.id,
@@ -21,7 +21,7 @@
 		LEFT JOIN sys_organization b ON b.id = a.organization_id
 	</sql>
 
-    <select id="get" resultType="cn.iutils.sys.entity.Role">
+    <select id="get" resultType="com.david.sys.entity.Role">
 		SELECT 
 			<include refid="roleColumns"/>
 		FROM sys_role a
@@ -29,7 +29,7 @@
 		WHERE a.id = #{id}
 	</select>
 
-	<select id="findList" resultType="cn.iutils.sys.entity.Role">
+	<select id="findList" resultType="com.david.sys.entity.Role">
 		SELECT
 		<include refid="roleColumns"/>
 		FROM sys_role a
@@ -49,7 +49,7 @@
 		</where>
 	</select>
 
-	<select id="findPage" resultType="cn.iutils.sys.entity.Role">
+	<select id="findPage" resultType="com.david.sys.entity.Role">
 		SELECT <include refid="roleColumns"/> FROM sys_role a <include refid="roleJoins"/>
 		<where>
 			a.status='0'
@@ -63,7 +63,7 @@
 	</select>
 
 	<!-- 获取权限资源ID -->
-	<select id="getRoles" resultType="cn.iutils.sys.entity.Role">
+	<select id="getRoles" resultType="com.david.sys.entity.Role">
 		select id,resource_ids as "resourceIdsStr" from sys_role where status='0'and available='1' and id in(
 		<foreach collection="roleIds" item="item" separator=",">
 			#{item}

@@ -90,13 +90,13 @@
 ```
 <!-- 引入iutils基础平台库 -->
 <dependency>
-     <groupId>cn.iutils</groupId>
+     <groupId>cn.david</groupId>
      <artifactId>iutils-admin</artifactId>
      <version>2.3-SNAPSHOT</version>
      <classifier>lib</classifier>
 </dependency>
 <dependency>
-    <groupId>cn.iutils</groupId>
+    <groupId>cn.david</groupId>
     <artifactId>iutils-admin</artifactId>
     <version>2.3-SNAPSHOT</version>
     <type>war</type>

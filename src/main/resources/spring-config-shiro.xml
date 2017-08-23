@@ -18,7 +18,7 @@
     </bean>
 
     <!-- 凭证匹配器 -->
-    <bean id="credentialsMatcher" class="cn.iutils.common.filter.RetryLimitHashedCredentialsMatcher">
+    <bean id="credentialsMatcher" class="com.david.common.filter.RetryLimitHashedCredentialsMatcher">
         <constructor-arg ref="cacheManager"/>
         <property name="hashAlgorithmName" value="md5"/>
         <property name="hashIterations" value="2"/>
@@ -26,7 +26,7 @@
     </bean>
 
     <!-- Realm实现 -->
-    <bean id="userRealm" class="cn.iutils.common.filter.realm.UserRealm">
+    <bean id="userRealm" class="com.david.common.filter.realm.UserRealm">
         <property name="credentialsMatcher" ref="credentialsMatcher"/>
         <property name="cachingEnabled" value="true"/>
         <property name="authenticationCachingEnabled" value="true"/>
@@ -60,10 +60,10 @@
 
     <!-- 会话DAO -->
     <!--<bean id="sessionDAO" class="org.apache.shiro.session.mgt.eis.EnterpriseCacheSessionDAO">-->
-    <!--<property name="activeSessionsCacheName" value="${iutils.activeSession.cache}"/>-->
+    <!--<property name="activeSessionsCacheName" value="${david.activeSession.cache}"/>-->
     <!--<property name="sessionIdGenerator" ref="sessionIdGenerator"/>-->
     <!--</bean>-->
-    <bean id="sessionDAO" class="cn.iutils.sys.dao.DBSessionDAO">
+    <bean id="sessionDAO" class="com.david.sys.dao.DBSessionDAO">
         <property name="activeSessionsCacheName" value="${iutils.activeSession.cache}"/>
         <property name="sessionIdGenerator" ref="sessionIdGenerator"/>
     </bean>
@@ -106,7 +106,7 @@
 
     <!-- 扩展自定义表单过滤器 -->
     <!--<bean id="formAuthenticationFilter" class="org.apache.shiro.web.filter.authc.FormAuthenticationFilter">-->
-    <bean id="formAuthenticationFilter" class="cn.iutils.common.jcaptcha.IutilsFormAuthenticationFilter">
+    <bean id="formAuthenticationFilter" class="com.david.common.jcaptcha.IutilsFormAuthenticationFilter">
         <property name="usernameParam" value="username"/>
         <property name="passwordParam" value="password"/>
         <property name="rememberMeParam" value="rememberMe"/>
@@ -114,18 +114,18 @@
         <property name="loginUrl" value="${adminPath}/login"/>
     </bean>
 
-    <bean id="jCaptchaValidateFilter" class="cn.iutils.common.jcaptcha.JCaptchaValidateFilter">
+    <bean id="jCaptchaValidateFilter" class="com.david.common.jcaptcha.JCaptchaValidateFilter">
         <property name="jcaptchaEbabled" value="true"/>
         <property name="jcaptchaParam" value="jcaptchaCode"/>
         <property name="failureKeyAttribute" value="shiroLoginFailure"/>
     </bean>
 
     <!-- 系统日志拦截器 -->
-    <bean id="slogFilter" class="cn.iutils.common.filter.SLogFilter"></bean>
+    <bean id="slogFilter" class="com.david.common.filter.SLogFilter"></bean>
     <!-- 用户访问权限验证 -->
-    <bean id="userAccessFilter" class="cn.iutils.common.filter.UserAccessFilter"></bean>
+    <bean id="userAccessFilter" class="com.david.common.filter.UserAccessFilter"></bean>
     <!-- 会话权限验证 -->
-    <bean id="forceLogoutFilter" class="cn.iutils.common.filter.ForceLogoutFilter"></bean>
+    <bean id="forceLogoutFilter" class="com.david.common.filter.ForceLogoutFilter"></bean>
 
     <!-- Shiro的Web过滤器 -->
     <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">

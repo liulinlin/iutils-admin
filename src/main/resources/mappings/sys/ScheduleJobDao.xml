@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.iutils.sys.dao.IScheduleJobDao">
+<mapper namespace="com.david.sys.dao.IScheduleJobDao">
 
     <sql id="ScheduleJobColumns">
             a.id as "id",
@@ -18,14 +18,14 @@
             a.status as "status"
     </sql>
 
-    <select id="get" resultType="cn.iutils.sys.entity.ScheduleJob">
+    <select id="get" resultType="com.david.sys.entity.ScheduleJob">
         SELECT
         <include refid="ScheduleJobColumns"/>
         FROM sys_schedule_job a
         WHERE a.id = #{id}
     </select>
 
-    <select id="findList" resultType="cn.iutils.sys.entity.ScheduleJob">
+    <select id="findList" resultType="com.david.sys.entity.ScheduleJob">
         SELECT
         <include refid="ScheduleJobColumns"/>
         FROM sys_schedule_job a
@@ -43,7 +43,7 @@
         </where>
     </select>
 
-    <select id="findPage" resultType="cn.iutils.sys.entity.ScheduleJob">
+    <select id="findPage" resultType="com.david.sys.entity.ScheduleJob">
         SELECT
         <include refid="ScheduleJobColumns"/>
         FROM sys_schedule_job a

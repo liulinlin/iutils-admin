@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title><c:set var="iutilsName" value='${fnc:getConfig("iutils.name")}' />${iutilsName} - 首页</title>
+	<title><c:set var="iutilsName" value='${fnc:getConfig("david.name")}' />${iutilsName} - 首页</title>
 	<%@ include file="include/head.jsp"%>
 	<style>
 		.tpl-content-wrapper{margin-left:0}

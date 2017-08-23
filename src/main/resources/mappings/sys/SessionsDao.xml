@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.iutils.sys.dao.ISessionsDao">
+<mapper namespace="com.david.sys.dao.ISessionsDao">
 
     <sql id="SessionColumns">
         a.id as "id",
@@ -12,7 +12,7 @@
 
     </sql>
 
-    <select id="get" resultType="cn.iutils.sys.entity.Sessions">
+    <select id="get" resultType="com.david.sys.entity.Sessions">
         SELECT
         <include refid="SessionColumns"/>
         FROM sys_sessions a
@@ -20,7 +20,7 @@
     </select>
 
     <!-- 回去在线会话列表 每次100条 -->
-    <select id="findList" resultType="cn.iutils.sys.entity.Sessions">
+    <select id="findList" resultType="com.david.sys.entity.Sessions">
         SELECT
         <include refid="SessionColumns"/>
         FROM sys_sessions a
@@ -40,7 +40,7 @@
         </where>
     </select>
 
-    <select id="findPage" resultType="cn.iutils.sys.entity.Sessions">
+    <select id="findPage" resultType="com.david.sys.entity.Sessions">
         SELECT <include refid="SessionColumns"/>
         FROM sys_sessions a
         <include refid="SessionJoins"/>

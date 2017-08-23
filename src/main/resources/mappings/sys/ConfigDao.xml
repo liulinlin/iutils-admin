@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.iutils.sys.dao.ConfigDao">
+<mapper namespace="com.david.sys.dao.ConfigDao">
 
     <sql id="ConfigColumns">
         a.id as "id",
@@ -20,14 +20,14 @@
 
     </sql>
 
-    <select id="get" resultType="cn.iutils.sys.entity.Config">
+    <select id="get" resultType="com.david.sys.entity.Config">
         SELECT
         <include refid="ConfigColumns"/>
         FROM sys_config a
         WHERE a.id = #{id}
     </select>
 
-    <select id="findList" resultType="cn.iutils.sys.entity.Config">
+    <select id="findList" resultType="com.david.sys.entity.Config">
         SELECT
         <include refid="ConfigColumns"/>
         FROM sys_config a
@@ -51,7 +51,7 @@
         </where>
     </select>
 
-    <select id="findPage" resultType="cn.iutils.sys.entity.Config">
+    <select id="findPage" resultType="com.david.sys.entity.Config">
         SELECT <include refid="ConfigColumns"/> FROM sys_config a
         <where>
             <if test="page.entity.sysName!=null and page.entity.sysName!=''">
@@ -119,7 +119,7 @@
     </delete>
 
     <!-- 获取公共配置 -->
-    <select id="getConfigInfo" resultType="cn.iutils.sys.entity.Config">
+    <select id="getConfigInfo" resultType="com.david.sys.entity.Config">
         SELECT
         <include refid="ConfigColumns"/>
         FROM sys_config a

@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 /**
  * 自定义会话验证器
  * 重写 SessionValidationJob
- * @author iutils.cn
+ * @author david.cn
  */
 public class QuartzSessionValidationJob implements Job {
 

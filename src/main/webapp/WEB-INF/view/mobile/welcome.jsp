@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title><c:set var="iutilsName" value='${fnc:getConfig("iutils.name")}' />${iutilsName}&&首页</title>
+	<title><c:set var="iutilsName" value='${fnc:getConfig("david.name")}' />${iutilsName}&&首页</title>
 	<%@ include file="include/head.jsp"%>
 	<link rel="stylesheet" href="${ctxStatic}/3rd-lib/amazeui/css/amazeui.datatables.min.css" />
 	<script src="${ctxStatic}/assets/js/echarts.min.js"></script>

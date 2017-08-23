@@ -5,16 +5,6 @@
 <script type="text/javascript" src="${ctxStatic}/custom/js/comm.js"></script>
 <script src="${ctxStatic}/assets/js/app.js"></script>
 <script>
-    //百度统计
-    var _hmt = _hmt || [];
-    (function() {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?46f3fb08caf307dd3770040a8704ed27";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-</script>
-<script>
     //解决页面高度自适应
     $(document).ready(function(){
         if(parent && parent.document){
