@@ -69,7 +69,7 @@
     </bean>
 
     <!-- 会话验证调度器 -->
-    <bean id="sessionValidationScheduler" class="org.apache.shiro.session.mgt.quartz.QuartzSessionValidationScheduler">
+    <bean id="sessionValidationScheduler" class="com.david.common.quartz.QuartzSessionValidationScheduler">
         <property name="sessionValidationInterval" value="1800000"/><!-- 1800000定时清理过期会话 -->
         <property name="sessionManager" ref="sessionManager"/>
     </bean>

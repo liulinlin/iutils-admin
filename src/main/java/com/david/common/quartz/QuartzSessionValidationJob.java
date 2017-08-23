@@ -1,4 +1,4 @@
-package org.apache.shiro.session.mgt.quartz;
+package com.david.common.quartz;
 
 import org.apache.shiro.session.mgt.ValidatingSessionManager;
 import org.quartz.Job;
