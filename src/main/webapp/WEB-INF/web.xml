@@ -13,6 +13,7 @@
         <param-name>contextConfigLocation</param-name>
         <param-value>
         	classpath:spring-config.xml
+        	classpath:spring-mvc.xml
         </param-value>
     </context-param>
     <listener>

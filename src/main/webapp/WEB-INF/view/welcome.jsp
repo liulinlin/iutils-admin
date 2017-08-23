@@ -29,10 +29,8 @@
 					<div class="am-progress">
 						<div class="am-progress-bar" style="width: ${systemInfo.memery}%"></div>
 					</div>
-					<%--<div class="am-progress-title">CPU使用 <span class="am-fr am-progress-title-more">28% / 100%</span></div>--%>
-					<%--<div class="am-progress">--%>
-						<%--<div class="am-progress-bar  am-progress-bar-warning" style="width: 75%"></div>--%>
-					<%--</div>--%>
+					<%--"/a" |"/f" |"/api" |"/static" |".html"--%>
+					<%--<div class="am-progress-title">"${ctx}" |"${ctxF}" |"${rest}" |"${ctxStatic}" |"${urlSuffix}" <span class="am-fr am-progress-title-more">28% / 100%</span></div>--%>
 				</div>
 			</div>
 		</div>
