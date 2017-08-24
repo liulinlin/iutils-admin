@@ -19,7 +19,7 @@
     <header>
         <!-- logo -->
         <div class="am-fl tpl-header-logo">
-            <a href="${ctx}"><img src="${ctxStatic}/assets/img/logo.png" alt=""></a>
+            <a href="${ctx}"><b>作业管理系统</b></a>
         </div>
         <!-- 右侧内容 -->
         <div class="tpl-header-fluid">
@@ -28,20 +28,12 @@
                     <span>
                 </span>
             </div>
-            <!-- 搜索 -->
-            <div class="am-fl tpl-header-search">
-                <form class="tpl-header-search-form" action="javascript:;">
-                    <button class="tpl-header-search-btn am-icon-search"></button>
-                    <input class="tpl-header-search-box am-select-ui-input" type="text" placeholder="功能检索...">
-                    <ul class="am-select-ui" style="width: 240px;margin-top: 5px;margin-left: 15px;"></ul>
-                </form>
-            </div>
             <!-- 其它功能-->
             <div class="am-fr tpl-header-navbar">
                 <ul>
                     <!-- 欢迎语 -->
                     <li class="am-text-sm tpl-header-navbar-welcome">
-                        <a href="#${ctx}/user/userInfo" onclick="link('${ctx}/user/userInfo')">欢迎你,
+                        <a href="#${ctx}/user/userInfo" onclick="link('${ctx}/user/userInfo')">Welcome,
                             <span>${empty loginUser.name?loginUser.username:loginUser.name}</span> </a>
                     </li>
                     <!-- 新邮件 -->
@@ -57,7 +49,7 @@
                                 <a href="#${ctx}/sys/msgReceive?msgSend.type=mail&status=-1"
                                    onclick="link('${ctx}/sys/msgReceive?msgSend.type=mail&status=-1');$('#mail').dropdown('close');"
                                    class="tpl-dropdown-menu-messages-item am-cf">
-                                    <i class="am-icon-circle-o"></i> 进入列表…
+                                    <i class="am-icon-circle-o"></i> into list…
                                 </a>
                             </li>
                         </ul>
@@ -76,15 +68,15 @@
                                 <a href="#${ctx}/sys/msgReceive?msgSend.type=notice&status=-1"
                                    onclick="link('${ctx}/sys/msgReceive?msgSend.type=notice&status=-1');$('#notice').dropdown('close');"
                                    class="tpl-dropdown-menu-notifications-item am-cf">
-                                    <i class="am-icon-bell"></i> 进入列表…
+                                    <i class="am-icon-bell"></i> into list…
                                 </a>
                             </li>
                         </ul>
                     </li>
                     <!-- 退出 -->
                     <li class="am-text-sm">
-                        <a href="${ctx}/logout" onclick="return confirm('确认要退出吗？', this.href)">
-                            <span class="am-icon-sign-out"></span> 退出
+                        <a href="${ctx}/logout" onclick="return confirm('Are you sure you want to exit?', this.href)">
+                            <span class="am-icon-sign-out"></span> Layou Out
                         </a>
                     </li>
                 </ul>
@@ -98,7 +90,7 @@
         </div>
         <div class="tpl-skiner-content">
             <div class="tpl-skiner-content-title">
-                选择主题
+                Choose Theme
             </div>
             <div class="tpl-skiner-content-bar">
                 <span class="skiner-color skiner-white" data-color="theme-white"></span>
@@ -121,13 +113,13 @@
               ${empty loginUser.name?loginUser.username:loginUser.name}
           </span>
                 <a href="#${ctx}/user/userInfo" onclick="link('${ctx}/user/userInfo')"
-                   class="tpl-user-panel-action-link"> <span class="am-icon-pencil"></span> 用户设置</a>
+                   class="tpl-user-panel-action-link"> <span class="am-icon-pencil"></span> User Setting</a>
             </div>
         </div>
 
         <!-- 菜单 -->
         <ul class="sidebar-nav">
-            <li class="sidebar-nav-heading">功能菜单</li>
+            <li class="sidebar-nav-heading">Function Menu</li>
             <c:forEach items="${menus}" var="menu1">
                 <c:if test="${menu1.parentId==1}">
                     <li class="sidebar-nav-link">
@@ -208,7 +200,7 @@
             <a href="#${ctx}/sys/msgReceive?msgSend.type=mail&status=-1"
                onclick="link('${ctx}/sys/msgReceive?msgSend.type=mail&status=-1');$('#mail').dropdown('close');"
                class="tpl-dropdown-menu-messages-item am-cf">
-                <i class="am-icon-circle-o"></i> 进入列表…
+                <i class="am-icon-circle-o"></i> into list…
             </a>
         </li>
 </script>
@@ -233,7 +225,7 @@
             <a href="#${ctx}/sys/msgReceive?msgSend.type=notice&status=-1"
                onclick="link('${ctx}/sys/msgReceive?msgSend.type=notice&status=-1');$('#notice').dropdown('close');"
                class="tpl-dropdown-menu-notifications-item am-cf">
-                <i class="am-icon-bell"></i> 进入列表…
+                <i class="am-icon-bell"></i> into list…
             </a>
         </li>
 </script>

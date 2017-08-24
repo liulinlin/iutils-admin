@@ -16,7 +16,6 @@ import java.io.IOException;
  *
  * @author David
  */
-@Deprecated
 public abstract class BaseController {
 
     /**

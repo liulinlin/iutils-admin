@@ -1,12 +1,14 @@
-<%@ page contentType="text/html;charset=UTF-8"%>
-<%@ include file="/WEB-INF/view/include/taglib.jsp"%>
+<%@ page contentType="text/html;charset=UTF-8" %>
+<%@ include file="/WEB-INF/view/include/taglib.jsp" %>
 <html>
 <head>
-   <title>组织机构列表</title>
-   <%@ include file="../../include/head.jsp"%>
+    <title>组织机构列表</title>
+    <%@ include file="../../include/head.jsp" %>
     <link rel="stylesheet" href="${ctxStatic}/3rd-lib/jquery-ztree/css/zTreeStyle.css">
     <style type="text/css">
-        .tpl-content-wrapper{margin-left:0}
+        .tpl-content-wrapper {
+            margin-left: 0
+        }
     </style>
 </head>
 <body>
@@ -36,29 +38,31 @@
                         </div>
                         <div class="widget-body am-fr">
                             <div class="am-u-sm-12 am-u-md-3 am-u-lg-3">
-                                <div class="am-btn-toolbar">
-                                    <div class="am-btn-group am-btn-group-xs">
+                                <c class="am-btn-toolbar">
+                                    <div class="am-btn-group am-btn-group-xs" <c:if test="${level == 3}">style="display: none"</c:if> >
                                         <shiro:hasPermission name="sys:organization:edit">
                                             <button type="button" class="am-btn am-btn-default am-btn-success"
-                                                    onclick="openModel(false,'${ctx}/organization/create?id=${page.entity.id}')"><span class="am-icon-plus"></span> 新增
-                                            </button></shiro:hasPermission>
+                                                    onclick="openModel(false,'${ctx}/organization/create?id=${page.entity.id}')">
+                                                <span class="am-icon-plus"></span> 新增
+                                            </button>
+                                        </shiro:hasPermission>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="am-u-sm-12 am-u-md-9 am-u-lg-9">
                                 <form id="searchForm" action="${ctx}/organization" method="post" style="display: none;">
-                                    <input name="id" value="${page.entity.id}" />
+                                    <input name="id" value="${page.entity.id}"/>
                                     <input id="pageNo" name="pageNo" type="hidden" value="${page.pageNo}"/>
                                     <input id="pageSize" name="pageSize" type="hidden" value="${page.pageSize}"/>
                                     <div class="am-input-group am-input-group-sm tpl-form-border-form cl-p">
-
                                     </div>
                                 </form>
                             </div>
 
                             <div class="am-u-sm-12">
-                                <table id="contentTable" class="am-table am-table-compact am-table-striped tpl-table-black">
+                                <table id="contentTable"
+                                       class="am-table am-table-compact am-table-striped tpl-table-black">
                                     <thead>
                                     <tr>
                                         <th>序号</th>
@@ -76,9 +80,12 @@
                                             <td>${org.name}</td>
                                             <td>${org.available?'<span class="am-badge am-badge-success am-radius">可用</span>':'<span class="am-badge am-badge-danger am-radius">禁用</span>'}</td>
                                             <td>
-                                                <a href="javascript:;" onclick="openModel(false,'${ctx}/organization/update?id=${org.id}')" title="编辑"><span class="am-icon-pencil"></span></a> <a
+                                                <a href="javascript:;"
+                                                   onclick="openModel(false,'${ctx}/organization/update?id=${org.id}')"
+                                                   title="编辑"><span class="am-icon-pencil"></span></a> <a
                                                     href="${ctx}/organization/delete?id=${org.id}&pageNo=${page.pageNo}&pageSize=${page.pageSize}"
-                                                    onclick="return confirm('确认要删除该条数据吗？', this.href)" title="删除"><span class="am-text-danger am-icon-trash-o"></span></a></td>
+                                                    onclick="return confirm('确认要删除该条数据吗？', this.href)" title="删除"><span
+                                                    class="am-text-danger am-icon-trash-o"></span></a></td>
                                         </tr>
                                     </c:forEach>
                                     </tbody>
@@ -97,7 +104,7 @@
         </div>
     </div>
 </div>
-<%@ include file="../../include/bottom.jsp"%>
+<%@ include file="../../include/bottom.jsp" %>
 <script src="${ctxStatic}/3rd-lib/jquery-ztree/js/jquery.ztree.core-3.5.min.js"></script>
 <script>
     $(function () {
@@ -107,30 +114,31 @@
                     enable: true
                 }
             },
-            callback : {
-                onClick : function(event, treeId, treeNode) {
-                    location.href = "${ctx}/organization?id="+treeNode.id;
+            callback: {
+                onClick: function (event, treeId, treeNode) {
+                    location.href = "${ctx}/organization?id=" + treeNode.id;
                 }
             }
         };
-        var zNodes =[
+        var zNodes = [
             <c:forEach items="${organizationList}" var="o" varStatus="status">
-            { id:${o.id}, pId:${o.parentId}, name:"${o.name}", open:${o.rootNode}}<c:if test="${!status.last}">,</c:if>
+                {id:${o.id}, pId:${o.parentId}, name: "${o.name}", open:${o.rootNode}}<c:if test="${!status.last}">, </c:if>
             </c:forEach>
         ];
-        $(document).ready(function(){
+        $(document).ready(function () {
             var ztree = $.fn.zTree.init($("#tree"), setting, zNodes);
             ztree.expandAll(true);
+
         });
     });
 </script>
 <script>
-  $(document).ready(function () {
-      var msg = '${msg}';
-      if(msg!=''){
-          showMsg(msg);
-      }
-  });
+    $(document).ready(function () {
+        var msg = '${msg}';
+        if (msg != '') {
+            showMsg(msg);
+        }
+    });
 </script>
 </body>
 </html>

@@ -25,8 +25,8 @@
     </div>
     <div class="tpl-login">
         <div class="tpl-login-content">
-            <div class="tpl-login-logo">
-            </div>
+            <%--<div class="tpl-login-logo">--%>
+            <%--</div>--%>
             <form class="am-form tpl-form-line-form" action="${ctx}/login" method="post">
                 <div class="am-form-group">
                     <div class="color-form-group color-form-line color-floating-label">
