@@ -14,42 +14,42 @@ import java.io.IOException;
 /**
  * 基础控制器类
  *
- * @author cc
+ * @author David
  */
 @Deprecated
 public abstract class BaseController {
 
     /**
-     * 日志对象
+     * lag
      */
     protected Logger logger = LoggerFactory.getLogger(getClass());
 
     /**
-     * 管理基础路径
+     * adminPath
      */
     @Value("${adminPath}")
     protected String adminPath;
 
     /**
-     * 前端基础路径
+     * frontPath
      */
     @Value("${frontPath}")
     protected String frontPath;
 
     /**
-     * rest接口路径
+     * restPath
      */
     @Value("${restPath}")
     protected String restPath;
 
     /**
-     * 前端URL后缀
+     * urlSuffix
      */
     @Value("${urlSuffix}")
     protected String urlSuffix;
 
     /**
-     * 客户端返回JSON字符串
+     * return json string
      *
      * @param response
      * @param object
@@ -60,7 +60,7 @@ public abstract class BaseController {
     }
 
     /**
-     * 返回JSONP的数据
+     * Returns the data for JSONP
      *
      * @param response
      * @param object
@@ -72,7 +72,7 @@ public abstract class BaseController {
     }
 
     /**
-     * 客户端返回字符串
+     * return String
      *
      * @param response
      * @param string
@@ -91,7 +91,7 @@ public abstract class BaseController {
     }
 
     /**
-     * 获得用户远程地址
+     * get remote ip
      */
     public static String getRemoteAddr(HttpServletRequest request) {
         String remoteAddr = request.getHeader("X-Real-IP");
@@ -106,7 +106,7 @@ public abstract class BaseController {
     }
 
     /**
-     * 添加Model消息
+     * Model msg
      *
      * @param messages
      */
@@ -119,7 +119,7 @@ public abstract class BaseController {
     }
 
     /**
-     * 添加Flash消息
+     * Flash msg
      *
      * @param messages
      */

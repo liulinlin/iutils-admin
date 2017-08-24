@@ -12,36 +12,35 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 
 /**
- * JSONP接口代理服务 解决，ajax跨域问题
- * 
+ * JSONP interface proxy service solution, ajax cross domain problem
+ *
  * @author cc
- * 
  */
 @RestController
 @RequestMapping(value = "/jsonp/api")
 public class JsonpController extends BaseController {
 
-	/**
-	 * GET服务
-	 * 
-	 * @param url
-	 * @param callback
-	 * @param response
-	 * @return
-	 */
-	@RequestMapping(value = "/get", method = RequestMethod.GET)
-	public String get(String url, String callback, HttpServletResponse response) {
-		ResultVo resultVo = null;
-		try {
-			url = URLDecoder.decode(url, "utf-8");
-			String content = Base64.encodeBase64String(JHttpUtils.doGet(url)
-					.getBytes("utf-8"));
-			resultVo = new ResultVo(ResultVo.SUCCESS, "1", "调用成功", content);
-		} catch (UnsupportedEncodingException e) {
-			logger.error(e.getMessage());
-			resultVo = new ResultVo(ResultVo.FAILURE, "0", "调用失败", null);
-		}
-		return renderString(response, resultVo, callback);
-	}
+    /**
+     * GET service
+     *
+     * @param url
+     * @param callback
+     * @param response
+     * @return
+     */
+    @RequestMapping(value = "/get", method = RequestMethod.GET)
+    public String get(String url, String callback, HttpServletResponse response) {
+        ResultVo resultVo = null;
+        try {
+            url = URLDecoder.decode(url, "utf-8");
+            String content = Base64.encodeBase64String(JHttpUtils.doGet(url)
+                    .getBytes("utf-8"));
+            resultVo = new ResultVo(ResultVo.SUCCESS, "1", "success", content);
+        } catch (UnsupportedEncodingException e) {
+            logger.error(e.getMessage());
+            resultVo = new ResultVo(ResultVo.FAILURE, "0", "fail", null);
+        }
+        return renderString(response, resultVo, callback);
+    }
 
 }

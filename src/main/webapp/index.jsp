@@ -4,7 +4,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>${ctx}欢迎进入,请稍后...</title>
+    <title>欢迎进入,请稍后...</title>
 </head>
 <body>
 <script>
