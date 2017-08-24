@@ -15,7 +15,7 @@ import com.david.sys.dao.IRoleDao;
 /**
  * 权限服务
  * 
- * @author cc
+ * @author David
  */
 @Service
 @Transactional(readOnly = true)

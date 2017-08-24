@@ -11,7 +11,7 @@ import java.util.Map;
 /**
  * HmacSHA256工具
  * 
- * @author cc
+ * @author David
  */
 public class HmacSHA256Utils {
 

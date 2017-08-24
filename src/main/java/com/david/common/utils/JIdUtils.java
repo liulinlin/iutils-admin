@@ -5,7 +5,7 @@ import java.util.UUID;
 /**
  * 封装各种生成唯一性ID算法的工具类.
  * 
- * @author cc
+ * @author David
  */
 public class JIdUtils {
 

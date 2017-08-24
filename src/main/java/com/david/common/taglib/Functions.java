@@ -18,7 +18,7 @@ import java.util.Date;
 /**
  * 系统标签函数
  * 
- * @author cc
+ * @author David
  */
 public class Functions {
 

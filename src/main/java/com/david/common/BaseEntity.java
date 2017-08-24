@@ -10,7 +10,7 @@ import java.util.Date;
 /**
  * 基础实体
  * 
- * @author cc
+ * @author David
  * @param <T>
  */
 public abstract class BaseEntity<T> implements Serializable {

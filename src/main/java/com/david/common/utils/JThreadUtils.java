@@ -6,7 +6,7 @@ import java.util.concurrent.Executors;
 /**
  * 线程处理工具
  * 
- * @author cc
+ * @author David
  */
 public class JThreadUtils extends BaseUtils{
 

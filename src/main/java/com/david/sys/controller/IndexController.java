@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 /**
  * 首页控制器
  * 
- * @author cc
+ * @author David
  */
 @Controller
 @RequestMapping(value = "${adminPath}")

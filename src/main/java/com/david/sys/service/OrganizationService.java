@@ -10,7 +10,7 @@ import com.david.sys.entity.Organization;
 /**
  * 组织机构服务
  * 
- * @author cc
+ * @author David
  */
 @Service
 @Transactional(readOnly = true)

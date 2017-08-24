@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
 /**
  * 分页工具
  * 
- * @author cc
+ * @author David
  */
 public class Page<T> {
 

@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * 用户Dao接口
  * 
- * @author cc
+ * @author David
  */
 @MyBatisDao
 public interface IUserDao extends ICrudDao<User> {

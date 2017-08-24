@@ -18,7 +18,7 @@ import com.david.sys.entity.enums.ResourceEnum;
 /**
  * 资源服务
  * 
- * @author cc
+ * @author David
  */
 @Service
 @Transactional(readOnly = true)

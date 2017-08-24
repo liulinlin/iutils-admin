@@ -8,7 +8,7 @@ import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 /**
  * Spring工具
  * 
- * @author cc
+ * @author David
  */
 public final class SpringUtils implements BeanFactoryPostProcessor {
 

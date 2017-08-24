@@ -28,7 +28,7 @@ import java.util.Map;
 /**
  * 网页处理工具
  * 
- * @author cc
+ * @author David
  * 
  */
 public class JHttpUtils {

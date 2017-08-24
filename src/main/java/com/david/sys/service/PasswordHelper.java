@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 /**
  * 密码操作
  * 
- * @author cc
+ * @author David
  */
 @Service
 public class PasswordHelper {

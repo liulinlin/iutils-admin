@@ -10,7 +10,7 @@ import com.david.common.spring.SpringUtils;
 /**
  * 用户管理工具
  * 
- * @author cc
+ * @author David
  * 
  */
 public class UserUtils {

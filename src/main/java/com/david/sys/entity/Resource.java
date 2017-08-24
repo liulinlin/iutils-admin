@@ -5,7 +5,7 @@ import com.david.sys.entity.enums.ResourceEnum;
 /**
  * 资源表
  * 
- * @author cc
+ * @author David
  */
 public class Resource extends DataEntity<Resource> {
 

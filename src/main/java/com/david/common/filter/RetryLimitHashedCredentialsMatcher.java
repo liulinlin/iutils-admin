@@ -12,7 +12,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * 重试次数限定匹配验证器
- * @author cc
+ * @author David
  */
 public class RetryLimitHashedCredentialsMatcher extends HashedCredentialsMatcher {
 

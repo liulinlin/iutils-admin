@@ -11,7 +11,7 @@ import com.david.task.TaskLog;
 /**
  * 日志工具
  * 
- * @author cc
+ * @author David
  * 
  */
 public class LogUtils {

@@ -22,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * 登录控制器
  *
- * @author cc
+ * @author David
  */
 @Controller
 @RequestMapping(value = "${adminPath}")

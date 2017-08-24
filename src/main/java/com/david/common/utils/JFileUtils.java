@@ -14,7 +14,7 @@ import java.util.Enumeration;
 /**
  * 文件操作工具类
  * 
- * @author cc
+ * @author David
  */
 public class JFileUtils extends FileUtils {
 

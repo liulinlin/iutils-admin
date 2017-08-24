@@ -23,7 +23,7 @@ import java.util.List;
 /**
  * 资源控制器
  * 
- * @author cc
+ * @author David
  */
 @Controller
 @RequestMapping("${adminPath}/resource")

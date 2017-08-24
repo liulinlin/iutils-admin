@@ -22,7 +22,7 @@ import java.io.File;
 /**
  * 上传控制器
  *
- * @author cc
+ * @author David
  */
 @RestController
 @RequestMapping(value = "${adminPath}/upload")

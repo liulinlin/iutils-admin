@@ -6,7 +6,7 @@ import java.io.LineNumberReader;
 /**
  * 执行系统命令工具
  * 
- * @author cc
+ * @author David
  * 
  */
 public class JRuntime {

@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  * Service基类
  *
- * @author cc
+ * @author David
  */
 @Transactional(readOnly = true)
 public abstract class CrudService<D extends ICrudDao<T>, T extends BaseEntity<T>>

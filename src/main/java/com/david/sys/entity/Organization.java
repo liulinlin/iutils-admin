@@ -3,7 +3,7 @@ package com.david.sys.entity;
 /**
  * 组织机构表
  * 
- * @author cc
+ * @author David
  */
 public class Organization extends DataEntity<Organization> {
 

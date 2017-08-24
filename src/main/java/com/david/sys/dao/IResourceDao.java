@@ -12,7 +12,7 @@ import java.util.Set;
 /**
  * 资源Dao接口
  * 
- * @author cc
+ * @author David
  */
 @MyBatisDao
 public interface IResourceDao extends ICrudDao<Resource> {

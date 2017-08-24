@@ -11,7 +11,7 @@ import com.david.sys.entity.enums.DataScopeEnum;
 /**
  * 权限表
  * 
- * @author cc
+ * @author David
  */
 public class Role extends DataEntity<Role> {
 

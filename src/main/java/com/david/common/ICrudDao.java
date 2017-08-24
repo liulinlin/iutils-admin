@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * DAO支持类实现
  * 
- * @author cc
+ * @author David
  * @param <T>
  */
 public interface ICrudDao<T> extends IBaseDao {

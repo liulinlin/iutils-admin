@@ -17,7 +17,7 @@ import com.david.sys.dao.IUserDao;
 /**
  * 用户服务
  * 
- * @author cc
+ * @author David
  */
 @Service
 @Transactional(readOnly = true)

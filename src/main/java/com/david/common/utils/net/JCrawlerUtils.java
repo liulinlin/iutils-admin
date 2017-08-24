@@ -7,7 +7,7 @@ import org.slf4j.LoggerFactory;
 /**
  * 采集工具
  * 主要采集，常用购物网站的数据 1、京东网 2、天猫网 3、淘宝网 4、一号店 5、苏宁易购 6、国美在线
- * @author cc
+ * @author David
  */
 public class JCrawlerUtils {
 

@@ -9,7 +9,7 @@ import org.springframework.util.StringUtils;
 /**
  * 用户表
  * 
- * @author cc
+ * @author David
  */
 public class User extends DataEntity<User> {
 

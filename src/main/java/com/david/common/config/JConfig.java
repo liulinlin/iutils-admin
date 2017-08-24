@@ -12,7 +12,7 @@ import java.util.Map;
 /**
  * Jcc全局配置
  * 
- * @author cc
+ * @author David
  */
 public class JConfig {
 

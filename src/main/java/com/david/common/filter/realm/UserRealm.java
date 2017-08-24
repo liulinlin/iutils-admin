@@ -18,7 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 /**
  * 用户权限认证
  *
- * @author cc
+ * @author David
  */
 public class UserRealm extends AuthorizingRealm {
 

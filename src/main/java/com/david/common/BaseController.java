@@ -14,7 +14,7 @@ import java.io.IOException;
 /**
  * 基础控制器类
  * 
- * @author cc
+ * @author David
  */
 public abstract class BaseController {
 

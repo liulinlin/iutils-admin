@@ -2,7 +2,7 @@ package com.david.sys.entity.enums;
 
 /**
  * 平台类型
- * @author cc
+ * @author David
  */
 public enum PlatformEnum {
 

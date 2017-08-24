@@ -7,7 +7,7 @@ import com.david.sys.entity.Organization;
 /**
  * 组织机构Dao
  * 
- * @author cc
+ * @author David
  */
 @MyBatisDao
 public interface IOrganizationDao extends ICrudDao<Organization> {

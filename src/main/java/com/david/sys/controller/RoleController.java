@@ -26,7 +26,7 @@ import com.david.common.utils.JStringUtils;
 /**
  * 权限控制器
  * 
- * @author cc
+ * @author David
  */
 @Controller
 @RequestMapping("${adminPath}/role")

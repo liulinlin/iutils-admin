@@ -9,7 +9,7 @@ import com.david.sys.entity.ScheduleJob;
 /**
  * 计划任务执行处 无状态
  * 
- * @author cc
+ * @author David
  */
 public class QuartzJobFactory implements Job {
 

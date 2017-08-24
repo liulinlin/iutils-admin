@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * 权限Dao接口
  * 
- * @author cc
+ * @author David
  */
 @MyBatisDao
 public interface IRoleDao extends ICrudDao<Role> {

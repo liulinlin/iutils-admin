@@ -2,7 +2,7 @@ package com.david.sys.entity.enums;
 
 /**
  * 资源类型
- * @author cc
+ * @author David
  */
 public enum ResourceEnum {
 

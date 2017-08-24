@@ -14,7 +14,7 @@ import java.net.URLDecoder;
 /**
  * JSONP interface proxy service solution, ajax cross domain problem
  *
- * @author cc
+ * @author David
  */
 @RestController
 @RequestMapping(value = "/jsonp/api")
