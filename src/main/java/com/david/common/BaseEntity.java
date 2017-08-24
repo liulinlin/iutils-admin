@@ -39,6 +39,12 @@ public abstract class BaseEntity<T> implements Serializable {
 	 */
 	protected boolean isNewId = false;
 
+	/**
+	 * 状态（0：正常；1：删除）
+	 */
+	public static final String STATUS_NORMAL = "0";
+	public static final String STATUS_DELETE = "1";
+
 	public BaseEntity() {
 		this.status = STATUS_NORMAL;
 	}
@@ -138,10 +144,6 @@ public abstract class BaseEntity<T> implements Serializable {
 	 */
 	public abstract void preUpdate();
 
-	/**
-	 * 状态（0：正常；1：删除）
-	 */
-	public static final String STATUS_NORMAL = "0";
-	public static final String STATUS_DELETE = "1";
+
 
 }
